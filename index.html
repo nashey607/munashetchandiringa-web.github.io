@@ -6,11 +6,12 @@
     <title>Geospatial Science & Spatial Analytics Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter for UI, Merriweather for Document Summaries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, .heading-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .document-font { font-family: 'Merriweather', serif; }
         .active-tab {
             background-color: #1e3a8a !important;
             color: #ffffff !important;
@@ -36,7 +37,6 @@
             <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
                 <a href="#about" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Value Proposition</a>
                 <a href="#projects-section" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Featured Projects</a>
-                <a href="#roi-impact" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Commercial ROI</a>
                 <a href="#technical" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Tech Stack</a>
                 <a href="CV_Application.pdf" target="_blank" class="ml-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-600/30 flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
@@ -58,16 +58,13 @@
                     Transforming Earth Observation into <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">Measurable Financial & Spatial ROI</span>.
                 </h2>
                 <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-                    Specializing in remote sensing, satellite data pipelines, and spatial machine learning. I don't just generate maps—I identify high-cost spatial challenges, model environmental dynamics, and engineer data solutions that optimize resources, mitigate risks, and save revenue.
+                    Specializing in remote sensing, satellite data pipelines, and spatial machine learning. I don't just generate maps—I identify high-cost spatial challenges, model environmental dynamics, and engineer data solutions that optimize resources, mitigate risks, and drive revenue.
                 </p>
                 
                 <div class="pt-4 flex flex-wrap gap-4">
                     <a href="#projects-section" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-3.5 rounded-xl transition shadow-xl shadow-blue-600/25 flex items-center gap-2">
-                        Explore Case Studies
+                        View Project Summaries
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </a>
-                    <a href="#roi-impact" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold px-7 py-3.5 rounded-xl transition">
-                        View Commercial Business ROI
                     </a>
                 </div>
             </div>
@@ -75,14 +72,14 @@
             <!-- Value Highlights Metrics -->
             <div class="lg:col-span-5 grid grid-cols-2 gap-4">
                 <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
-                    <p class="text-3xl font-extrabold text-blue-400">21 Years</p>
-                    <p class="text-sm font-semibold text-white mt-1">Multi-Sensor Data Processing</p>
+                    <p class="text-3xl font-extrabold text-blue-400">Earth Obs.</p>
+                    <p class="text-sm font-semibold text-white mt-1">Multi-Sensor Data</p>
                     <p class="text-xs text-slate-400 mt-2">Engineered long-term Landsat/Sentinel satellite time-series analysis.</p>
                 </div>
                 <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
                     <p class="text-3xl font-extrabold text-emerald-400">ML-Driven</p>
                     <p class="text-sm font-semibold text-white mt-1">Predictive Analytics</p>
-                    <p class="text-xs text-slate-400 mt-2">Deploying Random Forest models for spatial forecasting.</p>
+                    <p class="text-xs text-slate-400 mt-2">Deploying Random Forest models for predictive spatial forecasting.</p>
                 </div>
                 <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
                     <p class="text-3xl font-extrabold text-indigo-400">Real-Time</p>
@@ -91,7 +88,7 @@
                 </div>
                 <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
                     <p class="text-3xl font-extrabold text-amber-400">100%</p>
-                    <p class="text-sm font-semibold text-white mt-1">Risk & Cost Reduction Focus</p>
+                    <p class="text-sm font-semibold text-white mt-1">Business Value Focus</p>
                     <p class="text-xs text-slate-400 mt-2">Direct translation of spatial data into action-oriented business choices.</p>
                 </div>
             </div>
@@ -103,71 +100,120 @@
         <div class="max-w-7xl mx-auto px-6">
             
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Interactive Project Portfolio</h2>
-                <p class="text-slate-400 mt-3 text-base">Select a project below to examine the specific problem identified, the technical geospatial solution applied, and the tangible economic value generated.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Executive Project Portfolio</h2>
+                <p class="text-slate-400 mt-3 text-base">Select a project below to review the executive summary, technical execution, and commercial impact.</p>
             </div>
 
             <!-- Project Selection Buttons -->
             <div class="flex justify-center mb-12">
                 <div class="bg-slate-800/90 p-1.5 rounded-2xl border border-slate-700 flex flex-col sm:flex-row gap-2 max-w-2xl w-full">
-                    <button id="tab-p1" onclick="switchProject('p1')" class="active-tab flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-                        Project 1: Weather Dashboard
-                    </button>
-                    <button id="tab-p2" onclick="switchProject('p2')" class="flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
+                    <button id="tab-p1" onclick="switchProject('p1')" class="active-tab flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2 shadow-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                        Project 2: Machine Learning Modeling
+                        Honours Dissertation: Spatial Modeling
+                    </button>
+                    <button id="tab-p2" onclick="switchProject('p2')" class="flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2 shadow-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 001-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        Web GIS: Real-Time Weather
                     </button>
                 </div>
             </div>
 
-            <!-- PROJECT 1 CONTENT CARD -->
+            <!-- PROJECT 1: DISSERTATION (Set as default active) -->
             <div id="project-p1" class="block transition-all duration-500">
                 <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
                     <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
                         <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
-                            <span class="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">Web GIS & Spatial Telemetry Application</span>
-                            <span class="text-xs text-slate-400 font-mono">Live API Integration • Interactive Vector Mapping</span>
+                            <span class="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">Earth Observation & Machine Learning</span>
+                            <span class="text-xs text-slate-400 font-mono">Google Earth Engine • Python • Predictive Modeling</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white">Spatial Modeling of Vegetation Dynamics & Future Climate Scenarios</h3>
+                    </div>
+
+                    <!-- DOCUMENT-STYLE EXECUTIVE SUMMARY -->
+                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-indigo-600">
+                        <div class="max-w-4xl mx-auto">
+                            <h4 class="text-indigo-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
+                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
+                                <p>
+                                    An advanced spatial analytics pipeline engineered to model ecosystem dynamics and mitigate environmental risk within Nyanga National Park. Ecosystem degradation poses an immediate threat to forestry yields, ecotourism revenue, and capital land assets. To solve this, this research executed a precise 21-year temporal baseline analysis (2003–2023) to evaluate historical vegetation stress and model near-future climate scenarios.
+                                </p>
+                                <p>
+                                    Technically, the project processed multi-sensor satellite imagery across Google Earth Engine. By replacing standard categorical trend classes with a highly sensitive stability index, and deploying Random Forest machine learning classification, the model achieved superior predictive accuracy. The results were rigorously validated utilizing confusion matrices and Kappa coefficient verification to ensure high academic and commercial reliability.
+                                </p>
+                                <p class="font-bold text-slate-900">
+                                    Commercial Value: <span class="font-normal">This project directly translates Earth observation data into financial utility. By providing audit-ready spatial intelligence, it allows corporate and government stakeholders to eliminate costly manual field surveys, confidently validate carbon offset initiatives, and optimize capital resource allocation against climate-induced degradation.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3-Pillar Framework Grid -->
+                    <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-700/80 border-b border-slate-700/80 bg-slate-900">
+                        <div class="p-8 space-y-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/30">1</div>
+                            <h4 class="text-lg font-bold text-white">The Problem</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Lack of validated historical baselines prevents accurate forecasting of ecosystem health, putting investments in land management, agriculture, and conservation at severe risk.</p>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg border border-blue-500/30">2</div>
+                            <h4 class="text-lg font-bold text-white">The GIS Solution</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Engineered a 2003–2023 time-series utilizing a stability index rather than basic categorization, mapped via Google Earth Engine and validated through robust statistical methods.</p>
+                        </div>
+                        <div class="p-8 space-y-4 bg-emerald-950/10">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">3</div>
+                            <h4 class="text-lg font-bold text-white">Revenue Impact</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-emerald-400">Protects long-term assets</strong> by facilitating data-driven ESG reporting and enabling the monetization of precise, verified carbon credit programs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: WEATHER DASHBOARD (Hidden by default) -->
+            <div id="project-p2" class="hidden transition-all duration-500">
+                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
+                        <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+                            <span class="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">Web GIS & Operational Telemetry</span>
+                            <span class="text-xs text-slate-400 font-mono">Live API Feed • Interactive Vector Mapping</span>
                         </div>
                         <h3 class="text-2xl md:text-3xl font-extrabold text-white">Real-Time Geospatial Weather & Disaster Risk Monitoring System</h3>
                     </div>
 
+                    <!-- DOCUMENT-STYLE EXECUTIVE SUMMARY -->
+                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-blue-600">
+                        <div class="max-w-4xl mx-auto">
+                            <h4 class="text-blue-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
+                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
+                                <p>
+                                    A dynamic, full-stack Web GIS dashboard designed to solve the critical operational problem of sudden, localized climate anomalies. Industries such as large-scale mining, commercial agriculture, and logistics rely heavily on environmental stability. Unpredictable severe weather events routinely cause operational delays, damage exposed equipment, and halt supply chains, resulting in massive overhead losses.
+                                </p>
+                                <p>
+                                    To combat this, I developed an interactive spatial application that integrates real-time weather API feeds directly into a live geographic interface. The system allows users to conduct dynamic coordinate searches, overlay critical vector layers, and actively monitor approaching environmental hazards at a micro-local scale.
+                                </p>
+                                <p class="font-bold text-slate-900">
+                                    Commercial Value: <span class="font-normal">By translating abstract forecast data into an immediate visual risk map, this tool empowers operational managers to make preemptive scheduling decisions. Securing field assets and optimizing personnel deployment before an anomaly strikes directly curtails costly operational downtime and preserves profit margins.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 3-Pillar Framework Grid -->
-                    <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-700/80 border-b border-slate-700/80">
-                        
-                        <!-- Pillar 1 -->
+                    <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-700/80 border-b border-slate-700/80 bg-slate-900">
                         <div class="p-8 space-y-4">
                             <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/30">1</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                Problem Identified
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                Unpredictable local climate anomalies and sudden severe weather events create costly operational delays for agriculture, mining operations, and logistics platforms reliant on static forecast reports.
-                            </p>
+                            <h4 class="text-lg font-bold text-white">The Problem</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Static weather reports fail to provide the localized spatial context required by industrial and agricultural sectors to protect exposed equipment and avoid halted supply chains.</p>
                         </div>
-
-                        <!-- Pillar 2 -->
                         <div class="p-8 space-y-4">
                             <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg border border-blue-500/30">2</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                GIS & Technical Solution
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                Designed and deployed a full-stack Web GIS dashboard integrating live weather API feeds, dynamic spatial overlay layers, custom coordinate search functions, and automated risk alert thresholding.
-                            </p>
+                            <h4 class="text-lg font-bold text-white">The GIS Solution</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Built a centralized Web GIS dashboard utilizing live API feeds, automated risk alert thresholding, and dynamic coordinate overlay systems for immediate situational awareness.</p>
                         </div>
-
-                        <!-- Pillar 3 -->
                         <div class="p-8 space-y-4 bg-emerald-950/10">
                             <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">3</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                Revenue Impact & Value
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                <strong class="text-emerald-400 font-semibold">Reduces costly downtime by up to 25%</strong> through early localized spatial alerts, allowing operational teams to proactively protect field assets and optimize scheduling before severe weather hits.
-                            </p>
+                            <h4 class="text-lg font-bold text-white">Revenue Impact</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-emerald-400">Reduces financial losses</strong> by allowing site managers to pause heavy operations, optimize shifts, and secure resources just-in-time, effectively minimizing overhead waste.</p>
                         </div>
-
                     </div>
 
                     <!-- Embedded Application Preview -->
@@ -180,132 +226,14 @@
                             <iframe src="weather.html" class="w-full h-full border-0"></iframe>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- PROJECT 2 CONTENT CARD -->
-            <div id="project-p2" class="hidden transition-all duration-500">
-                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
-                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
-                        <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
-                            <span class="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">B.Sc. Honours Research & Earth Observation</span>
-                            <span class="text-xs text-slate-400 font-mono">Google Earth Engine • Machine Learning (2003–2063)</span>
-                        </div>
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white">Spatial Modeling of Vegetation Dynamics & Future Climate Scenarios: Nyanga National Park</h3>
-                    </div>
-
-                    <!-- 3-Pillar Framework Grid -->
-                    <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-700/80 border-b border-slate-700/80">
-                        
-                        <!-- Pillar 1 -->
-                        <div class="p-8 space-y-4">
-                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/30">1</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                Problem Identified
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                Ecosystem degradation and unmonitored vegetation stress directly threaten forestry yields, biodiversity, ecotourism revenue, and carbon offset monetization due to a lack of long-term spatial baseline validation.
-                            </p>
-                        </div>
-
-                        <!-- Pillar 2 -->
-                        <div class="p-8 space-y-4">
-                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg border border-blue-500/30">2</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                GIS & Technical Solution
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                Processed a 21-year (2003–2023) multi-sensor satellite imagery pipeline on Google Earth Engine. Engineered Random Forest machine learning classification, calculated a vegetation stability index, and modeled predictive climate scenarios up to 2063 with confusion matrix and Kappa accuracy validation.
-                            </p>
-                        </div>
-
-                        <!-- Pillar 3 -->
-                        <div class="p-8 space-y-4 bg-emerald-950/10">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">3</div>
-                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-                                Revenue Impact & Value
-                            </h4>
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                <strong class="text-emerald-400 font-semibold">Unlocks carbon credit auditing and capital asset protection</strong> by providing high-precision spatial proof of ecosystem stability, reducing misallocated environmental restoration funding, and protecting long-term land values.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <!-- Deep Technical Metrics -->
-                    <div class="p-8 bg-slate-900 grid md:grid-cols-3 gap-6">
-                        <div class="p-5 bg-slate-800/80 rounded-2xl border border-slate-700">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Historical Analytics</p>
-                            <p class="text-xl font-bold text-white mt-1">2003 – 2023 Time-Series</p>
-                            <p class="text-xs text-slate-300 mt-2">Pixel-level surface reflectance algorithms across Landsat & Sentinel sensors.</p>
-                        </div>
-                        <div class="p-5 bg-slate-800/80 rounded-2xl border border-slate-700">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Predictive Horizon</p>
-                            <p class="text-xl font-bold text-indigo-400 mt-1">2026 – 2063 Forecasts</p>
-                            <p class="text-xs text-slate-300 mt-2">Machine learning projections under varying climate change scenarios.</p>
-                        </div>
-                        <div class="p-5 bg-slate-800/80 rounded-2xl border border-slate-700">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Validation Rigor</p>
-                            <p class="text-xl font-bold text-emerald-400 mt-1">Confusion Matrix & Kappa</p>
-                            <p class="text-xs text-slate-300 mt-2">Rigorous scientific verification ensuring high reliability for executive decision-makers.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Commercial ROI Section (What Employers Look For) -->
-    <section id="roi-impact" class="py-24 bg-slate-800/40 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">Commercial Value Creation</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">How My Geospatial Skills Driver Profitability & Efficiency</h2>
-                <p class="text-slate-400 mt-3">Geospatial analysis is an investment that produces tangible business returns. Here is how my capabilities create enterprise value for employers across sectors:</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- ROI 1 -->
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-emerald-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Cost Reduction & Asset Optimization</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        By deploying automated remote sensing analysis, I eliminate the need for costly manual field surveys over massive geographic areas, cutting spatial intelligence operational expenditures.
-                    </p>
-                </div>
-
-                <!-- ROI 2 -->
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Risk Mitigation & Compliance</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Predictive environmental risk modeling helps companies maintain strict environmental compliance, avoid regulatory penalties, and insulate infrastructure against extreme climate shifts.
-                    </p>
-                </div>
-
-                <!-- ROI 3 -->
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-indigo-500/50 transition-all duration-300">
-                    <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Revenue & Opportunity Unlocking</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        I convert satellite spectral data into actionable commercial insights—such as evaluating prospective land development sites, estimating biomass, or assessing agricultural yields before harvest.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Technical Stack Section -->
-    <section id="technical" class="py-24 bg-slate-900">
+    <section id="technical" class="py-24 bg-slate-900 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-3xl font-extrabold text-white">Technical Arsenal</h2>
@@ -313,31 +241,31 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl shadow-lg hover:border-blue-500/50 transition-colors">
                     <h3 class="font-bold text-white text-lg mb-4 text-blue-400">GIS & Remote Sensing</h3>
                     <ul class="space-y-2 text-sm text-slate-300">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Google Earth Engine (GEE)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> QGIS & ArcMap / ArcGIS Pro</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Landsat / Sentinel Multi-Sensor Pipelines</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Raster Processing & Stability Indexing</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> QGIS & ArcMap</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Multi-Sensor Pipelines (Landsat/Sentinel)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Stability Indexing & Raster Processing</li>
                     </ul>
                 </div>
 
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl shadow-lg hover:border-indigo-500/50 transition-colors">
                     <h3 class="font-bold text-white text-lg mb-4 text-indigo-400">Programming & Data Science</h3>
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Python (Rasterio, NumPy, Pandas)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Python (Rasterio, NumPy)</li>
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Machine Learning (Random Forest)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Data Visualization (Matplotlib, Seaborn)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Web API & JavaScript Integrations</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Data Visualization (Matplotlib)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> Web API Integrations</li>
                     </ul>
                 </div>
 
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl shadow-lg hover:border-emerald-500/50 transition-colors">
                     <h3 class="font-bold text-white text-lg mb-4 text-emerald-400">Rigour & Analytics</h3>
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Accuracy Assessments & Confusion Matrix</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Kappa Coefficient Verification</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Spatial Accuracy Assessments</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Confusion Matrix & Kappa Validation</li>
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Climate Change Scenario Modeling</li>
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Executive Spatial Reporting</li>
                     </ul>
@@ -357,18 +285,13 @@
     <!-- Tab Switcher Script -->
     <script>
         function switchProject(projectId) {
-            // Hide all project cards
             document.getElementById('project-p1').classList.add('hidden');
             document.getElementById('project-p2').classList.add('hidden');
             
-            // Remove active classes from all tabs
             document.getElementById('tab-p1').classList.remove('active-tab');
             document.getElementById('tab-p2').classList.remove('active-tab');
 
-            // Show selected project card
             document.getElementById('project-' + projectId).classList.remove('hidden');
-            
-            // Set active tab styling
             document.getElementById('tab-' + projectId).classList.add('active-tab');
         }
     </script>

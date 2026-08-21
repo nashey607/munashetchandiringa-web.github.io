@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munashe Chandiringa — Geospatial Science Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1F2620;
+    --paper:#FAFAF8;
+    --paper-2:#F1F0EA;
+    --forest:#2F5D42;
+    --forest-dark:#1F3F2C;
+    --forest-light:#5C9271;
+    --sand:#C99A2E;
+    --rust:#C1622D;
+    --sky:#3E7CA6;
+    --moss:#7C9A4A;
+    --line: rgba(31,38,32,0.10);
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:5rem;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink);}
+  .display{font-family:'Fraunces',serif;}
+  .mono{font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em;}
+  ::selection{background:#B08A2E33; color:var(--forest-dark);}
+  .focus-ring:focus-visible{outline:2px solid var(--forest); outline-offset:3px;}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:14px; transition:transform 0.25s ease, box-shadow 0.25s ease;}
+  .card:hover{transform:translateY(-3px); box-shadow:0 12px 28px -8px rgba(31,38,32,0.12);}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="bg-[var(--paper)]/90 backdrop-blur-md border-b border-[var(--line)] sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#top" class="flex flex-col leading-tight">
+        <span class="text-lg font-semibold tracking-tight display">Munashe Chandiringa</span>
+        <span class="text-[11px] text-[var(--ink)]/55 tracking-wide">Geography &amp; Geospatial Science</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium">
+        <a href="#about" class="px-4 py-2 rounded-full text-[var(--ink)]/65 hover:text-[var(--forest)] hover:bg-[var(--paper-2)] transition-colors focus-ring">About</a>
+        <a href="#research" class="px-4 py-2 rounded-full text-[var(--ink)]/65 hover:text-[var(--forest)] hover:bg-[var(--paper-2)] transition-colors focus-ring">Dissertation</a>
+        <a href="#impact" class="px-4 py-2 rounded-full text-[var(--ink)]/65 hover:text-[var(--forest)] hover:bg-[var(--paper-2)] transition-colors focus-ring">Impact</a>
+        <a href="#weather" class="px-4 py-2 rounded-full text-[var(--ink)]/65 hover:text-[var(--forest)] hover:bg-[var(--paper-2)] transition-colors focus-ring">Weather Tool</a>
+        <a href="#stack" class="px-4 py-2 rounded-full text-[var(--ink)]/65 hover:text-[var(--forest)] hover:bg-[var(--paper-2)] transition-colors focus-ring">Stack</a>
+        <a href="CV_Chandiringa.pdf" target="_blank" class="ml-3 bg-[var(--forest-dark)] text-white px-5 py-2.5 rounded-full font-medium hover:bg-[var(--forest)] transition-colors focus-ring">Download CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero: real photograph of the study area -->
+  <section id="top" class="relative">
+    <div class="relative h-[62vh] min-h-[420px] w-full overflow-hidden">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Central%20nyanga%20np.jpg"
+        alt="Rolling montane grassland and forest in Nyanga National Park, Zimbabwe"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager">
+      <div class="absolute inset-0 bg-gradient-to-t from-[var(--forest-dark)]/92 via-[var(--forest-dark)]/40 to-[var(--sky)]/15"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[var(--forest-dark)]/30 via-transparent to-transparent"></div>
+      <div id="about" class="relative max-w-6xl mx-auto px-6 h-full flex flex-col justify-end pb-14 text-white">
+        <span class="mono text-xs uppercase tracking-widest text-white/70 mb-3">Undergraduate Honours · University of Zimbabwe</span>
+        <h1 class="text-4xl md:text-5xl font-medium leading-[1.1] display max-w-2xl">
+          Reading twenty years of vegetation change into Zimbabwe's highest mountains.
+        </h1>
+        <p class="text-white/80 mt-4 max-w-xl leading-relaxed">
+          I work at the intersection of remote sensing, machine learning, and climate scenario modelling —
+          currently mapping and projecting Afromontane vegetation dynamics in Nyanga National Park.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="#research" class="bg-white text-[var(--forest-dark)] px-6 py-3 rounded-full font-medium hover:bg-[var(--paper-2)] transition-colors focus-ring">Read the Dissertation</a>
+          <a href="https://github.com/munashechandiringa-web" target="_blank" class="border border-white/40 text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-colors focus-ring">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-right text-[11px] text-[var(--ink)]/35 max-w-6xl mx-auto px-6 pt-2">Photo: Nyanga National Park, via Wikimedia Commons</p>
+  </section>
+
+  <!-- Quick facts -->
+  <section class="border-b border-[var(--line)]">
+    <div class="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-3 gap-8">
+      <div>
+        <p class="mono text-[11px] uppercase tracking-widest mb-1" style="color:var(--sky)">Supervisor</p>
+        <p class="font-medium">Dr. I. Gwitira</p>
+      </div>
+      <div>
+        <p class="mono text-[11px] uppercase tracking-widest mb-1" style="color:var(--moss)">Study Window</p>
+        <p class="font-medium">2003–2023 observed, projected to 2063</p>
+      </div>
+      <div>
+        <p class="mono text-[11px] uppercase tracking-widest mb-1" style="color:var(--rust)">Prior Experience</p>
+        <p class="font-medium">GIS Intern, Meteorological Services Department</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus areas -->
+  <section class="py-20 bg-[var(--paper-2)]/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card p-6 border-t-4" style="border-top-color:var(--sky)">
+          <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--sky)">Time series</p>
+          <h3 class="font-semibold mb-2">Spectral Trend Analysis</h3>
+          <p class="text-sm text-[var(--ink)]/65 leading-relaxed">Harmonised Landsat 5/7/8/9 records processed into kNDVI, EVI and NDWI trajectories, 2003–2023.</p>
+        </div>
+        <div class="card p-6 border-t-4" style="border-top-color:var(--moss)">
+          <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--moss)">Attribution</p>
+          <h3 class="font-semibold mb-2">Driver Modelling</h3>
+          <p class="text-sm text-[var(--ink)]/65 leading-relaxed">Random Forest regression attributing vegetation change to climatic and topographic drivers.</p>
+        </div>
+        <div class="card p-6 border-t-4" style="border-top-color:var(--rust)">
+          <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--rust)">Projection</p>
+          <h3 class="font-semibold mb-2">Climate Scenarios</h3>
+          <p class="text-sm text-[var(--ink)]/65 leading-relaxed">CMIP6 SSP1-2.6 through SSP5-8.5 vulnerability projections to 2063, with elevation-dependent warming.</p>
+        </div>
+        <div class="card p-6 border-t-4" style="border-top-color:var(--sand)">
+          <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--sand)">Validation</p>
+          <h3 class="font-semibold mb-2">Statistical Rigour</h3>
+          <p class="text-sm text-[var(--ink)]/65 leading-relaxed">Confusion matrices, Kappa coefficients, and Monte Carlo uncertainty quantification throughout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dissertation -->
+  <section id="research" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-12 max-w-2xl">
+        <span class="mono text-xs uppercase tracking-widest text-[var(--forest)]">Honours Dissertation</span>
+        <h2 class="text-3xl md:text-4xl font-medium display mt-3 leading-tight">
+          An Integrated Geospatial Framework for Assessing Vegetation Dynamics in Mountainous Areas
+        </h2>
+        <p class="text-[var(--ink)]/60 mt-4">
+          Case study: Nyanga National Park, Zimbabwe (2003–2023) · Supervised by Dr. I. Gwitira,
+          Department of Geography, Geospatial Science and Earth Observation, University of Zimbabwe.
+        </p>
+      </div>
+
+      <div class="card overflow-hidden mb-8">
+        <div class="p-8 pb-6">
+          <p class="mono text-[11px] uppercase tracking-widest mb-3" style="color:var(--forest)">Project Brief</p>
+          <p class="text-sm text-[var(--ink)]/80 leading-relaxed max-w-3xl">
+            An Honours-level geospatial framework combining satellite remote sensing, machine learning and
+            climate modelling to track and forecast vegetation health across Nyanga National Park's Afromontane
+            ecosystems — built from Landsat 5/7/8/9 imagery (2003–2023), validated with Kappa-checked accuracy
+            assessment, and projected forward to 2063 under four CMIP6 SSP pathways.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--line)] border-t border-[var(--line)]">
+          <div class="p-8">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background:#3E7CA61A">
+              <svg class="w-4.5 h-4.5" style="color:var(--sky)" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+            </div>
+            <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--sky)">The Problem</p>
+            <p class="text-sm text-[var(--ink)]/80 leading-relaxed">
+              Nyanga's mountain ecosystems had no continuous, spatially complete monitoring record — field surveys
+              can't cover 20 years across a whole park — and no way to separate climate drivers from human pressure,
+              leaving conservation spend undirected and reactive.
+            </p>
+          </div>
+          <div class="p-8">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background:#7C9A4A1F">
+              <svg width="18" height="18" style="color:var(--moss)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-4.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
+            </div>
+            <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--moss)">Who It Benefits</p>
+            <p class="text-sm text-[var(--ink)]/80 leading-relaxed">
+              Park rangers and management get a map-based early-warning system for degrading zones; policymakers get
+              evidence for where to prioritise protection; surrounding communities benefit from a healthier
+              watershed and more resilient tourism asset.
+            </p>
+          </div>
+          <div class="p-8">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4" style="background:#C99A2E1F">
+              <svg width="18" height="18" style="color:var(--sand)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 10v2m0-2c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p class="mono text-[11px] uppercase tracking-widest mb-2" style="color:var(--sand)">Value It Creates</p>
+            <p class="text-sm text-[var(--ink)]/80 leading-relaxed">
+              Directing ranger patrols and restoration budgets to the highest-risk zones — instead of spreading
+              spend evenly — cuts wasted field cost and strengthens funding applications to climate-adaptation
+              bodies (GCF, GEF-type funds) that require exactly this kind of quantified, scenario-based evidence.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-[var(--line)]">
+          <div class="p-8">
+            <h4 class="font-semibold text-sm uppercase tracking-wide text-[var(--forest)] mb-5">Three Objectives</h4>
+            <ol class="space-y-5">
+              <li class="flex gap-3">
+                <span class="mono text-xs font-semibold text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0" style="background:var(--sky)">1</span>
+                <p class="text-sm text-[var(--ink)]/80">Map spatiotemporal vegetation trajectories across the park, 2003–2023.</p>
+              </li>
+              <li class="flex gap-3">
+                <span class="mono text-xs font-semibold text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0" style="background:var(--moss)">2</span>
+                <p class="text-sm text-[var(--ink)]/80">Attribute the drivers of that change using Random Forest regression.</p>
+              </li>
+              <li class="flex gap-3">
+                <span class="mono text-xs font-semibold text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0" style="background:var(--rust)">3</span>
+                <p class="text-sm text-[var(--ink)]/80">Project future vegetation vulnerability under four CMIP6 SSP pathways.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="p-8">
+            <h4 class="font-semibold text-sm uppercase tracking-wide text-[var(--forest)] mb-5">Methods</h4>
+            <ul class="text-sm text-[var(--ink)]/80 space-y-2.5">
+              <li>Landsat 5/7/8/9 harmonisation &amp; medoid compositing</li>
+              <li>kNDVI, EVI, NDWI index derivation</li>
+              <li>OLS &amp; Mann-Kendall / Sen's slope trend analysis</li>
+              <li>Getis-Ord Gi* hotspot detection</li>
+              <li>Pearson inter-predictor screening (|r| ≥ 0.70)</li>
+              <li>Random Forest driver attribution, 14 predictors</li>
+              <li>CMIP6 SSP1-2.6 → SSP5-8.5, elevation-dependent warming</li>
+              <li>Monte Carlo uncertainty quantification</li>
+            </ul>
+          </div>
+
+          <div class="p-8">
+            <h4 class="font-semibold text-sm uppercase tracking-wide text-[var(--forest)] mb-5">Validation</h4>
+            <p class="text-sm text-[var(--ink)]/80 leading-relaxed mb-6">
+              Classification accuracy verified with confusion matrices and Kappa coefficients; SSP projections
+              exported as delta rasters and cross-checked with a ±0.05 residual threshold across three confidence classes.
+            </p>
+            <h4 class="font-semibold text-sm uppercase tracking-wide text-[var(--forest)] mb-3">Vegetation Classes</h4>
+            <div class="flex flex-col gap-2 text-sm">
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm inline-block" style="background:#1E4030"></span>Dense Forest</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm inline-block" style="background:#3E6B44"></span>Woodland</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm inline-block" style="background:#7C8A4A"></span>Shrubland</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm inline-block" style="background:#C9A227"></span>Grassland</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm inline-block" style="background:#9A9488"></span>Bare / Rock</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real map of the study area -->
+        <div class="relative min-h-[400px] border-t border-[var(--line)]">
+          <iframe
+            src="https://www.google.com/maps?q=Nyanga+National+Park,+Zimbabwe&t=p&z=12&output=embed"
+            title="Terrain map of Nyanga National Park, Zimbabwe — the dissertation study area"
+            class="w-full h-full absolute inset-0 border-none"
+            style="min-height:400px;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="absolute top-3 left-3 bg-white/90 border border-[var(--line)] rounded-full px-3 py-1.5 mono text-[10px] uppercase tracking-widest text-[var(--forest-dark)] pointer-events-none shadow-sm">
+            Study Area · Nyanga National Park, ZW
+          </div>
+        </div>
+        <div class="px-8 py-4 border-t border-[var(--line)] bg-[var(--paper-2)]/60">
+          <p class="text-xs text-[var(--ink)]/50 leading-relaxed">
+            Basemap shown for orientation. Swap the iframe source for the published Earth Engine App URL
+            once available, to load the live kNDVI/EVI/NDWI trend and SSP projection layers in its place.
+          </p>
+        </div>
+
+        <div class="p-6 border-t border-[var(--line)] flex justify-end">
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--forest)] hover:text-[var(--forest-dark)] transition-colors focus-ring">
+            View GEE processing script on GitHub
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policy & Funding Relevance -->
+  <section id="impact" class="py-24 bg-[var(--paper-2)]/50 border-t border-[var(--line)]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-10 max-w-2xl">
+        <span class="mono text-xs uppercase tracking-widest text-[var(--forest)]">Beyond the dissertation</span>
+        <h2 class="text-3xl font-medium display mt-3">Why This Matters to Employers</h2>
+        <p class="text-[var(--ink)]/65 mt-3 leading-relaxed">
+          Every project on this page follows the same loop: find a real gap, build a technically rigorous fix,
+          then translate it into something a decision-maker or funder can act on. That's the skill I bring to
+          a team — not just running the analysis, but knowing what it's for.
+        </p>
+      </div>
+
+      <div class="card p-8 md:p-10" style="background:linear-gradient(135deg, var(--forest-dark), var(--forest) 140%); border:none;">
+        <p class="mono text-[11px] uppercase tracking-widest text-white/60 mb-3">Funding &amp; Policy Relevance</p>
+        <p class="text-white/90 leading-relaxed max-w-3xl">
+          The dissertation's output — spatially explicit vulnerability maps under multiple future climate
+          scenarios, with confidence classes attached — is the kind of evidence conservation agencies and
+          climate-adaptation funders look for, rather than a purely academic diagnosis. It identifies
+          <em>where</em> intervention is needed and <em>under what climate trajectory</em>, giving Zimbabwe
+          Parks &amp; Wildlife, EMA, or regional climate-resilience programmes a ready-made evidence base for
+          prioritising conservation spend in Nyanga's most vulnerable zones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weather dashboard -->
+  <section id="weather" class="py-24 text-white" style="background:linear-gradient(135deg, var(--forest-dark), var(--sky) 150%)">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-10 max-w-xl flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <span class="mono text-xs uppercase tracking-widest text-white/60">Applied Tool · Live Data</span>
+          <h2 class="text-3xl font-medium display mt-3">Nyanga Field Weather Dashboard</h2>
+          <p class="text-white/70 mt-3 max-w-lg">Live conditions for the dissertation study area, pulled client-side from Open-Meteo — no server, no key, refreshed on load.</p>
+        </div>
+        <span id="wx-updated" class="mono text-[11px] uppercase tracking-widest text-white/50 shrink-0"></span>
+      </div>
+
+      <div class="rounded-2xl border border-white/15 overflow-hidden mb-8" style="background:rgba(255,255,255,0.07); backdrop-filter:blur(6px);">
+        <div class="p-7 pb-5">
+          <p class="mono text-[11px] uppercase tracking-widest text-white/60 mb-3">Project Brief</p>
+          <p class="text-sm text-white/85 leading-relaxed max-w-3xl">
+            A self-contained, live weather dashboard for the exact dissertation study area — built to prove I can
+            ship working software, not just static analysis, and to demonstrate real-time API integration end to end.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15 border-t border-white/15">
+          <div class="p-7">
+            <p class="mono text-[11px] uppercase tracking-widest text-white/55 mb-2">The Problem</p>
+            <p class="text-sm text-white/80 leading-relaxed">
+              Static dissertation figures can't show current field conditions, and a broken or placeholder embed
+              undermines trust in an otherwise data-driven portfolio.
+            </p>
+          </div>
+          <div class="p-7">
+            <p class="mono text-[11px] uppercase tracking-widest text-white/55 mb-2">Who It Benefits</p>
+            <p class="text-sm text-white/80 leading-relaxed">
+              Anyone planning fieldwork in Nyanga — researchers, rangers, or tour operators — gets an
+              always-current view of conditions with zero setup and zero cost.
+            </p>
+          </div>
+          <div class="p-7">
+            <p class="mono text-[11px] uppercase tracking-widest text-white/55 mb-2">Value It Creates</p>
+            <p class="text-sm text-white/80 leading-relaxed">
+              Zero-infrastructure design (no server, no API key, no hosting bill) means this pattern can be
+              embedded free into any park-management or tourism site — proof I can deliver client-ready tools
+              at effectively no ongoing cost.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-5">
+        <!-- Current conditions -->
+        <div class="lg:col-span-2 rounded-2xl border border-white/15 p-7" style="background:rgba(255,255,255,0.07); backdrop-filter:blur(6px);">
+          <div class="flex items-center justify-between mb-1">
+            <p class="mono text-[11px] uppercase tracking-widest text-white/55">Nyanga National Park, ZW</p>
+            <span id="wx-icon" class="text-3xl leading-none">—</span>
+          </div>
+          <div id="wx-current-temp" class="text-6xl font-medium display mt-2">—°</div>
+          <p id="wx-current-desc" class="text-white/75 mt-1">Loading live conditions…</p>
+          <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/15">
+            <div>
+              <p class="mono text-[10px] uppercase tracking-widest text-white/45 mb-1">Feels like</p>
+              <p id="wx-feels" class="font-semibold">—°</p>
+            </div>
+            <div>
+              <p class="mono text-[10px] uppercase tracking-widest text-white/45 mb-1">Humidity</p>
+              <p id="wx-humidity" class="font-semibold">—%</p>
+            </div>
+            <div>
+              <p class="mono text-[10px] uppercase tracking-widest text-white/45 mb-1">Wind</p>
+              <p id="wx-wind" class="font-semibold">— km/h</p>
+            </div>
+          </div>
+          <p class="text-[11px] text-white/40 mt-6 leading-relaxed">
+            18.23° S, 32.73° E · 1,800–2,592 m elevation range. Field conditions here directly inform the
+            phenological windows used for Landsat scene selection in the dissertation.
+          </p>
+        </div>
+
+        <!-- 5-day forecast -->
+        <div class="lg:col-span-3 rounded-2xl border border-white/15 p-7" style="background:rgba(255,255,255,0.07); backdrop-filter:blur(6px);">
+          <p class="mono text-[11px] uppercase tracking-widest text-white/55 mb-5">5-Day Outlook</p>
+          <div id="wx-forecast" class="grid grid-cols-5 gap-2 sm:gap-4">
+            <!-- JS-populated day cards -->
+          </div>
+          <div class="mt-7 pt-6 border-t border-white/15">
+            <p class="mono text-[11px] uppercase tracking-widest text-white/55 mb-4">Precipitation, next 5 days (mm)</p>
+            <svg id="wx-precip-chart" viewBox="0 0 500 90" class="w-full h-20" preserveAspectRatio="none"></svg>
+          </div>
+        </div>
+      </div>
+
+      <p id="wx-error" class="hidden text-sm text-white/70 mt-5 bg-white/10 border border-white/15 rounded-xl px-4 py-3">
+        Live data temporarily unavailable — the dashboard normally pulls current conditions and a 5-day outlook
+        from the Open-Meteo API in real time.
+      </p>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    const LAT = -18.2333, LON = 32.7333;
+    const WMO = {
+      0:['☀️','Clear sky'],1:['🌤️','Mainly clear'],2:['⛅','Partly cloudy'],3:['☁️','Overcast'],
+      45:['🌫️','Fog'],48:['🌫️','Rime fog'],
+      51:['🌦️','Light drizzle'],53:['🌦️','Drizzle'],55:['🌧️','Dense drizzle'],
+      61:['🌦️','Light rain'],63:['🌧️','Rain'],65:['🌧️','Heavy rain'],
+      66:['🌧️','Freezing rain'],67:['🌧️','Heavy freezing rain'],
+      71:['🌨️','Light snow'],73:['🌨️','Snow'],75:['❄️','Heavy snow'],
+      80:['🌦️','Light showers'],81:['🌧️','Showers'],82:['⛈️','Violent showers'],
+      95:['⛈️','Thunderstorm'],96:['⛈️','Thunderstorm, hail'],99:['⛈️','Severe thunderstorm']
+    };
+    const desc = code => (WMO[code] || ['🌡️','Conditions'])[1];
+    const icon = code => (WMO[code] || ['🌡️','—'])[0];
+    const dayName = iso => new Date(iso+'T12:00:00').toLocaleDateString('en-GB', {weekday:'short'});
+
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}` +
+      `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` +
+      `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum` +
+      `&timezone=Africa%2FHarare&forecast_days=6`;
+
+    fetch(url).then(r => { if(!r.ok) throw new Error('bad response'); return r.json(); }).then(data => {
+      const c = data.current, d = data.daily;
+
+      document.getElementById('wx-icon').textContent = icon(c.weather_code);
+      document.getElementById('wx-current-temp').textContent = Math.round(c.temperature_2m) + '°';
+      document.getElementById('wx-current-desc').textContent = desc(c.weather_code);
+      document.getElementById('wx-feels').textContent = Math.round(c.apparent_temperature) + '°';
+      document.getElementById('wx-humidity').textContent = Math.round(c.relative_humidity_2m) + '%';
+      document.getElementById('wx-wind').textContent = Math.round(c.wind_speed_10m) + ' km/h';
+      document.getElementById('wx-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+
+      const forecastEl = document.getElementById('wx-forecast');
+      const days = d.time.slice(1, 6); // skip today, show next 5
+      const precipVals = d.precipitation_sum.slice(1, 6);
+      forecastEl.innerHTML = days.map((iso, i) => {
+        const idx = i + 1;
+        return `<div class="text-center rounded-xl py-4 px-1" style="background:rgba(255,255,255,0.06)">
+          <p class="mono text-[10px] uppercase tracking-widest text-white/50 mb-2">${dayName(iso)}</p>
+          <p class="text-xl mb-2">${icon(d.weather_code[idx])}</p>
+          <p class="text-sm font-semibold">${Math.round(d.temperature_2m_max[idx])}°</p>
+          <p class="text-xs text-white/45">${Math.round(d.temperature_2m_min[idx])}°</p>
+        </div>`;
+      }).join('');
+
+      // simple precipitation bar chart, hand-drawn SVG
+      const chart = document.getElementById('wx-precip-chart');
+      const maxP = Math.max(1, ...precipVals);
+      const barW = 80, gap = 20;
+      chart.innerHTML = precipVals.map((v, i) => {
+        const h = Math.max(3, (v / maxP) * 60);
+        const x = i * (barW + gap) + 10;
+        const y = 70 - h;
+        return `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="4" fill="rgba(255,255,255,0.55)"></rect>
+          <text x="${x + barW/2}" y="84" font-size="11" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-family="IBM Plex Mono, monospace">${v.toFixed(1)}</text>`;
+      }).join('');
+    }).catch(() => {
+      document.getElementById('wx-error').classList.remove('hidden');
+      document.getElementById('wx-current-desc').textContent = 'Live feed unavailable right now';
+    });
+  })();
+  </script>
+
+  <!-- Technical stack -->
+  <section id="stack" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-12">
+        <span class="mono text-xs uppercase tracking-widest text-[var(--forest)]">Toolkit</span>
+        <h2 class="text-3xl font-medium display mt-3">Technical Stack</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card p-7 border-t-4" style="border-top-color:var(--sky)">
+          <h3 class="font-semibold mb-4">Spatial Platforms</h3>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="rounded-full px-3 py-1.5" style="background:#3E7CA61A; color:var(--sky)">Google Earth Engine</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#3E7CA61A; color:var(--sky)">ArcGIS / ArcMap</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#3E7CA61A; color:var(--sky)">QGIS</span>
+          </div>
+        </div>
+        <div class="card p-7 border-t-4" style="border-top-color:var(--moss)">
+          <h3 class="font-semibold mb-4">Programming &amp; Analysis</h3>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="rounded-full px-3 py-1.5" style="background:#7C9A4A1F; color:var(--forest-dark)">Python</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#7C9A4A1F; color:var(--forest-dark)">rasterio</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#7C9A4A1F; color:var(--forest-dark)">matplotlib / seaborn</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#7C9A4A1F; color:var(--forest-dark)">scikit-learn (RF)</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#7C9A4A1F; color:var(--forest-dark)">Earth Engine JS API</span>
+          </div>
+        </div>
+        <div class="card p-7 border-t-4" style="border-top-color:var(--rust)">
+          <h3 class="font-semibold mb-4">Core Competencies</h3>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="rounded-full px-3 py-1.5" style="background:#C1622D1A; color:var(--rust)">Cartographic Design</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#C1622D1A; color:var(--rust)">Trend &amp; Hotspot Analysis</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#C1622D1A; color:var(--rust)">Climate Scenario Modelling</span>
+            <span class="rounded-full px-3 py-1.5" style="background:#C1622D1A; color:var(--rust)">Accuracy Assessment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[var(--paper-2)] text-[var(--ink)]/50 py-10 text-center text-sm border-t border-[var(--line)]">
+    <div class="max-w-6xl mx-auto px-6">
+      <p>© 2026 Munashe Chandiringa. Geospatial Science Portfolio — hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

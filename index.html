@@ -1,198 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asset-Centric Environmental Risk Engine</title>
-    <!-- Tailwind CSS for rapid, professional styling -->
+    <title>Geospatial Science & Spatial Analytics Portfolio</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Leaflet CSS for Web GIS -->
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom map styling to match the dark portfolio theme */
-        #map { height: 100%; width: 100%; z-index: 1; border-radius: 0.5rem; }
-        .leaflet-container { background: #0f172a; } 
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .heading-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .document-font { font-family: 'Merriweather', serif; }
+        .active-tab {
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px 0 rgba(30, 58, 138, 0.39);
+        }
+        /* Map Styles */
+        .leaflet-container { background: #0f172a; z-index: 10; } 
         .custom-popup .leaflet-popup-content-wrapper { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; border-radius: 0.5rem; }
         .custom-popup .leaflet-popup-tip { background: #1e293b; }
-        .radar-sweep { animation: sweep 4s linear infinite; transform-origin: center; }
-        @keyframes sweep { to { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 font-sans h-screen overflow-hidden flex flex-col p-4 gap-4">
+<body class="bg-slate-900 text-slate-100 antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Top Status Bar -->
-    <header class="flex justify-between items-center bg-slate-900 border border-slate-700/80 p-4 rounded-xl shadow-lg">
-        <div>
-            <h1 class="text-xl font-bold text-white tracking-tight">Environmental Risk Engine</h1>
-            <p class="text-xs text-slate-400 font-mono mt-1">Live Telemetry & Spatial Logic Dashboard</p>
-        </div>
-        <div class="flex items-center gap-3">
-            <div class="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-xs font-bold text-emerald-400 tracking-wider uppercase">API Connected</span>
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white text-xl shadow-lg shadow-blue-500/20">GS</div>
+                <div>
+                    <h1 class="text-lg font-bold text-white tracking-tight">Geospatial Intelligence</h1>
+                    <p class="text-xs text-blue-400 font-semibold tracking-wider uppercase">Analytics • Modeling • ROI</p>
+                </div>
             </div>
+            <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
+                <a href="#about" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Value Proposition</a>
+                <a href="#projects-section" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Featured Projects</a>
+                <a href="CV_Application.pdf" target="_blank" class="ml-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-600/30 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Download CV
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Dashboard Grid -->
-    <main class="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-4 min-h-0">
-        
-        <!-- Left Panel: Telemetry & Logic -->
-        <div class="col-span-1 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+    <!-- Hero Value Section -->
+    <section id="about" class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800/50 to-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    Available for Industry & Research Opportunities
+                </div>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                    Transforming Earth Observation into <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">Measurable Financial & Spatial ROI</span>.
+                </h2>
+                <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
+                    Specializing in remote sensing, satellite data pipelines, and spatial machine learning. I identify high-cost spatial challenges, model environmental dynamics, and engineer data solutions that optimize resources and mitigate risks for large-scale operations.
+                </p>
+            </div>
+            <!-- Metrics -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
+                    <p class="text-3xl font-extrabold text-blue-400">Earth Obs.</p>
+                    <p class="text-sm font-semibold text-white mt-1">Multi-Sensor Data</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
+                    <p class="text-3xl font-extrabold text-emerald-400">ML-Driven</p>
+                    <p class="text-sm font-semibold text-white mt-1">Predictive Analytics</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
+                    <p class="text-3xl font-extrabold text-indigo-400">Real-Time</p>
+                    <p class="text-sm font-semibold text-white mt-1">Web GIS Dashboards</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
+                    <p class="text-3xl font-extrabold text-amber-400">100%</p>
+                    <p class="text-sm font-semibold text-white mt-1">Business Value Focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Project Showcase Section -->
+    <section id="projects-section" class="py-24 bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
             
-            <!-- Spatial Intersection Alert Box -->
-            <div id="alert-panel" class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg transition-colors duration-500">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Turf.js Intersection Status</h2>
-                <div id="alert-status" class="text-lg font-bold text-white mb-2">Analyzing Vectors...</div>
-                <p id="alert-desc" class="text-sm text-slate-400 leading-relaxed">Calculating spatial overlap between incoming weather anomalies and critical infrastructure perimeters.</p>
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Executive Project Portfolio</h2>
+                <p class="text-slate-400 mt-3 text-base">Select a project below to review the executive summary and commercial impact.</p>
             </div>
 
-            <!-- Live Weather Telemetry -->
-            <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg flex-1">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Live API Telemetry (Gwanda Region)</h2>
-                <div class="space-y-4 font-mono text-sm">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span class="text-slate-500">Temperature</span>
-                        <span id="tel-temp" class="text-blue-400 font-bold">Loading...</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span class="text-slate-500">Wind Speed</span>
-                        <span id="tel-wind" class="text-blue-400 font-bold">Loading...</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span class="text-slate-500">Precipitation</span>
-                        <span id="tel-precip" class="text-blue-400 font-bold">Loading...</span>
-                    </div>
+            <!-- Project Selection Buttons -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-slate-800/90 p-1.5 rounded-2xl border border-slate-700 flex flex-col sm:flex-row gap-2 max-w-2xl w-full">
+                    <button id="tab-p1" onclick="switchProject('p1')" class="active-tab flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
+                        Honours Dissertation: Spatial Modeling
+                    </button>
+                    <button id="tab-p2" onclick="switchProject('p2')" class="flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
+                        Web GIS: Real-Time Risk Engine
+                    </button>
                 </div>
+            </div>
 
-                <!-- Statistical Matrix Summary -->
-                <div class="mt-8">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Pearson Correlation Matrix</h2>
-                    <p class="text-xs text-slate-500 mb-3">Historical stress vs. precipitation variance (R-value)</p>
-                    <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono">
-                        <div class="bg-slate-800 p-2 rounded">
-                            <div class="text-slate-400">Sector A</div>
-                            <div class="text-emerald-400 font-bold mt-1">+0.84</div>
-                        </div>
-                        <div class="bg-slate-800 p-2 rounded">
-                            <div class="text-slate-400">Sector B</div>
-                            <div class="text-amber-400 font-bold mt-1">-0.62</div>
+            <!-- PROJECT 1: DISSERTATION -->
+            <div id="project-p1" class="block transition-all duration-500">
+                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Spatial Modeling of Vegetation Dynamics & Future Climate Scenarios</h3>
+                        <span class="text-xs text-slate-400 font-mono">Google Earth Engine • Python • Predictive Modeling</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-indigo-600">
+                        <div class="max-w-4xl mx-auto">
+                            <h4 class="text-indigo-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
+                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
+                                <p>An advanced spatial analytics pipeline engineered to model ecosystem dynamics and mitigate environmental risk within Nyanga National Park. This research executed a precise 21-year temporal baseline analysis (2003–2023) to evaluate historical vegetation stress and model near-future climate scenarios.</p>
+                                <p>Technically, the project processed multi-sensor satellite imagery across Google Earth Engine. By replacing standard categorical trend classes with a highly sensitive stability index, and deploying Random Forest machine learning classification, the model achieved superior predictive accuracy.</p>
+                                <p class="font-bold text-slate-900">Commercial Value: <span class="font-normal">By providing audit-ready spatial intelligence, it allows corporate stakeholders to eliminate costly manual field surveys and optimize capital resource allocation against climate-induced degradation.</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Right Panel: Leaflet Map -->
-        <div class="col-span-1 lg:col-span-3 bg-slate-900 border border-slate-700/80 rounded-xl shadow-lg p-1 relative">
-            <div id="map"></div>
-            <!-- Overlay UI -->
-            <div class="absolute bottom-4 left-4 z-[400] bg-slate-900/90 backdrop-blur border border-slate-700 p-3 rounded-lg pointer-events-none">
-                <div class="flex items-center gap-2 text-xs font-mono text-slate-300">
-                    <div class="w-3 h-3 bg-blue-500/50 border border-blue-500 rounded-sm"></div> Primary Infrastructure
-                </div>
-                <div class="flex items-center gap-2 text-xs font-mono text-slate-300 mt-1">
-                    <div class="w-3 h-3 bg-red-500/50 border border-red-500 rounded-full"></div> Anomaly Impact Zone
+            <!-- PROJECT 2: WEATHER DASHBOARD (NOW FULLY EMBEDDED) -->
+            <div id="project-p2" class="hidden transition-all duration-500">
+                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Asset-Centric Environmental Risk Engine</h3>
+                        <span class="text-xs text-slate-400 font-mono">Live API Feed • Spatial Intersection Logic (Leaflet + Turf.js)</span>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-blue-600">
+                        <div class="max-w-4xl mx-auto">
+                            <h4 class="text-blue-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
+                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
+                                <p>A dynamic, full-stack Web GIS dashboard designed to solve a critical operational vulnerability: the financial loss caused by localized climate anomalies impacting active commercial operations.</p>
+                                <p>This engine mathematically cross-references live meteorological API data against specific infrastructure vector layers (e.g., operational concessions, haul roads). Utilizing dynamic spatial buffering, the system highlights precisely which physical assets fall within high-risk intersection zones.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THE EMBEDDED DASHBOARD UI -->
+                    <div class="p-6 lg:p-8 bg-slate-950">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-white font-bold text-lg">Live Telemetry & Spatial Logic Module</h4>
+                            <div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-xs font-bold text-emerald-400 tracking-wider uppercase">Open-Meteo Active</span>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-3 gap-6">
+                            <!-- Telemetry Panel -->
+                            <div class="lg:col-span-1 space-y-4">
+                                <div id="alert-panel" class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg transition-colors duration-500">
+                                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Intersection Status</h2>
+                                    <div id="alert-status" class="text-lg font-bold text-white mb-2">Analyzing Vectors...</div>
+                                    <p id="alert-desc" class="text-xs text-slate-400 leading-relaxed">Calculating spatial overlap between incoming weather anomalies and operations.</p>
+                                </div>
+                                <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg">
+                                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Gwanda Region API Data</h2>
+                                    <div class="space-y-4 font-mono text-sm">
+                                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                            <span class="text-slate-500">Temp</span>
+                                            <span id="tel-temp" class="text-blue-400 font-bold">...</span>
+                                        </div>
+                                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                            <span class="text-slate-500">Wind</span>
+                                            <span id="tel-wind" class="text-blue-400 font-bold">...</span>
+                                        </div>
+                                        <div class="flex justify-between items-center pb-1">
+                                            <span class="text-slate-500">Precip</span>
+                                            <span id="tel-precip" class="text-blue-400 font-bold">...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Map Panel -->
+                            <div class="lg:col-span-2 relative h-[400px] lg:h-full min-h-[400px] border border-slate-700 rounded-xl overflow-hidden">
+                                <div id="map" class="h-full w-full"></div>
+                                <div class="absolute bottom-4 left-4 z-[400] bg-slate-900/90 backdrop-blur border border-slate-700 p-3 rounded-lg pointer-events-none">
+                                    <div class="flex items-center gap-2 text-xs font-mono text-slate-300">
+                                        <div class="w-3 h-3 bg-blue-500/50 border border-blue-500 rounded-sm"></div> Primary Infrastructure
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs font-mono text-slate-300 mt-1">
+                                        <div class="w-3 h-3 bg-red-500/50 border border-red-500 rounded-full"></div> Anomaly Impact Zone
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <!-- Leaflet & Turf JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-slate-400 font-semibold mb-2">Geospatial Science & Applied Earth Observation</p>
+            <p>&copy; 2026 Hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts: Leaflet, Turf.js, and Logic -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
     
     <script>
-        // 1. Initialize Map (Centered near Gwanda mining region)
-        const map = L.map('map', { zoomControl: false }).setView([-20.9333, 29.0167], 13);
-        
-        // Add Dark Matter CartoDB tiles for professional look
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
-        L.control.zoom({ position: 'topright' }).addTo(map);
+        let weatherMap; // Global declaration
 
-        // 2. Define Infrastructure Vectors (Using Turf.js)
-        // Creating a polygon to represent a highly valuable active asset area
-        const assetCoordinates = [[
-            [28.98, -20.91],
-            [29.04, -20.91],
-            [29.04, -20.95],
-            [28.98, -20.95],
-            [28.98, -20.91]
-        ]];
-        const assetPolygon = turf.polygon(assetCoordinates);
+        // 1. Tab Switcher Logic
+        function switchProject(projectId) {
+            document.getElementById('project-p1').classList.add('hidden');
+            document.getElementById('project-p2').classList.add('hidden');
+            document.getElementById('tab-p1').classList.remove('active-tab');
+            document.getElementById('tab-p2').classList.remove('active-tab');
 
-        // Add Asset to Map
-        L.geoJSON(assetPolygon, {
-            style: { color: '#3b82f6', weight: 2, fillColor: '#3b82f6', fillOpacity: 0.15 }
-        }).addTo(map).bindPopup("<b>Zone Alpha</b><br>Active Operational Concession", {className: 'custom-popup'});
+            document.getElementById('project-' + projectId).classList.remove('hidden');
+            document.getElementById('tab-' + projectId).classList.add('active-tab');
 
-        // 3. Fetch Live Meteorological Data (Open-Meteo API)
-        async function fetchWeatherData() {
-            try {
-                // Fetching data for the specific coordinate
-                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-20.9333&longitude=29.0167&current_weather=true&hourly=precipitation');
-                const data = await response.json();
-                const current = data.current_weather;
-
-                // Update Telemetry UI
-                document.getElementById('tel-temp').innerText = current.temperature + ' °C';
-                document.getElementById('tel-wind').innerText = current.windspeed + ' km/h';
-                document.getElementById('tel-precip').innerText = data.hourly.precipitation[0] + ' mm';
-
-                // 4. Execute Spatial Intersection Logic
-                simulateStormImpact(current.windspeed);
-
-            } catch (error) {
-                console.error("API Fetch Error:", error);
-                document.getElementById('alert-status').innerText = "Telemetry Offline";
+            // Force map to recalculate its container size when tab is shown
+            if (projectId === 'p2' && weatherMap) {
+                setTimeout(() => {
+                    weatherMap.invalidateSize();
+                }, 100);
             }
         }
 
-        // 5. Spatial Risk Logic Simulation
-        function simulateStormImpact(windspeed) {
-            // Simulate a storm cell approaching based on wind conditions
-            const stormCenter = turf.point([29.02, -20.94]); // Placed to intersect the asset
+        // 2. Map Initialization Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Map Centered near Gwanda
+            weatherMap = L.map('map', { zoomControl: false }).setView([-20.9333, 29.0167], 13);
             
-            // Create a spatial buffer representing the storm's impact radius (in kilometers)
-            // Buffer size increases dynamically if windspeed is high
-            const riskRadius = windspeed > 15 ? 3 : 1.5; 
-            const stormBuffer = turf.buffer(stormCenter, riskRadius, {units: 'kilometers'});
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; CARTO',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(weatherMap);
+            L.control.zoom({ position: 'topright' }).addTo(weatherMap);
 
-            // Render Storm Cell on Map
-            L.geoJSON(stormBuffer, {
-                style: { color: '#ef4444', weight: 1, fillColor: '#ef4444', fillOpacity: 0.2, dashArray: '4' }
-            }).addTo(map).bindPopup("<b>Severe Weather Cell</b><br>Approaching Anomaly", {className: 'custom-popup'});
+            // Infrastructure Vectors
+            const assetCoordinates = [[[28.98, -20.91], [29.04, -20.91], [29.04, -20.95], [28.98, -20.95], [28.98, -20.91]]];
+            const assetPolygon = turf.polygon(assetCoordinates);
 
-            // THE CORE ENGINE: Check if the weather cell intersects the infrastructure
-            const hasIntersection = turf.booleanIntersects(assetPolygon, stormBuffer);
+            L.geoJSON(assetPolygon, {
+                style: { color: '#3b82f6', weight: 2, fillColor: '#3b82f6', fillOpacity: 0.15 }
+            }).addTo(weatherMap).bindPopup("<b>Zone Alpha</b><br>Active Operational Concession", {className: 'custom-popup'});
 
-            const panel = document.getElementById('alert-panel');
-            const statusText = document.getElementById('alert-status');
-            const descText = document.getElementById('alert-desc');
+            // Fetch Live Data
+            async function fetchWeatherData() {
+                try {
+                    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-20.9333&longitude=29.0167&current_weather=true&hourly=precipitation');
+                    const data = await response.json();
+                    const current = data.current_weather;
 
-            if (hasIntersection) {
-                // Trigger Danger State
-                panel.classList.remove('border-slate-700/80');
-                panel.classList.add('border-red-500/50', 'bg-red-500/10');
-                statusText.innerText = "CRITICAL: INTERSECTION DETECTED";
-                statusText.classList.remove('text-white');
-                statusText.classList.add('text-red-400');
-                descText.innerText = "Spatial buffer of incoming weather anomaly intersects directly with Zone Alpha. Recommend immediate halt of sensitive operations.";
-            } else {
-                // Safe State
-                panel.classList.add('border-emerald-500/50');
-                statusText.innerText = "CLEAR: NO INTERSECTION";
-                statusText.classList.add('text-emerald-400');
-                descText.innerText = "Operational perimeter remains outside the trajectory buffer of incoming climate anomalies. Safe to proceed.";
+                    document.getElementById('tel-temp').innerText = current.temperature + ' °C';
+                    document.getElementById('tel-wind').innerText = current.windspeed + ' km/h';
+                    document.getElementById('tel-precip').innerText = data.hourly.precipitation[0] + ' mm';
+
+                    simulateStormImpact(current.windspeed);
+                } catch (error) {
+                    console.error("API Fetch Error:", error);
+                    document.getElementById('alert-status').innerText = "Telemetry Offline";
+                }
             }
-        }
 
-        // Initialize Data Fetch
-        fetchWeatherData();
+            // Spatial Risk Simulation
+            function simulateStormImpact(windspeed) {
+                const stormCenter = turf.point([29.02, -20.94]); 
+                const riskRadius = windspeed > 15 ? 3 : 1.5; 
+                const stormBuffer = turf.buffer(stormCenter, riskRadius, {units: 'kilometers'});
+
+                L.geoJSON(stormBuffer, {
+                    style: { color: '#ef4444', weight: 1, fillColor: '#ef4444', fillOpacity: 0.2, dashArray: '4' }
+                }).addTo(weatherMap).bindPopup("<b>Severe Weather Cell</b><br>Approaching Anomaly", {className: 'custom-popup'});
+
+                const hasIntersection = turf.booleanIntersects(assetPolygon, stormBuffer);
+                const panel = document.getElementById('alert-panel');
+                const statusText = document.getElementById('alert-status');
+                const descText = document.getElementById('alert-desc');
+
+                if (hasIntersection) {
+                    panel.classList.remove('border-slate-700/80');
+                    panel.classList.add('border-red-500/50', 'bg-red-500/10');
+                    statusText.innerText = "CRITICAL: INTERSECTION";
+                    statusText.classList.remove('text-white');
+                    statusText.classList.add('text-red-400');
+                    descText.innerText = "Incoming anomaly intersects directly with operations. Halt sensitive activities.";
+                } else {
+                    panel.classList.add('border-emerald-500/50');
+                    statusText.innerText = "CLEAR: NO INTERSECTION";
+                    statusText.classList.add('text-emerald-400');
+                    descText.innerText = "Operational perimeter remains outside trajectory. Safe to proceed.";
+                }
+            }
+
+            fetchWeatherData();
+        });
     </script>
 </body>
 </html>

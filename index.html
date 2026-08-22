@@ -254,7 +254,11 @@
           </div>
         </div>
         <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: per-site monitoring subscription + baseline/verification reporting for carbon &amp; ESG.</div>
-        <div class="shot"><i class="fa-solid fa-image"></i><span>Insert: kNDVI trend map + RF variable-importance chart + SSP delta panel</span></div>
+        <div class="grid g3" style="margin-top:14px">
+          <div class="shot" style="height:160px"><img src="assets/kndvi-trend.jpg" alt="kNDVI trend surface, 2003-2023" loading="lazy"></div>
+          <div class="shot" style="height:160px"><img src="assets/rf-importance.jpg" alt="Random Forest variable importance chart" loading="lazy"></div>
+          <div class="shot" style="height:160px"><img src="assets/ssp-delta.jpg" alt="SSP ensemble delta projected kNDVI" loading="lazy"></div>
+        </div>
         <div style="margin-top:6px">
           <a class="btn btn-ghost" href="./assets/Munashe_Chandiringa_Dissertation.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Read Full Dissertation (PDF)</a>
           <a class="btn btn-ghost" href="https://github.com/munashechandiringa/nyanga-vegetation-dss" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
@@ -427,13 +431,13 @@
 <section id="gallery">
   <div class="wrap">
     <h2><i class="fa-solid fa-map"></i> Map Gallery &amp; Cartographic Output</h2>
-    <p class="lead">Drop your exported PNG/JPG files into <code>/assets</code> and swap the <code>src</code> in each tile.</p>
+    <p class="lead">Real figures from the Nyanga dissertation and the YOLOv8 field trial.</p>
     <div class="grid g3">
-      <div class="card"><h3>ArcGIS Pro Layout</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/arcgis-layout.png</span></div></div>
-      <div class="card"><h3>Python / Matplotlib Map</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/python-layout.png</span></div></div>
-      <div class="card"><h3>kNDVI Trend Surface</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/kndvi-trend.png</span></div></div>
-      <div class="card"><h3>SSP5-8.5 Delta Projection</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/ssp585-delta.png</span></div></div>
-      <div class="card"><h3>RF Variable Importance</h3><div class="shot"><i class="fa-solid fa-chart-column"></i><span>assets/rf-importance.png</span></div></div>
+      <div class="card"><h3>Study Area — Nyanga National Park</h3><div class="shot"><img src="assets/study-area.jpg" alt="Study area map of Nyanga National Park, Zimbabwe, with locator inset" loading="lazy"></div></div>
+      <div class="card"><h3>Getis-Ord Gi* Hotspot &amp; OLS Trend</h3><div class="shot"><img src="assets/hotspot-analysis.jpg" alt="Getis-Ord Gi* hotspot analysis and OLS slope trend maps, 2018-2023" loading="lazy"></div></div>
+      <div class="card"><h3>kNDVI Trend Surface (2003–2023)</h3><div class="shot"><img src="assets/kndvi-trend.jpg" alt="Spatial distribution of kNDVI trends across Nyanga National Park, 2003-2023" loading="lazy"></div></div>
+      <div class="card"><h3>SSP Ensemble Delta Projection</h3><div class="shot"><img src="assets/ssp-delta.jpg" alt="Spatial distribution of SSP ensemble delta projected kNDVI to 2063" loading="lazy"></div></div>
+      <div class="card"><h3>Random Forest Variable Importance</h3><div class="shot"><img src="assets/rf-importance.jpg" alt="Random Forest relative variable importance chart — night lights, elevation, rainfall and other predictors" loading="lazy"></div></div>
       <div class="card"><h3>YOLOv8 Detection Output</h3><div class="shot"><img src="assets/yolo-detections.jpg" alt="YOLOv8 cabbage field detection with bounding boxes — 613 cabbages detected" loading="lazy"></div></div>
     </div>
   </div>

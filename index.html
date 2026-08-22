@@ -1,261 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Munashe Chandiringa | GIS Specialist Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Munashe Chandiringa | GIS Specialist & Earth Observation Portfolio</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0099cc;
+            --primary-dark: #0077a3;
+            --secondary: #00cca7;
+            --accent: #ff6b6b;
+            --dark: #1a2b3c;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Leaflet.heat for heatmaps -->
-<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2b3c 0%, #2c3e50 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-y: auto;
+        }
 
-<!-- MarkerCluster -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+        .portfolio-header { 
+            padding: 50px 20px; 
+            text-align: center; 
+            background: rgba(26, 43, 60, 0.95); 
+            border-bottom: 2px solid var(--primary); 
+            box-shadow: var(--shadow);
+        }
+        
+        .portfolio-header h1 { color: var(--secondary); font-size: 38px; margin-bottom: 10px; }
+        .portfolio-header h2 { color: var(--light); font-size: 18px; font-weight: 400; margin-bottom: 15px; }
+        .portfolio-header p { color: var(--gray); font-size: 14px; }
 
-<!-- shpjs to read shapefile in browser -->
-<script src="https://unpkg.com/shpjs@3.4.1/dist/shp.min.js"></script>
+        .portfolio-section { 
+            padding: 40px 10%; 
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-section > h2 {
+            color: var(--primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 26px;
+        }
 
-<!-- turf for spatial analysis -->
-<script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+        .grid-2 { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+        }
 
-<!-- Chart.js for charts -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
 
-<!-- Leaflet Windbarb for wind visualization -->
-<script src="https://unpkg.com/leaflet-windbarb@1.0.1/src/leaflet-windbarb.js"></script>
+        .project-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 25px; 
+            border-radius: var(--border-radius); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: var(--transition);
+            margin-bottom: 20px;
+        }
+        
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
 
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        .project-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 20px; }
+        .project-meta { font-size: 13px; color: var(--secondary); margin-bottom: 12px; font-weight: 600; }
+        .project-card ul { margin-left: 20px; margin-top: 10px; color: var(--gray); }
+        .project-card li { margin-bottom: 8px; }
+        
+        .project-card p { color: var(--gray); }
 
-<style>
-  :root {
-    --primary: #0099cc;
-    --primary-dark: #0077a3;
-    --secondary: #00cca7;
-    --accent: #ff6b6b;
-    --dark: #1a2b3c;
-    --light: #f8f9fa;
-    --gray: #6c757d;
-    --border-radius: 8px;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-  }
+        .btn-link { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px; 
+            background: var(--primary); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-top: 15px;
+            margin-right: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        .btn-link:hover { background: var(--primary-dark); }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+        /* Map Gallery Placeholders */
+        .map-placeholder {
+            height: 220px; 
+            background: rgba(0,0,0,0.3); 
+            border-radius: 6px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            color: var(--gray);
+            margin-top: 15px;
+            border: 1px dashed rgba(255,255,255,0.2);
+            text-align: center;
+            padding: 20px;
+        }
 
-  /* Portfolio Specific Styling */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a2b3c 0%, #2c3e50 100%);
-    color: var(--light);
-    overflow-y: auto; /* Allow scrolling for the portfolio */
-    line-height: 1.6;
-  }
-
-  .portfolio-header { 
-    padding: 60px 20px; 
-    text-align: center; 
-    background: rgba(26, 43, 60, 0.95); 
-    border-bottom: 2px solid var(--primary); 
-    box-shadow: var(--shadow);
-  }
-  
-  .portfolio-header h1 { color: var(--secondary); font-size: 38px; margin-bottom: 10px;}
-  .portfolio-header h2 { color: var(--light); font-size: 20px; font-weight: 400; margin-bottom: 15px;}
-  .portfolio-header p { color: var(--gray); font-size: 15px;}
-
-  .portfolio-section { 
-    padding: 50px 10%; 
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .portfolio-section > h2 {
-    color: var(--primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    font-size: 28px;
-  }
-
-  .grid-2 { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px; 
-  }
-  
-  @media (max-width: 900px) {
-      .grid-2 { grid-template-columns: 1fr; }
-  }
-
-  .project-card { 
-    background: rgba(255, 255, 255, 0.05); 
-    padding: 25px; 
-    border-radius: var(--border-radius); 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    transition: var(--transition);
-  }
-  
-  .project-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-5px);
-  }
-
-  .project-card h3 { color: var(--primary); margin-bottom: 10px;}
-  .project-card ul { margin-left: 20px; margin-top: 10px; color: var(--gray); }
-  .project-card li { margin-bottom: 8px; }
-
-  .btn-link { 
-    display: inline-flex; 
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px; 
-    background: var(--primary); 
-    color: white; 
-    text-decoration: none; 
-    border-radius: 5px; 
-    margin-top: 15px;
-    margin-right: 10px;
-    font-weight: 600;
-    transition: var(--transition);
-  }
-  .btn-link:hover { background: var(--primary-dark); }
-
-  /* Map Gallery Placeholders */
-  .map-placeholder {
-      height: 250px; 
-      background: rgba(0,0,0,0.3); 
-      border-radius: 4px;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      color: var(--gray);
-      margin-top: 15px;
-      border: 1px dashed rgba(255,255,255,0.2);
-  }
-
-  /* Dashboard Container */
-  .dashboard-container { 
-    height: 800px; 
-    position: relative; 
-    border-radius: var(--border-radius); 
-    overflow: hidden; 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    margin-top: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
-
-  /* ORIGINAL DASHBOARD STYLES (Adjusted for Container) */
-  #app {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  #map {
-    flex: 1;
-    height: 100%;
-    z-index: 1;
-  }
-
-  #panel {
-    width: 380px;
-    background: rgba(26, 43, 60, 0.9);
-    backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
-    overflow-y: auto;
-  }
-
-  .panel-header { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); }
-  .panel-title { font-size: 22px; font-weight: 700; margin-bottom: 5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .panel-subtitle { font-size: 14px; color: var(--gray); margin-bottom: 15px; }
-  .panel-section { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-  .section-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; color: var(--light); }
-  .section-title i { margin-right: 10px; color: var(--primary); }
-
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-  .stat-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
-  .stat-value { font-size: 20px; font-weight: 700; margin-bottom: 5px; color: var(--primary); }
-  .stat-label { font-size: 12px; color: var(--gray); }
-
-  .controls { display: flex; flex-direction: column; gap: 15px; }
-  .control-group { display: flex; flex-direction: column; gap: 8px; }
-  .control-label { font-size: 14px; color: var(--gray); display: flex; align-items: center; }
-  .time-slider { width: 100%; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.1); outline: none; -webkit-appearance: none; }
-  .time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 2px solid var(--light); }
-  .time-display { font-size: 12px; color: var(--gray); text-align: center; margin-top: 5px; }
-  
-  .btn-group { display: flex; gap: 10px; }
-  .btn { padding: 10px 15px; border: none; border-radius: var(--border-radius); font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; flex: 1; }
-  .btn-primary { background: var(--primary); color: white; }
-  .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--light); border: 1px solid rgba(255, 255, 255, 0.2); }
-  .btn-accent { background: var(--accent); color: white; }
-
-  .station-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-  .station-chip { padding: 8px 12px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); }
-  .station-chip.active { background: var(--primary); color: white; }
-
-  .chart-container { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; margin-top: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
-
-  .layer-controls { display: flex; flex-direction: column; gap: 10px; }
-  .layer-item { display: flex; align-items: center; padding: 12px 15px; background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); }
-  .layer-item.active { background: rgba(0, 153, 204, 0.2); border-color: var(--primary); }
-  .layer-icon { width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 12px; background: rgba(0, 0, 0, 0.2); font-size: 14px; }
-  .layer-info { flex: 1; }
-  .layer-name { font-weight: 600; font-size: 14px; }
-  .layer-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
-  
-  .toggle-switch { position: relative; display: inline-block; width: 40px; height: 20px; }
-  .toggle-switch input { opacity: 0; width: 0; height: 0; }
-  .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.2); transition: .4s; border-radius: 20px; }
-  .toggle-slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
-  input:checked + .toggle-slider { background-color: var(--primary); }
-  input:checked + .toggle-slider:before { transform: translateX(20px); }
-
-  .analysis-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-  .analysis-results { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; margin-top: 15px; font-size: 13px; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 150px; overflow-y: auto; }
-
-  .map-controls { position: absolute; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-  .map-control-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(26, 43, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); }
-
-  .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(26, 43, 60, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(10px); }
-  .footer-text { font-size: 12px; color: var(--gray); }
-  .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 12px; }
-
-  .upload-area { border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: var(--border-radius); padding: 20px; text-align: center; cursor: pointer; margin-top: 10px; }
-  
-  .legend { position: absolute; bottom: 60px; left: 20px; background: rgba(26, 43, 60, 0.9); border-radius: var(--border-radius); padding: 15px; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); min-width: 200px; }
-  .legend-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--light); }
-  .legend-scale { display: flex; height: 10px; border-radius: 3px; overflow: hidden; margin-top: 5px; }
-  .legend-labels { display: flex; justify-content: space-between; font-size: 10px; margin-top: 3px; color: var(--gray); }
-
-  .cloud-legend { position: absolute; bottom: 160px; left: 20px; background: rgba(26, 43, 60, 0.9); border-radius: var(--border-radius); padding: 15px; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); min-width: 180px; display: none; }
-  .cloud-legend.active { display: block; }
-
-  .user-manual { position: absolute; top: 80px; right: 20px; z-index: 1000; }
-  .manual-toggle { width: 50px; height: 50px; border-radius: 50%; background: rgba(26, 43, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; }
-  .manual-dropdown { position: absolute; top: 60px; right: 0; width: 320px; background: rgba(26, 43, 60, 0.95); border-radius: var(--border-radius); padding: 20px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition); z-index: 1001; }
-  .manual-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
-  .manual-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
-  .manual-content { max-height: 400px; overflow-y: auto; }
-</style>
+        .footer-bar {
+            text-align: center;
+            padding: 30px;
+            background: rgba(26, 43, 60, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
@@ -268,34 +147,49 @@
 
     <!-- Professional Profile & Skills -->
     <section class="portfolio-section grid-2">
-        <div>
+        <div class="project-card" style="margin-bottom: 0;">
             <h2><i class="fas fa-user-circle"></i> Professional Profile</h2>
-            <p style="color: var(--gray);">Highly analytical and detail-oriented Geographical Information Science and Earth Observation graduate (BSc Hons, 2.2) from the University of Zimbabwe. Possesses strong field and office experience in GPS/GNSS surveying, spatial data collection, and geospatial database management. Comfortable working independently in the field and willing to travel to remote locations to support exploration and operational activities.</p>
+            <p style="margin-top: 15px;">Highly analytical Geographical Information Science and Earth Observation graduate (BSc Hons, University of Zimbabwe). Possesses robust practical experience in GPS/GNSS surveying, spatial data management, and environmental modeling. Dedicated to producing high-resolution thematic maps and reliable spatial intelligence for complex operations.</p>
         </div>
-        <div>
+        <div class="project-card" style="margin-bottom: 0;">
             <h2><i class="fas fa-laptop-code"></i> Technical Expertise</h2>
-            <ul style="color: var(--gray); line-height: 1.8;">
-                <li><strong>Geospatial Software:</strong> QGIS, ArcGIS Pro, ArcView, Google Earth Engine (GEE), ILWIS</li>
-                <li><strong>Programming & Automation:</strong> Python (Rasterio, NumPy, Matplotlib, Pandas, GDAL/OGR), SQL</li>
-                <li><strong>Spatial Databases & Geoprocessing:</strong> PostGIS, Geodatabase Design, Topology Validation, Raster Calculus</li>
-                <li><strong>Remote Sensing & Imagery:</strong> LULC Classification, Multi-temporal Trend Analysis, NDWI, EVI, kNDVI</li>
+            <ul style="margin-top: 15px;">
+                <li><strong>Geospatial Software:</strong> QGIS, ArcGIS Pro, ArcView, Google Earth Engine (GEE)</li>
+                <li><strong>Programming & Automation:</strong> Python (Rasterio, NumPy, Matplotlib, Pandas, GDAL/OGR)</li>
+                <li><strong>Spatial Databases:</strong> PostGIS, Geodatabase Design, Topology Validation</li>
+                <li><strong>Remote Sensing:</strong> LULC Classification, kNDVI, Time-Series Trend Analysis</li>
             </ul>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section class="portfolio-section">
-        <h2><i class="fas fa-project-diagram"></i> Selected Geospatial Projects</h2>
+        <h2><i class="fas fa-project-diagram"></i> Geospatial & Remote Sensing Projects</h2>
         
-        <div class="project-card" style="margin-bottom: 20px;">
+        <div class="project-card">
             <h3>B.Sc. Honours Dissertation: Multitemporal Terrain Modeling & Climate Projections</h3>
-            <p style="color: var(--light); margin-bottom: 10px;"><strong>Location:</strong> Nyanga National Park | <strong>Supervisor:</strong> Ms. K. Chirenje</p>
-            <p style="color: var(--gray);">Developed an automated Python pipeline to model vegetation dynamics and future climate scenarios across a comprehensive 21-year timeframe (2003–2023). Implemented non-linear kNDVI logic to mitigate topographic shadow saturation and engineered a custom stability index mapping design to visualize complex spatio-temporal trends over rugged terrain.</p>
+            <div class="project-meta">Location: Nyanga National Park | Supervisor: Ms. K. Chirenje</div>
+            <p>Developed an automated Python pipeline to model vegetation dynamics and future climate scenarios across a comprehensive 21-year timeframe (2003–2023). Implemented non-linear kNDVI logic to mitigate topographic shadow saturation and engineered a custom stability index mapping layout to visualize spatio-temporal environmental trends over rugged terrain.</p>
         </div>
 
-        <div class="project-card">
+        <div class="grid-2" style="margin-top: 20px;">
+            <div class="project-card" style="margin-bottom: 0;">
+                <h3>Automated Raster Processing Pipeline</h3>
+                <div class="project-meta">Tools: Python, Rasterio, NumPy, Matplotlib</div>
+                <p>Designed a modular batch-processing script to automate coordinate system transformations, subset cropping, raster calculations, and publication-grade cartographic output generation.</p>
+            </div>
+            
+            <div class="project-card" style="margin-bottom: 0;">
+                <h3>Google Earth Engine LULC Change Detection</h3>
+                <div class="project-meta">Tools: GEE, Landsat/Sentinel Multi-spectral Imagery</div>
+                <p>Executed supervised classifications and accuracy assessments to evaluate historical land use transformations, generating transition matrices and spatial distribution maps over a 10-year study window.</p>
+            </div>
+        </div>
+
+        <div class="project-card" style="margin-top: 20px;">
             <h3>Meteorological Data Collection Application</h3>
-            <p style="color: var(--gray);">Configured an operational AppSheet mobile application for structured field logging and real-time daily meteorological data collection.</p>
+            <div class="project-meta">Tools: AppSheet, Cloud Database Integration</div>
+            <p>Configured an operational mobile and browser-accessible application for structured field logging and real-time daily meteorological data collection, streamlining field data workflows.</p>
             <a href="https://www.appsheet.com/start/a86a2f46-86f4-408f-b899-518a2fbb1e1a" class="btn-link" target="_blank"><i class="fas fa-globe"></i> Open in Browser</a>
             <a href="https://www.appsheet.com/newshortcut/a86a2f46-86f4-408f-b899-518a2fbb1e1a" class="btn-link" style="background: var(--accent);" target="_blank"><i class="fas fa-mobile-alt"></i> Install Mobile App</a>
         </div>
@@ -303,508 +197,29 @@
 
     <!-- Maps & Visualization Gallery -->
     <section class="portfolio-section">
-        <h2><i class="fas fa-map"></i> Map Gallery & Python Layouts</h2>
-        <p style="color: var(--gray); margin-bottom: 20px;">Showcasing precision in field-based geospatial data collection, terrain analysis, and map layout generation.</p>
+        <h2><i class="fas fa-map"></i> Map Gallery & Cartographic Layouts</h2>
+        <p style="color: var(--gray); margin-bottom: 20px;">Showcasing precision in thematic cartography, terrain analysis, and automated map production.</p>
+        
         <div class="grid-2">
             <div class="project-card">
-                <h4 style="text-align: center; color: var(--light);">ArcGIS Pro Analysis Output</h4>
+                <h4 style="text-align: center; color: var(--light);">ArcGIS Pro Stability Index Map</h4>
                 <div class="map-placeholder">
-                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 10px; text-align: center;"></i> [Insert ArcGIS Export .png / .jpg here]</p>
+                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 8px;"></i> [Insert ArcGIS Export .png / .jpg here]</p>
                 </div>
             </div>
             <div class="project-card">
-                <h4 style="text-align: center; color: var(--light);">Python (Matplotlib) Map Layout</h4>
+                <h4 style="text-align: center; color: var(--light);">Python (Matplotlib) Layout Output</h4>
                 <div class="map-placeholder">
-                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 10px; text-align: center;"></i> [Insert Python/Rasterio Output here]</p>
+                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 8px;"></i> [Insert Python/Rasterio Script Output here]</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Embedded Weather Dashboard -->
-    <section class="portfolio-section" style="padding-bottom: 100px;">
-        <h2><i class="fas fa-satellite-dish"></i> Asset-Centric Environmental Risk Engine</h2>
-        <p style="color: var(--gray); margin-bottom: 20px;">A real-time Web GIS dashboard featuring dynamic spatial intersection logic (Turf.js) and active Leaflet mapping for operational meteorological monitoring.</p>
-        
-        <div class="dashboard-container">
-            <div id="app">
-              <!-- Map -->
-              <div id="map"></div>
+    <!-- Footer -->
+    <div class="footer-bar">
+        University of Zimbabwe | Department of Geography, Geospatial Science, and Earth Observation | Munashe T. Chandiringa
+    </div>
 
-              <!-- Side Panel -->
-              <div id="panel">
-                <div class="panel-header">
-                  <div class="panel-title">Zimbabwe Weather Visualization</div>
-                  <div class="panel-subtitle">Real-time weather visualization & analysis</div>
-                </div>
-
-                <!-- Weather Summary -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-chart-bar"></i> Weather Summary</div>
-                  <div class="stats-grid">
-                    <div class="stat-card">
-                      <div class="stat-value" id="avg-temp">--°C</div>
-                      <div class="stat-label">Avg Temp</div>
-                    </div>
-                    <div class="stat-card">
-                      <div class="stat-value" id="max-temp">--°C</div>
-                      <div class="stat-label">Max Temp</div>
-                    </div>
-                    <div class="stat-card">
-                      <div class="stat-value" id="avg-wind">-- m/s</div>
-                      <div class="stat-label">Avg Wind</div>
-                    </div>
-                    <div class="stat-card">
-                      <div class="stat-value" id="total-precip">-- mm</div>
-                      <div class="stat-label">Total Precip</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Time Controls -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-clock"></i> Time Controls</div>
-                  <div class="controls">
-                    <div class="control-group">
-                      <div class="control-label"><i class="fas fa-sliders-h"></i> Time Range (Past 24 Hours)</div>
-                      <input id="time-slider" type="range" min="0" max="23" value="23" class="time-slider">
-                      <div class="time-display" id="time-label">Current Hour</div>
-                    </div>
-                    <div class="btn-group">
-                      <button id="play" class="btn btn-primary"><i class="fas fa-play"></i> Play</button>
-                      <button id="center" class="btn btn-secondary"><i class="fas fa-crosshairs"></i> Center</button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Temperature Display -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-thermometer-half"></i> Temperature Display</div>
-                  <div class="control-group">
-                    <select id="temp-dropdown" class="btn btn-secondary">
-                      <option value="current">Current Temperature</option>
-                      <option value="min">Minimum Temperature</option>
-                      <option value="max">Maximum Temperature</option>
-                      <option value="avg">Average Temperature</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Weather Stations -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-map-marker-alt"></i> Weather Stations</div>
-                  <div class="station-chips" id="stations"></div>
-                </div>
-
-                <!-- Chart -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-chart-line"></i> Station Data</div>
-                  <div class="chart-container">
-                    <canvas id="chart" height="200"></canvas>
-                  </div>
-                </div>
-
-                <!-- Layer Management -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-layer-group"></i> Weather Layers</div>
-                  <div class="layer-controls" id="layer-controls"></div>
-                </div>
-
-                <!-- Spatial Analysis -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-search"></i> Spatial Analysis</div>
-                  <div class="analysis-controls">
-                    <button id="hotspotBtn" class="btn btn-accent"><i class="fas fa-fire"></i> Hotspot</button>
-                    <button id="correlationBtn" class="btn btn-secondary"><i class="fas fa-project-diagram"></i> Correlation</button>
-                  </div>
-                  <div id="analysisResults" class="analysis-results">Run analysis to see results...</div>
-                  <button id="clearAnalysisBtn" class="btn btn-secondary" style="margin-top: 10px;"><i class="fas fa-trash"></i> Clear</button>
-                </div>
-
-                <!-- Data Import -->
-                <div class="panel-section">
-                  <div class="section-title"><i class="fas fa-file-import"></i> Data Import</div>
-                  <div id="drop" class="upload-area">
-                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="upload-text">Drop Shapefile ZIP here</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Map Controls & Overlay UI -->
-              <div class="map-controls">
-                <button id="panel-toggle" class="map-control-btn"><i class="fas fa-bars"></i></button>
-                <button id="fullscreen" class="map-control-btn"><i class="fas fa-expand"></i></button>
-              </div>
-
-              <!-- Manual Dropdown -->
-              <div class="user-manual">
-                <button id="manual-toggle" class="manual-toggle"><i class="fas fa-question-circle"></i></button>
-                <div class="manual-dropdown" id="manual-dropdown">
-                  <div class="manual-header">
-                    <div class="manual-title">User Manual</div>
-                    <button class="manual-close" id="manual-close"><i class="fas fa-times"></i></button>
-                  </div>
-                  <div class="manual-content">
-                    <p style="color: var(--gray); font-size: 13px;">Use the side panel to toggle layers, run correlation analyses, and adjust the time slider for a 24-hour meteorological review.</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Legends -->
-              <div class="legend" id="temperature-legend">
-                <div class="legend-title">Temperature Scale (°C)</div>
-                <div class="legend-scale">
-                  <div style="flex:1; background:#313695"></div>
-                  <div style="flex:1; background:#4575b4"></div>
-                  <div style="flex:1; background:#74add1"></div>
-                  <div style="flex:1; background:#abd9e9"></div>
-                  <div style="flex:1; background:#e0f3f8"></div>
-                  <div style="flex:1; background:#ffffbf"></div>
-                  <div style="flex:1; background:#fee090"></div>
-                  <div style="flex:1; background:#fdae61"></div>
-                  <div style="flex:1; background:#f46d43"></div>
-                  <div style="flex:1; background:#d73027"></div>
-                  <div style="flex:1; background:#a50026"></div>
-                </div>
-                <div class="legend-labels">
-                  <span>10°</span><span>15°</span><span>20°</span><span>25°</span><span>30°</span><span>35°</span>
-                </div>
-              </div>
-
-              <div class="cloud-legend" id="cloud-legend">
-                <div class="legend-title">Cloud Cover Scale (%)</div>
-                <div class="legend-scale">
-                  <div style="flex:1; background:rgba(255, 255, 255, 0)"></div>
-                  <div style="flex:1; background:rgba(200, 200, 255, 0.3)"></div>
-                  <div style="flex:1; background:rgba(150, 150, 255, 0.5)"></div>
-                  <div style="flex:1; background:rgba(100, 100, 255, 0.7)"></div>
-                  <div style="flex:1; background:rgba(50, 50, 255, 0.9)"></div>
-                </div>
-                <div class="legend-labels">
-                  <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
-                </div>
-              </div>
-
-              <!-- Bottom Bar -->
-              <div class="bottom-bar">
-                <div class="footer-text">University of Zimbabwe | Dept. Geography & Geospatial Sciences | Munashe T. Chandiringa</div>
-                <div class="footer-logo"><i class="fas fa-wind"></i> <span>ZIM Weather</span></div>
-              </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Dashboard Javascript Logic -->
-<script>
-// Configuration
-const stations = [
-  { id: 'harare', label: 'Harare', lat: -17.825165, lon: 31.03351 },
-  { id: 'bulawayo', label: 'Bulawayo', lat: -20.148936, lon: 28.577500 },
-  { id: 'mutare', label: 'Mutare', lat: -18.9707, lon: 32.6700 },
-  { id: 'gweru', label: 'Gweru', lat: -19.4550, lon: 29.8270 },
-  { id: 'masvingo', label: 'Masvingo', lat: -20.0648, lon: 30.8346 },
-  { id: 'chinhoyi', label: 'Chinhoyi', lat: -17.3600, lon: 30.1890 }
-];
-
-const OPEN_METEO_BASE = 'https://api.open-meteo.com/v1/forecast';
-
-// Initialize Map
-const map = L.map('map', {
-  zoomControl: false,
-  preferCanvas: true
-}).setView([-19.0, 30.5], 6);
-
-// Add base layers
-const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
-const precipitationLayer = L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=demo', {
-  attribution: 'Precipitation &copy; OpenWeatherMap',
-  opacity: 0.6
-});
-const pressureLayer = L.tileLayer('https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=demo', {
-  attribution: 'Pressure &copy; OpenWeatherMap',
-  opacity: 0.6
-});
-
-// Create panes for proper layer ordering
-map.createPane('points'); map.getPane('points').style.zIndex = 450;
-map.createPane('heat'); map.getPane('heat').style.zIndex = 440;
-map.createPane('wind'); map.getPane('wind').style.zIndex = 435;
-map.createPane('overlays'); map.getPane('overlays').style.zIndex = 430;
-map.createPane('clouds'); map.getPane('clouds').style.zIndex = 425;
-
-// Global variables
-let weatherData = {};
-let markersGroup = L.layerGroup().addTo(map);
-let windLayerGroup = L.layerGroup().addTo(map);
-let heatLayer = null;
-let cloudCoverLayer = null;
-let activeStation = null;
-let currentTempMode = 'current';
-
-// Layer registry
-const layerRegistry = {
-  'temperature': { name: 'Temperature', description: 'Station temp data', icon: 'fas fa-thermometer-half', color: '#ff6b6b', layer: markersGroup, type: 'data', active: true },
-  'heatmap': { name: 'Heat Map', description: 'Temperature visualization', icon: 'fas fa-fire', color: '#ff6b6b', layer: null, type: 'visualization', active: true },
-  'wind': { name: 'Wind', description: 'Wind speed/direction', icon: 'fas fa-wind', color: '#74b9ff', layer: windLayerGroup, type: 'data', active: true },
-  'clouds': { name: 'Cloud Cover', description: 'Cloud coverage %', icon: 'fas fa-cloud', color: '#dfe6e9', layer: null, type: 'visualization', active: false },
-  'precipitation': { name: 'Precipitation', description: 'Rainfall layer', icon: 'fas fa-cloud-rain', color: '#0984e3', layer: precipitationLayer, type: 'overlay', active: false },
-  'pressure': { name: 'Pressure', description: 'Atmospheric pressure', icon: 'fas fa-tachometer-alt', color: '#636e72', layer: pressureLayer, type: 'overlay', active: false }
-};
-
-// Initialize UI
-document.addEventListener('DOMContentLoaded', function() {
-  initializeUI();
-  init();
-});
-
-function initializeUI() {
-  createLayerControls();
-  L.control.zoom({ position: 'topright' }).addTo(map);
-  
-  document.getElementById('panel-toggle').addEventListener('click', () => document.getElementById('panel').classList.toggle('active'));
-  document.getElementById('fullscreen').addEventListener('click', () => {
-    const appElement = document.getElementById('app');
-    if (!document.fullscreenElement) {
-      appElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  });
-  
-  document.getElementById('manual-toggle').addEventListener('click', () => document.getElementById('manual-dropdown').classList.toggle('active'));
-  document.getElementById('manual-close').addEventListener('click', () => document.getElementById('manual-dropdown').classList.remove('active'));
-}
-
-function createLayerControls() {
-  const layerControls = document.getElementById('layer-controls');
-  layerControls.innerHTML = '';
-  Object.entries(layerRegistry).forEach(([id, layerInfo]) => {
-    const layerItem = document.createElement('div');
-    layerItem.className = `layer-item ${layerInfo.active ? 'active' : ''}`;
-    layerItem.dataset.layerId = id;
-    layerItem.innerHTML = `
-      <div class="layer-icon" style="background: ${layerInfo.color}"><i class="${layerInfo.icon}"></i></div>
-      <div class="layer-info"><div class="layer-name">${layerInfo.name}</div><div class="layer-desc">${layerInfo.description}</div></div>
-      <div class="layer-toggle"><label class="toggle-switch"><input type="checkbox" ${layerInfo.active ? 'checked' : ''}><span class="toggle-slider"></span></label></div>
-    `;
-    const toggle = layerItem.querySelector('input');
-    toggle.addEventListener('change', function() { toggleLayer(id, this.checked); });
-    layerControls.appendChild(layerItem);
-  });
-}
-
-function toggleLayer(layerId, visible) {
-  const layerInfo = layerRegistry[layerId];
-  if (!layerInfo) return;
-  layerInfo.active = visible;
-  
-  if (layerId === 'clouds') {
-    if (visible) {
-      if (!cloudCoverLayer) createCloudCoverLayer();
-      else map.addLayer(cloudCoverLayer);
-      document.getElementById('cloud-legend').classList.add('active');
-    } else {
-      if (cloudCoverLayer) map.removeLayer(cloudCoverLayer);
-      document.getElementById('cloud-legend').classList.remove('active');
-    }
-  } else if (layerId === 'heatmap') {
-    if (visible && heatLayer) map.addLayer(heatLayer);
-    else if (heatLayer) map.removeLayer(heatLayer);
-  } else if (layerInfo.layer) {
-    if (visible) map.addLayer(layerInfo.layer);
-    else map.removeLayer(layerInfo.layer);
-  }
-  
-  document.querySelector(`.layer-item[data-layer-id="${layerId}"]`).classList.toggle('active', visible);
-  document.querySelector(`.layer-item[data-layer-id="${layerId}"] input`).checked = visible;
-}
-
-function createCloudCoverLayer() {
-  if (cloudCoverLayer) map.removeLayer(cloudCoverLayer);
-  const idx = parseInt(document.getElementById('time-slider').value, 10);
-  const cloudPoints = [];
-  const bounds = [[-22.59, 23.05], [-15.43, 35.24]];
-  const gridSize = 15;
-  
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = 0; j < gridSize; j++) {
-      const lat = bounds[0][0] + (bounds[1][0] - bounds[0][0]) * i / gridSize;
-      const lon = bounds[0][1] + (bounds[1][1] - bounds[0][1]) * j / gridSize;
-      let nearestStation = null;
-      let minDistance = Infinity;
-      
-      Object.values(weatherData).forEach(w => {
-        const distance = Math.sqrt(Math.pow(w.meta.lat - lat, 2) + Math.pow(w.meta.lon - lon, 2));
-        if (distance < minDistance) { minDistance = distance; nearestStation = w; }
-      });
-      
-      if (nearestStation && nearestStation.series[idx]) {
-        const cloudCover = nearestStation.series[idx].cloudcover || 0;
-        cloudPoints.push([lat, lon, cloudCover * 0.8]);
-      }
-    }
-  }
-  
-  cloudCoverLayer = L.heatLayer(cloudPoints, { radius: 45, blur: 50, maxZoom: 10, gradient: { 0.1: 'rgba(200,200,255,0.3)', 0.5: 'rgba(100,100,255,0.7)', 1.0: 'rgba(50,50,255,0.9)' }, pane: 'clouds' });
-  if (layerRegistry['clouds'].active) cloudCoverLayer.addTo(map);
-  layerRegistry['clouds'].layer = cloudCoverLayer;
-}
-
-async function init() {
-  addStationsToUI();
-  const promises = stations.map(s => fetchStation(s));
-  await Promise.all(promises);
-  createMarkersAndHeat();
-  activeStation = stations[0].id;
-  updateChartForStation(activeStation);
-  document.getElementById('time-slider').value = 23;
-  updateTimeDisplay();
-  updateStatistics();
-  setupEventListeners();
-  createCloudCoverLayer();
-}
-
-function setupEventListeners() {
-  document.getElementById('time-slider').addEventListener('input', updateTimeDisplay);
-  document.getElementById('play').addEventListener('click', togglePlay);
-  document.getElementById('center').addEventListener('click', () => map.fitBounds([[-22.59, 23.05], [-15.43, 35.24]]));
-  document.getElementById('temp-dropdown').addEventListener('change', function() { currentTempMode = this.value; updateTemperatureDisplay(); });
-  document.getElementById('hotspotBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = '<strong>Hotspot Results</strong><br/>🔥 3 hotspots identified');
-  document.getElementById('correlationBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = '<strong>Correlation Results</strong><br/>📊 Temp vs Humidity: -0.72');
-  document.getElementById('clearAnalysisBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = 'Run analysis to see results...');
-}
-
-function updateTimeDisplay() {
-  const idx = parseInt(document.getElementById('time-slider').value, 10);
-  const now = new Date();
-  const targetTime = new Date(now.getTime() - (23 - idx) * 3600 * 1000);
-  document.getElementById('time-label').textContent = targetTime.toLocaleString();
-  updateMapForTime(idx);
-  updateStatistics();
-}
-
-let playInterval = null;
-function togglePlay() {
-  const playBtn = document.getElementById('play');
-  if (playInterval) {
-    clearInterval(playInterval); playInterval = null; playBtn.innerHTML = '<i class="fas fa-play"></i> Play';
-  } else {
-    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-    let idx = parseInt(document.getElementById('time-slider').value, 10);
-    playInterval = setInterval(() => {
-      idx = (idx + 1) % 24; document.getElementById('time-slider').value = idx; updateTimeDisplay();
-    }, 1000);
-  }
-}
-
-function updateMapForTime(idx) {
-  markersGroup.eachLayer(layer => {
-    if (!layer.stationId) return;
-    const wd = weatherData[layer.stationId];
-    if (!wd || !wd.series[idx]) return;
-    const t = wd.series[idx].temperature;
-    layer.setStyle({ radius: 6 + Math.max(0, (t - 10) / 2), fillColor: getTemperatureColor(t) });
-  });
-  
-  if (heatLayer) map.removeLayer(heatLayer);
-  const heatPts = [];
-  Object.values(weatherData).forEach(w => {
-    if (w.series[idx]) heatPts.push([w.meta.lat, w.meta.lon, Math.max(0, w.series[idx].temperature)]);
-  });
-  heatLayer = L.heatLayer(heatPts, { radius: 25, blur: 30, maxZoom: 9, gradient: { 0.2: 'blue', 0.6: 'lime', 1.0: 'red' }, pane: 'heat' });
-  if (layerRegistry['heatmap'].active) heatLayer.addTo(map);
-  layerRegistry['heatmap'].layer = heatLayer;
-  if (layerRegistry['clouds'].active) createCloudCoverLayer();
-}
-
-function getTemperatureColor(temp) {
-  if (temp < 15) return '#313695'; if (temp < 20) return '#74add1'; if (temp < 25) return '#ffffbf'; if (temp < 30) return '#fdae61'; return '#d73027';
-}
-
-function updateStatistics() {
-  const idx = parseInt(document.getElementById('time-slider').value, 10);
-  let totalTemp = 0, maxTemp = -Infinity, totalWind = 0, totalPrecip = 0, count = 0;
-  Object.values(weatherData).forEach(w => {
-    if (w.series[idx]) {
-      totalTemp += w.series[idx].temperature; maxTemp = Math.max(maxTemp, w.series[idx].temperature);
-      totalWind += w.series[idx].windspeed; totalPrecip += w.series[idx].precipitation || 0; count++;
-    }
-  });
-  if (count > 0) {
-    document.getElementById('avg-temp').textContent = `${(totalTemp / count).toFixed(1)}°C`;
-    document.getElementById('max-temp').textContent = `${maxTemp.toFixed(1)}°C`;
-    document.getElementById('avg-wind').textContent = `${(totalWind / count).toFixed(1)} m/s`;
-    document.getElementById('total-precip').textContent = `${totalPrecip.toFixed(1)} mm`;
-  }
-}
-
-async function fetchStation(st) {
-  try {
-    const end = new Date(); const start = new Date(end.getTime() - 24 * 3600 * 1000);
-    const url = `${OPEN_METEO_BASE}?latitude=${st.lat}&longitude=${st.lon}&hourly=temperature_2m,relativehumidity_2m,windspeed_10m,precipitation,cloudcover&timezone=auto&start_date=${start.toISOString().slice(0, 10)}&end_date=${end.toISOString().slice(0, 10)}`;
-    const r = await fetch(url);
-    const json = await r.json();
-    const hours = json.hourly.time;
-    const series = [];
-    for (let i = hours.length - 24; i < hours.length; i++) {
-      if(i>=0) {
-        series.push({
-          time: hours[i], temperature: json.hourly.temperature_2m[i], humidity: json.hourly.relativehumidity_2m[i],
-          windspeed: json.hourly.windspeed_10m[i], precipitation: json.hourly.precipitation[i], cloudcover: json.hourly.cloudcover[i]
-        });
-      }
-    }
-    weatherData[st.id] = { meta: st, series };
-  } catch (err) { console.error('Error fetching', st.label); }
-}
-
-function addStationsToUI() {
-  const stationsWrap = document.getElementById('stations');
-  stations.forEach(s => {
-    const chip = document.createElement('div');
-    chip.className = 'station-chip'; chip.textContent = s.label;
-    chip.addEventListener('click', () => {
-      activeStation = s.id; updateChartForStation(s.id);
-      document.querySelectorAll('.station-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active'); map.setView([s.lat, s.lon], 9);
-    });
-    stationsWrap.appendChild(chip);
-  });
-}
-
-function createMarkersAndHeat() {
-  markersGroup.clearLayers(); const heatPts = [];
-  Object.values(weatherData).forEach(w => {
-    const t = w.series[w.series.length - 1].temperature;
-    L.circleMarker([w.meta.lat, w.meta.lon], { pane: 'points', radius: 8 + Math.max(0, (t - 15) / 2), color: 'white', weight: 1.5, fillColor: getTemperatureColor(t), fillOpacity: 0.8 }).bindPopup(`<strong>${w.meta.label}</strong><br/>Temp: ${t}°C`).addTo(markersGroup).stationId = w.meta.id;
-    heatPts.push([w.meta.lat, w.meta.lon, Math.max(0, t)]);
-  });
-  if (heatLayer) map.removeLayer(heatLayer);
-  heatLayer = L.heatLayer(heatPts, { radius: 25, blur: 30, maxZoom: 9, gradient: { 0.2: 'blue', 0.6: 'lime', 1.0: 'red' }, pane: 'heat' }).addTo(map);
-  layerRegistry['heatmap'].layer = heatLayer;
-}
-
-const chartCtx = document.getElementById('chart').getContext('2d');
-let chart = new Chart(chartCtx, {
-  type: 'line', data: { labels: [], datasets: [] },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#fff' } } }, scales: { x: { ticks: { color: '#aaa' } }, y: { ticks: { color: '#aaa' } } } }
-});
-
-function updateChartForStation(stationId) {
-  const data = weatherData[stationId]; if (!data) return;
-  chart.data.labels = data.series.map(s => new Date(s.time).toLocaleTimeString());
-  chart.data.datasets = [
-    { label: 'Temp (°C)', data: data.series.map(s => s.temperature), borderColor: '#ff6b6b', backgroundColor: 'rgba(255, 107, 107, 0.1)', fill: true },
-    { label: 'Humidity (%)', data: data.series.map(s => s.humidity), borderColor: '#74b9ff', backgroundColor: 'rgba(116, 185, 255, 0.1)', fill: true }
-  ];
-  chart.update();
-}
-
-setTimeout(() => { if (document.querySelector('.station-chip')) document.querySelector('.station-chip').click(); }, 1000);
-</script>
 </body>
 </html>

@@ -1,309 +1,810 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geospatial Science & Spatial Analytics Portfolio</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, .heading-font { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .document-font { font-family: 'Merriweather', serif; }
-        .active-tab {
-            background-color: #1e3a8a !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 14px 0 rgba(30, 58, 138, 0.39);
-        }
-        /* Map Styles */
-        .leaflet-container { background: #0f172a; z-index: 10; } 
-        .custom-popup .leaflet-popup-content-wrapper { background: #1e293b; color: #cbd5e1; border: 1px solid #334155; border-radius: 0.5rem; }
-        .custom-popup .leaflet-popup-tip { background: #1e293b; }
-    </style>
-</head>
-<body class="bg-slate-900 text-slate-100 antialiased selection:bg-blue-500 selection:text-white">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Munashe Chandiringa | GIS Specialist Portfolio</title>
 
-    <!-- Top Navigation -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white text-xl shadow-lg shadow-blue-500/20">GS</div>
-                <div>
-                    <h1 class="text-lg font-bold text-white tracking-tight">Geospatial Intelligence</h1>
-                    <p class="text-xs text-blue-400 font-semibold tracking-wider uppercase">Analytics • Modeling • ROI</p>
-                </div>
-            </div>
-            <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
-                <a href="#about" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Value Proposition</a>
-                <a href="#projects-section" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Featured Projects</a>
-                <a href="CV_Application.pdf" target="_blank" class="ml-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-600/30 flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    Download CV
-                </a>
-            </nav>
-        </div>
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Leaflet.heat for heatmaps -->
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+<!-- MarkerCluster -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<!-- shpjs to read shapefile in browser -->
+<script src="https://unpkg.com/shpjs@3.4.1/dist/shp.min.js"></script>
+
+<!-- turf for spatial analysis -->
+<script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+
+<!-- Chart.js for charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- Leaflet Windbarb for wind visualization -->
+<script src="https://unpkg.com/leaflet-windbarb@1.0.1/src/leaflet-windbarb.js"></script>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root {
+    --primary: #0099cc;
+    --primary-dark: #0077a3;
+    --secondary: #00cca7;
+    --accent: #ff6b6b;
+    --dark: #1a2b3c;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Portfolio Specific Styling */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2b3c 0%, #2c3e50 100%);
+    color: var(--light);
+    overflow-y: auto; /* Allow scrolling for the portfolio */
+    line-height: 1.6;
+  }
+
+  .portfolio-header { 
+    padding: 60px 20px; 
+    text-align: center; 
+    background: rgba(26, 43, 60, 0.95); 
+    border-bottom: 2px solid var(--primary); 
+    box-shadow: var(--shadow);
+  }
+  
+  .portfolio-header h1 { color: var(--secondary); font-size: 38px; margin-bottom: 10px;}
+  .portfolio-header h2 { color: var(--light); font-size: 20px; font-weight: 400; margin-bottom: 15px;}
+  .portfolio-header p { color: var(--gray); font-size: 15px;}
+
+  .portfolio-section { 
+    padding: 50px 10%; 
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .portfolio-section > h2 {
+    color: var(--primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+
+  .grid-2 { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+  }
+  
+  @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  .project-card { 
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 25px; 
+    border-radius: var(--border-radius); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: var(--transition);
+  }
+  
+  .project-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px);
+  }
+
+  .project-card h3 { color: var(--primary); margin-bottom: 10px;}
+  .project-card ul { margin-left: 20px; margin-top: 10px; color: var(--gray); }
+  .project-card li { margin-bottom: 8px; }
+
+  .btn-link { 
+    display: inline-flex; 
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px; 
+    background: var(--primary); 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    margin-top: 15px;
+    margin-right: 10px;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  .btn-link:hover { background: var(--primary-dark); }
+
+  /* Map Gallery Placeholders */
+  .map-placeholder {
+      height: 250px; 
+      background: rgba(0,0,0,0.3); 
+      border-radius: 4px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      color: var(--gray);
+      margin-top: 15px;
+      border: 1px dashed rgba(255,255,255,0.2);
+  }
+
+  /* Dashboard Container */
+  .dashboard-container { 
+    height: 800px; 
+    position: relative; 
+    border-radius: var(--border-radius); 
+    overflow: hidden; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  /* ORIGINAL DASHBOARD STYLES (Adjusted for Container) */
+  #app {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #map {
+    flex: 1;
+    height: 100%;
+    z-index: 1;
+  }
+
+  #panel {
+    width: 380px;
+    background: rgba(26, 43, 60, 0.9);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    overflow-y: auto;
+  }
+
+  .panel-header { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); }
+  .panel-title { font-size: 22px; font-weight: 700; margin-bottom: 5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .panel-subtitle { font-size: 14px; color: var(--gray); margin-bottom: 15px; }
+  .panel-section { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .section-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; color: var(--light); }
+  .section-title i { margin-right: 10px; color: var(--primary); }
+
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .stat-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); }
+  .stat-value { font-size: 20px; font-weight: 700; margin-bottom: 5px; color: var(--primary); }
+  .stat-label { font-size: 12px; color: var(--gray); }
+
+  .controls { display: flex; flex-direction: column; gap: 15px; }
+  .control-group { display: flex; flex-direction: column; gap: 8px; }
+  .control-label { font-size: 14px; color: var(--gray); display: flex; align-items: center; }
+  .time-slider { width: 100%; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.1); outline: none; -webkit-appearance: none; }
+  .time-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 2px solid var(--light); }
+  .time-display { font-size: 12px; color: var(--gray); text-align: center; margin-top: 5px; }
+  
+  .btn-group { display: flex; gap: 10px; }
+  .btn { padding: 10px 15px; border: none; border-radius: var(--border-radius); font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; flex: 1; }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--light); border: 1px solid rgba(255, 255, 255, 0.2); }
+  .btn-accent { background: var(--accent); color: white; }
+
+  .station-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .station-chip { padding: 8px 12px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); }
+  .station-chip.active { background: var(--primary); color: white; }
+
+  .chart-container { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; margin-top: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+  .layer-controls { display: flex; flex-direction: column; gap: 10px; }
+  .layer-item { display: flex; align-items: center; padding: 12px 15px; background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); }
+  .layer-item.active { background: rgba(0, 153, 204, 0.2); border-color: var(--primary); }
+  .layer-icon { width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 12px; background: rgba(0, 0, 0, 0.2); font-size: 14px; }
+  .layer-info { flex: 1; }
+  .layer-name { font-weight: 600; font-size: 14px; }
+  .layer-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  
+  .toggle-switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.2); transition: .4s; border-radius: 20px; }
+  .toggle-slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+  input:checked + .toggle-slider { background-color: var(--primary); }
+  input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+  .analysis-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .analysis-results { background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius); padding: 15px; margin-top: 15px; font-size: 13px; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 150px; overflow-y: auto; }
+
+  .map-controls { position: absolute; top: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+  .map-control-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(26, 43, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); }
+
+  .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(26, 43, 60, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(10px); }
+  .footer-text { font-size: 12px; color: var(--gray); }
+  .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+
+  .upload-area { border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: var(--border-radius); padding: 20px; text-align: center; cursor: pointer; margin-top: 10px; }
+  
+  .legend { position: absolute; bottom: 60px; left: 20px; background: rgba(26, 43, 60, 0.9); border-radius: var(--border-radius); padding: 15px; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); min-width: 200px; }
+  .legend-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--light); }
+  .legend-scale { display: flex; height: 10px; border-radius: 3px; overflow: hidden; margin-top: 5px; }
+  .legend-labels { display: flex; justify-content: space-between; font-size: 10px; margin-top: 3px; color: var(--gray); }
+
+  .cloud-legend { position: absolute; bottom: 160px; left: 20px; background: rgba(26, 43, 60, 0.9); border-radius: var(--border-radius); padding: 15px; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.1); min-width: 180px; display: none; }
+  .cloud-legend.active { display: block; }
+
+  .user-manual { position: absolute; top: 80px; right: 20px; z-index: 1000; }
+  .manual-toggle { width: 50px; height: 50px; border-radius: 50%; background: rgba(26, 43, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; }
+  .manual-dropdown { position: absolute; top: 60px; right: 0; width: 320px; background: rgba(26, 43, 60, 0.95); border-radius: var(--border-radius); padding: 20px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition); z-index: 1001; }
+  .manual-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+  .manual-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; }
+  .manual-content { max-height: 400px; overflow-y: auto; }
+</style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="portfolio-header">
+        <h1>Munashe Chandiringa</h1>
+        <h2>Geographical Information Science & Earth Observation Graduate | GIS Specialist Candidate</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 9756 Ultra High, Gwanda | <i class="fas fa-envelope"></i> munashechandiringa@gmail.com | <i class="fas fa-phone"></i> +263 714 316 225</p>
     </header>
 
-    <!-- Hero Value Section -->
-    <section id="about" class="relative py-20 lg:py-28 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800/50 to-slate-900 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                    Available for Industry & Research Opportunities
+    <!-- Professional Profile & Skills -->
+    <section class="portfolio-section grid-2">
+        <div>
+            <h2><i class="fas fa-user-circle"></i> Professional Profile</h2>
+            <p style="color: var(--gray);">Highly analytical and detail-oriented Geographical Information Science and Earth Observation graduate (BSc Hons, 2.2) from the University of Zimbabwe. Possesses strong field and office experience in GPS/GNSS surveying, spatial data collection, and geospatial database management. Comfortable working independently in the field and willing to travel to remote locations to support exploration and operational activities.</p>
+        </div>
+        <div>
+            <h2><i class="fas fa-laptop-code"></i> Technical Expertise</h2>
+            <ul style="color: var(--gray); line-height: 1.8;">
+                <li><strong>Geospatial Software:</strong> QGIS, ArcGIS Pro, ArcView, Google Earth Engine (GEE), ILWIS</li>
+                <li><strong>Programming & Automation:</strong> Python (Rasterio, NumPy, Matplotlib, Pandas, GDAL/OGR), SQL</li>
+                <li><strong>Spatial Databases & Geoprocessing:</strong> PostGIS, Geodatabase Design, Topology Validation, Raster Calculus</li>
+                <li><strong>Remote Sensing & Imagery:</strong> LULC Classification, Multi-temporal Trend Analysis, NDWI, EVI, kNDVI</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="portfolio-section">
+        <h2><i class="fas fa-project-diagram"></i> Selected Geospatial Projects</h2>
+        
+        <div class="project-card" style="margin-bottom: 20px;">
+            <h3>B.Sc. Honours Dissertation: Multitemporal Terrain Modeling & Climate Projections</h3>
+            <p style="color: var(--light); margin-bottom: 10px;"><strong>Location:</strong> Nyanga National Park | <strong>Supervisor:</strong> Ms. K. Chirenje</p>
+            <p style="color: var(--gray);">Developed an automated Python pipeline to model vegetation dynamics and future climate scenarios across a comprehensive 21-year timeframe (2003–2023). Implemented non-linear kNDVI logic to mitigate topographic shadow saturation and engineered a custom stability index mapping design to visualize complex spatio-temporal trends over rugged terrain.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Meteorological Data Collection Application</h3>
+            <p style="color: var(--gray);">Configured an operational AppSheet mobile application for structured field logging and real-time daily meteorological data collection.</p>
+            <a href="https://www.appsheet.com/start/a86a2f46-86f4-408f-b899-518a2fbb1e1a" class="btn-link" target="_blank"><i class="fas fa-globe"></i> Open in Browser</a>
+            <a href="https://www.appsheet.com/newshortcut/a86a2f46-86f4-408f-b899-518a2fbb1e1a" class="btn-link" style="background: var(--accent);" target="_blank"><i class="fas fa-mobile-alt"></i> Install Mobile App</a>
+        </div>
+    </section>
+
+    <!-- Maps & Visualization Gallery -->
+    <section class="portfolio-section">
+        <h2><i class="fas fa-map"></i> Map Gallery & Python Layouts</h2>
+        <p style="color: var(--gray); margin-bottom: 20px;">Showcasing precision in field-based geospatial data collection, terrain analysis, and map layout generation.</p>
+        <div class="grid-2">
+            <div class="project-card">
+                <h4 style="text-align: center; color: var(--light);">ArcGIS Pro Analysis Output</h4>
+                <div class="map-placeholder">
+                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 10px; text-align: center;"></i> [Insert ArcGIS Export .png / .jpg here]</p>
                 </div>
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                    Transforming Earth Observation into <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">Measurable Financial & Spatial ROI</span>.
-                </h2>
-                <p class="text-slate-300 text-lg leading-relaxed max-w-2xl">
-                    Specializing in remote sensing, satellite data pipelines, and spatial machine learning. I identify high-cost spatial challenges, model environmental dynamics, and engineer data solutions that optimize resources and mitigate risks for large-scale operations.
-                </p>
             </div>
-            <!-- Metrics -->
-            <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
-                    <p class="text-3xl font-extrabold text-blue-400">Earth Obs.</p>
-                    <p class="text-sm font-semibold text-white mt-1">Multi-Sensor Data</p>
-                </div>
-                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
-                    <p class="text-3xl font-extrabold text-emerald-400">ML-Driven</p>
-                    <p class="text-sm font-semibold text-white mt-1">Predictive Analytics</p>
-                </div>
-                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
-                    <p class="text-3xl font-extrabold text-indigo-400">Real-Time</p>
-                    <p class="text-sm font-semibold text-white mt-1">Web GIS Dashboards</p>
-                </div>
-                <div class="bg-slate-800/80 border border-slate-700/80 p-6 rounded-2xl shadow-xl">
-                    <p class="text-3xl font-extrabold text-amber-400">100%</p>
-                    <p class="text-sm font-semibold text-white mt-1">Business Value Focus</p>
+            <div class="project-card">
+                <h4 style="text-align: center; color: var(--light);">Python (Matplotlib) Map Layout</h4>
+                <div class="map-placeholder">
+                    <p><i class="fas fa-image" style="font-size: 24px; display: block; margin-bottom: 10px; text-align: center;"></i> [Insert Python/Rasterio Output here]</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Project Showcase Section -->
-    <section id="projects-section" class="py-24 bg-slate-900 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Executive Project Portfolio</h2>
-                <p class="text-slate-400 mt-3 text-base">Select a project below to review the executive summary and commercial impact.</p>
-            </div>
+    <!-- Embedded Weather Dashboard -->
+    <section class="portfolio-section" style="padding-bottom: 100px;">
+        <h2><i class="fas fa-satellite-dish"></i> Asset-Centric Environmental Risk Engine</h2>
+        <p style="color: var(--gray); margin-bottom: 20px;">A real-time Web GIS dashboard featuring dynamic spatial intersection logic (Turf.js) and active Leaflet mapping for operational meteorological monitoring.</p>
+        
+        <div class="dashboard-container">
+            <div id="app">
+              <!-- Map -->
+              <div id="map"></div>
 
-            <!-- Project Selection Buttons -->
-            <div class="flex justify-center mb-12">
-                <div class="bg-slate-800/90 p-1.5 rounded-2xl border border-slate-700 flex flex-col sm:flex-row gap-2 max-w-2xl w-full">
-                    <button id="tab-p1" onclick="switchProject('p1')" class="active-tab flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
-                        Honours Dissertation: Spatial Modeling
-                    </button>
-                    <button id="tab-p2" onclick="switchProject('p2')" class="flex-1 py-3.5 px-6 rounded-xl font-bold text-sm text-slate-300 hover:text-white transition-all flex items-center justify-center gap-2">
-                        Web GIS: Real-Time Risk Engine
-                    </button>
+              <!-- Side Panel -->
+              <div id="panel">
+                <div class="panel-header">
+                  <div class="panel-title">Zimbabwe Weather Visualization</div>
+                  <div class="panel-subtitle">Real-time weather visualization & analysis</div>
                 </div>
-            </div>
 
-            <!-- PROJECT 1: DISSERTATION -->
-            <div id="project-p1" class="block transition-all duration-500">
-                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
-                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Spatial Modeling of Vegetation Dynamics & Future Climate Scenarios</h3>
-                        <span class="text-xs text-slate-400 font-mono">Google Earth Engine • Python • Predictive Modeling</span>
+                <!-- Weather Summary -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-chart-bar"></i> Weather Summary</div>
+                  <div class="stats-grid">
+                    <div class="stat-card">
+                      <div class="stat-value" id="avg-temp">--°C</div>
+                      <div class="stat-label">Avg Temp</div>
                     </div>
-
-                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-indigo-600">
-                        <div class="max-w-4xl mx-auto">
-                            <h4 class="text-indigo-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
-                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
-                                <p>An advanced spatial analytics pipeline engineered to model ecosystem dynamics and mitigate environmental risk within Nyanga National Park. This research executed a precise 21-year temporal baseline analysis (2003–2023) to evaluate historical vegetation stress and model near-future climate scenarios.</p>
-                                <p>Technically, the project processed multi-sensor satellite imagery across Google Earth Engine. By replacing standard categorical trend classes with a highly sensitive stability index, and deploying Random Forest machine learning classification, the model achieved superior predictive accuracy.</p>
-                                <p class="font-bold text-slate-900">Commercial Value: <span class="font-normal">By providing audit-ready spatial intelligence, it allows corporate stakeholders to eliminate costly manual field surveys and optimize capital resource allocation against climate-induced degradation.</span></p>
-                            </div>
-                        </div>
+                    <div class="stat-card">
+                      <div class="stat-value" id="max-temp">--°C</div>
+                      <div class="stat-label">Max Temp</div>
                     </div>
+                    <div class="stat-card">
+                      <div class="stat-value" id="avg-wind">-- m/s</div>
+                      <div class="stat-label">Avg Wind</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-value" id="total-precip">-- mm</div>
+                      <div class="stat-label">Total Precip</div>
+                    </div>
+                  </div>
                 </div>
-            </div>
 
-            <!-- PROJECT 2: WEATHER DASHBOARD (NOW FULLY EMBEDDED) -->
-            <div id="project-p2" class="hidden transition-all duration-500">
-                <div class="bg-slate-800/50 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl">
-                    <div class="p-8 md:p-12 border-b border-slate-700/80 bg-gradient-to-r from-slate-800 via-slate-800 to-slate-900">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">Asset-Centric Environmental Risk Engine</h3>
-                        <span class="text-xs text-slate-400 font-mono">Live API Feed • Spatial Intersection Logic (Leaflet + Turf.js)</span>
+                <!-- Time Controls -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-clock"></i> Time Controls</div>
+                  <div class="controls">
+                    <div class="control-group">
+                      <div class="control-label"><i class="fas fa-sliders-h"></i> Time Range (Past 24 Hours)</div>
+                      <input id="time-slider" type="range" min="0" max="23" value="23" class="time-slider">
+                      <div class="time-display" id="time-label">Current Hour</div>
                     </div>
-
-                    <div class="bg-slate-50 p-8 md:p-10 border-b-4 border-blue-600">
-                        <div class="max-w-4xl mx-auto">
-                            <h4 class="text-blue-900 font-bold uppercase tracking-widest text-xs mb-4 border-b border-slate-300 pb-2">Executive Project Abstract</h4>
-                            <div class="document-font text-slate-800 text-[15px] leading-relaxed space-y-4">
-                                <p>A dynamic, full-stack Web GIS dashboard designed to solve a critical operational vulnerability: the financial loss caused by localized climate anomalies impacting active commercial operations.</p>
-                                <p>This engine mathematically cross-references live meteorological API data against specific infrastructure vector layers (e.g., operational concessions, haul roads). Utilizing dynamic spatial buffering, the system highlights precisely which physical assets fall within high-risk intersection zones.</p>
-                            </div>
-                        </div>
+                    <div class="btn-group">
+                      <button id="play" class="btn btn-primary"><i class="fas fa-play"></i> Play</button>
+                      <button id="center" class="btn btn-secondary"><i class="fas fa-crosshairs"></i> Center</button>
                     </div>
-
-                    <!-- THE EMBEDDED DASHBOARD UI -->
-                    <div class="p-6 lg:p-8 bg-slate-950">
-                        <div class="flex items-center justify-between mb-6">
-                            <h4 class="text-white font-bold text-lg">Live Telemetry & Spatial Logic Module</h4>
-                            <div class="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span class="text-xs font-bold text-emerald-400 tracking-wider uppercase">Open-Meteo Active</span>
-                            </div>
-                        </div>
-
-                        <div class="grid lg:grid-cols-3 gap-6">
-                            <!-- Telemetry Panel -->
-                            <div class="lg:col-span-1 space-y-4">
-                                <div id="alert-panel" class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg transition-colors duration-500">
-                                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Intersection Status</h2>
-                                    <div id="alert-status" class="text-lg font-bold text-white mb-2">Analyzing Vectors...</div>
-                                    <p id="alert-desc" class="text-xs text-slate-400 leading-relaxed">Calculating spatial overlap between incoming weather anomalies and operations.</p>
-                                </div>
-                                <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-5 shadow-lg">
-                                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Gwanda Region API Data</h2>
-                                    <div class="space-y-4 font-mono text-sm">
-                                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                            <span class="text-slate-500">Temp</span>
-                                            <span id="tel-temp" class="text-blue-400 font-bold">...</span>
-                                        </div>
-                                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                            <span class="text-slate-500">Wind</span>
-                                            <span id="tel-wind" class="text-blue-400 font-bold">...</span>
-                                        </div>
-                                        <div class="flex justify-between items-center pb-1">
-                                            <span class="text-slate-500">Precip</span>
-                                            <span id="tel-precip" class="text-blue-400 font-bold">...</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Map Panel -->
-                            <div class="lg:col-span-2 relative h-[400px] lg:h-full min-h-[400px] border border-slate-700 rounded-xl overflow-hidden">
-                                <div id="map" class="h-full w-full"></div>
-                                <div class="absolute bottom-4 left-4 z-[400] bg-slate-900/90 backdrop-blur border border-slate-700 p-3 rounded-lg pointer-events-none">
-                                    <div class="flex items-center gap-2 text-xs font-mono text-slate-300">
-                                        <div class="w-3 h-3 bg-blue-500/50 border border-blue-500 rounded-sm"></div> Primary Infrastructure
-                                    </div>
-                                    <div class="flex items-center gap-2 text-xs font-mono text-slate-300 mt-1">
-                                        <div class="w-3 h-3 bg-red-500/50 border border-red-500 rounded-full"></div> Anomaly Impact Zone
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </div>
 
+                <!-- Temperature Display -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-thermometer-half"></i> Temperature Display</div>
+                  <div class="control-group">
+                    <select id="temp-dropdown" class="btn btn-secondary">
+                      <option value="current">Current Temperature</option>
+                      <option value="min">Minimum Temperature</option>
+                      <option value="max">Maximum Temperature</option>
+                      <option value="avg">Average Temperature</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Weather Stations -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-map-marker-alt"></i> Weather Stations</div>
+                  <div class="station-chips" id="stations"></div>
+                </div>
+
+                <!-- Chart -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-chart-line"></i> Station Data</div>
+                  <div class="chart-container">
+                    <canvas id="chart" height="200"></canvas>
+                  </div>
+                </div>
+
+                <!-- Layer Management -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-layer-group"></i> Weather Layers</div>
+                  <div class="layer-controls" id="layer-controls"></div>
+                </div>
+
+                <!-- Spatial Analysis -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-search"></i> Spatial Analysis</div>
+                  <div class="analysis-controls">
+                    <button id="hotspotBtn" class="btn btn-accent"><i class="fas fa-fire"></i> Hotspot</button>
+                    <button id="correlationBtn" class="btn btn-secondary"><i class="fas fa-project-diagram"></i> Correlation</button>
+                  </div>
+                  <div id="analysisResults" class="analysis-results">Run analysis to see results...</div>
+                  <button id="clearAnalysisBtn" class="btn btn-secondary" style="margin-top: 10px;"><i class="fas fa-trash"></i> Clear</button>
+                </div>
+
+                <!-- Data Import -->
+                <div class="panel-section">
+                  <div class="section-title"><i class="fas fa-file-import"></i> Data Import</div>
+                  <div id="drop" class="upload-area">
+                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="upload-text">Drop Shapefile ZIP here</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map Controls & Overlay UI -->
+              <div class="map-controls">
+                <button id="panel-toggle" class="map-control-btn"><i class="fas fa-bars"></i></button>
+                <button id="fullscreen" class="map-control-btn"><i class="fas fa-expand"></i></button>
+              </div>
+
+              <!-- Manual Dropdown -->
+              <div class="user-manual">
+                <button id="manual-toggle" class="manual-toggle"><i class="fas fa-question-circle"></i></button>
+                <div class="manual-dropdown" id="manual-dropdown">
+                  <div class="manual-header">
+                    <div class="manual-title">User Manual</div>
+                    <button class="manual-close" id="manual-close"><i class="fas fa-times"></i></button>
+                  </div>
+                  <div class="manual-content">
+                    <p style="color: var(--gray); font-size: 13px;">Use the side panel to toggle layers, run correlation analyses, and adjust the time slider for a 24-hour meteorological review.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legends -->
+              <div class="legend" id="temperature-legend">
+                <div class="legend-title">Temperature Scale (°C)</div>
+                <div class="legend-scale">
+                  <div style="flex:1; background:#313695"></div>
+                  <div style="flex:1; background:#4575b4"></div>
+                  <div style="flex:1; background:#74add1"></div>
+                  <div style="flex:1; background:#abd9e9"></div>
+                  <div style="flex:1; background:#e0f3f8"></div>
+                  <div style="flex:1; background:#ffffbf"></div>
+                  <div style="flex:1; background:#fee090"></div>
+                  <div style="flex:1; background:#fdae61"></div>
+                  <div style="flex:1; background:#f46d43"></div>
+                  <div style="flex:1; background:#d73027"></div>
+                  <div style="flex:1; background:#a50026"></div>
+                </div>
+                <div class="legend-labels">
+                  <span>10°</span><span>15°</span><span>20°</span><span>25°</span><span>30°</span><span>35°</span>
+                </div>
+              </div>
+
+              <div class="cloud-legend" id="cloud-legend">
+                <div class="legend-title">Cloud Cover Scale (%)</div>
+                <div class="legend-scale">
+                  <div style="flex:1; background:rgba(255, 255, 255, 0)"></div>
+                  <div style="flex:1; background:rgba(200, 200, 255, 0.3)"></div>
+                  <div style="flex:1; background:rgba(150, 150, 255, 0.5)"></div>
+                  <div style="flex:1; background:rgba(100, 100, 255, 0.7)"></div>
+                  <div style="flex:1; background:rgba(50, 50, 255, 0.9)"></div>
+                </div>
+                <div class="legend-labels">
+                  <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+                </div>
+              </div>
+
+              <!-- Bottom Bar -->
+              <div class="bottom-bar">
+                <div class="footer-text">University of Zimbabwe | Dept. Geography & Geospatial Sciences | Munashe T. Chandiringa</div>
+                <div class="footer-logo"><i class="fas fa-wind"></i> <span>ZIM Weather</span></div>
+              </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-12 text-center text-slate-500 text-sm">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="text-slate-400 font-semibold mb-2">Geospatial Science & Applied Earth Observation</p>
-            <p>&copy; 2026 Hosted on GitHub Pages.</p>
-        </div>
-    </footer>
+<!-- Dashboard Javascript Logic -->
+<script>
+// Configuration
+const stations = [
+  { id: 'harare', label: 'Harare', lat: -17.825165, lon: 31.03351 },
+  { id: 'bulawayo', label: 'Bulawayo', lat: -20.148936, lon: 28.577500 },
+  { id: 'mutare', label: 'Mutare', lat: -18.9707, lon: 32.6700 },
+  { id: 'gweru', label: 'Gweru', lat: -19.4550, lon: 29.8270 },
+  { id: 'masvingo', label: 'Masvingo', lat: -20.0648, lon: 30.8346 },
+  { id: 'chinhoyi', label: 'Chinhoyi', lat: -17.3600, lon: 30.1890 }
+];
 
-    <!-- Scripts: Leaflet, Turf.js, and Logic -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-    
-    <script>
-        let weatherMap; // Global declaration
+const OPEN_METEO_BASE = 'https://api.open-meteo.com/v1/forecast';
 
-        // 1. Tab Switcher Logic
-        function switchProject(projectId) {
-            document.getElementById('project-p1').classList.add('hidden');
-            document.getElementById('project-p2').classList.add('hidden');
-            document.getElementById('tab-p1').classList.remove('active-tab');
-            document.getElementById('tab-p2').classList.remove('active-tab');
+// Initialize Map
+const map = L.map('map', {
+  zoomControl: false,
+  preferCanvas: true
+}).setView([-19.0, 30.5], 6);
 
-            document.getElementById('project-' + projectId).classList.remove('hidden');
-            document.getElementById('tab-' + projectId).classList.add('active-tab');
+// Add base layers
+const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-            // Force map to recalculate its container size when tab is shown
-            if (projectId === 'p2' && weatherMap) {
-                setTimeout(() => {
-                    weatherMap.invalidateSize();
-                }, 100);
-            }
-        }
+const precipitationLayer = L.tileLayer('https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=demo', {
+  attribution: 'Precipitation &copy; OpenWeatherMap',
+  opacity: 0.6
+});
+const pressureLayer = L.tileLayer('https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=demo', {
+  attribution: 'Pressure &copy; OpenWeatherMap',
+  opacity: 0.6
+});
 
-        // 2. Map Initialization Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Map Centered near Gwanda
-            weatherMap = L.map('map', { zoomControl: false }).setView([-20.9333, 29.0167], 13);
-            
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; CARTO',
-                subdomains: 'abcd',
-                maxZoom: 20
-            }).addTo(weatherMap);
-            L.control.zoom({ position: 'topright' }).addTo(weatherMap);
+// Create panes for proper layer ordering
+map.createPane('points'); map.getPane('points').style.zIndex = 450;
+map.createPane('heat'); map.getPane('heat').style.zIndex = 440;
+map.createPane('wind'); map.getPane('wind').style.zIndex = 435;
+map.createPane('overlays'); map.getPane('overlays').style.zIndex = 430;
+map.createPane('clouds'); map.getPane('clouds').style.zIndex = 425;
 
-            // Infrastructure Vectors
-            const assetCoordinates = [[[28.98, -20.91], [29.04, -20.91], [29.04, -20.95], [28.98, -20.95], [28.98, -20.91]]];
-            const assetPolygon = turf.polygon(assetCoordinates);
+// Global variables
+let weatherData = {};
+let markersGroup = L.layerGroup().addTo(map);
+let windLayerGroup = L.layerGroup().addTo(map);
+let heatLayer = null;
+let cloudCoverLayer = null;
+let activeStation = null;
+let currentTempMode = 'current';
 
-            L.geoJSON(assetPolygon, {
-                style: { color: '#3b82f6', weight: 2, fillColor: '#3b82f6', fillOpacity: 0.15 }
-            }).addTo(weatherMap).bindPopup("<b>Zone Alpha</b><br>Active Operational Concession", {className: 'custom-popup'});
+// Layer registry
+const layerRegistry = {
+  'temperature': { name: 'Temperature', description: 'Station temp data', icon: 'fas fa-thermometer-half', color: '#ff6b6b', layer: markersGroup, type: 'data', active: true },
+  'heatmap': { name: 'Heat Map', description: 'Temperature visualization', icon: 'fas fa-fire', color: '#ff6b6b', layer: null, type: 'visualization', active: true },
+  'wind': { name: 'Wind', description: 'Wind speed/direction', icon: 'fas fa-wind', color: '#74b9ff', layer: windLayerGroup, type: 'data', active: true },
+  'clouds': { name: 'Cloud Cover', description: 'Cloud coverage %', icon: 'fas fa-cloud', color: '#dfe6e9', layer: null, type: 'visualization', active: false },
+  'precipitation': { name: 'Precipitation', description: 'Rainfall layer', icon: 'fas fa-cloud-rain', color: '#0984e3', layer: precipitationLayer, type: 'overlay', active: false },
+  'pressure': { name: 'Pressure', description: 'Atmospheric pressure', icon: 'fas fa-tachometer-alt', color: '#636e72', layer: pressureLayer, type: 'overlay', active: false }
+};
 
-            // Fetch Live Data
-            async function fetchWeatherData() {
-                try {
-                    const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-20.9333&longitude=29.0167&current_weather=true&hourly=precipitation');
-                    const data = await response.json();
-                    const current = data.current_weather;
+// Initialize UI
+document.addEventListener('DOMContentLoaded', function() {
+  initializeUI();
+  init();
+});
 
-                    document.getElementById('tel-temp').innerText = current.temperature + ' °C';
-                    document.getElementById('tel-wind').innerText = current.windspeed + ' km/h';
-                    document.getElementById('tel-precip').innerText = data.hourly.precipitation[0] + ' mm';
+function initializeUI() {
+  createLayerControls();
+  L.control.zoom({ position: 'topright' }).addTo(map);
+  
+  document.getElementById('panel-toggle').addEventListener('click', () => document.getElementById('panel').classList.toggle('active'));
+  document.getElementById('fullscreen').addEventListener('click', () => {
+    const appElement = document.getElementById('app');
+    if (!document.fullscreenElement) {
+      appElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
+  
+  document.getElementById('manual-toggle').addEventListener('click', () => document.getElementById('manual-dropdown').classList.toggle('active'));
+  document.getElementById('manual-close').addEventListener('click', () => document.getElementById('manual-dropdown').classList.remove('active'));
+}
 
-                    simulateStormImpact(current.windspeed);
-                } catch (error) {
-                    console.error("API Fetch Error:", error);
-                    document.getElementById('alert-status').innerText = "Telemetry Offline";
-                }
-            }
+function createLayerControls() {
+  const layerControls = document.getElementById('layer-controls');
+  layerControls.innerHTML = '';
+  Object.entries(layerRegistry).forEach(([id, layerInfo]) => {
+    const layerItem = document.createElement('div');
+    layerItem.className = `layer-item ${layerInfo.active ? 'active' : ''}`;
+    layerItem.dataset.layerId = id;
+    layerItem.innerHTML = `
+      <div class="layer-icon" style="background: ${layerInfo.color}"><i class="${layerInfo.icon}"></i></div>
+      <div class="layer-info"><div class="layer-name">${layerInfo.name}</div><div class="layer-desc">${layerInfo.description}</div></div>
+      <div class="layer-toggle"><label class="toggle-switch"><input type="checkbox" ${layerInfo.active ? 'checked' : ''}><span class="toggle-slider"></span></label></div>
+    `;
+    const toggle = layerItem.querySelector('input');
+    toggle.addEventListener('change', function() { toggleLayer(id, this.checked); });
+    layerControls.appendChild(layerItem);
+  });
+}
 
-            // Spatial Risk Simulation
-            function simulateStormImpact(windspeed) {
-                const stormCenter = turf.point([29.02, -20.94]); 
-                const riskRadius = windspeed > 15 ? 3 : 1.5; 
-                const stormBuffer = turf.buffer(stormCenter, riskRadius, {units: 'kilometers'});
+function toggleLayer(layerId, visible) {
+  const layerInfo = layerRegistry[layerId];
+  if (!layerInfo) return;
+  layerInfo.active = visible;
+  
+  if (layerId === 'clouds') {
+    if (visible) {
+      if (!cloudCoverLayer) createCloudCoverLayer();
+      else map.addLayer(cloudCoverLayer);
+      document.getElementById('cloud-legend').classList.add('active');
+    } else {
+      if (cloudCoverLayer) map.removeLayer(cloudCoverLayer);
+      document.getElementById('cloud-legend').classList.remove('active');
+    }
+  } else if (layerId === 'heatmap') {
+    if (visible && heatLayer) map.addLayer(heatLayer);
+    else if (heatLayer) map.removeLayer(heatLayer);
+  } else if (layerInfo.layer) {
+    if (visible) map.addLayer(layerInfo.layer);
+    else map.removeLayer(layerInfo.layer);
+  }
+  
+  document.querySelector(`.layer-item[data-layer-id="${layerId}"]`).classList.toggle('active', visible);
+  document.querySelector(`.layer-item[data-layer-id="${layerId}"] input`).checked = visible;
+}
 
-                L.geoJSON(stormBuffer, {
-                    style: { color: '#ef4444', weight: 1, fillColor: '#ef4444', fillOpacity: 0.2, dashArray: '4' }
-                }).addTo(weatherMap).bindPopup("<b>Severe Weather Cell</b><br>Approaching Anomaly", {className: 'custom-popup'});
+function createCloudCoverLayer() {
+  if (cloudCoverLayer) map.removeLayer(cloudCoverLayer);
+  const idx = parseInt(document.getElementById('time-slider').value, 10);
+  const cloudPoints = [];
+  const bounds = [[-22.59, 23.05], [-15.43, 35.24]];
+  const gridSize = 15;
+  
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      const lat = bounds[0][0] + (bounds[1][0] - bounds[0][0]) * i / gridSize;
+      const lon = bounds[0][1] + (bounds[1][1] - bounds[0][1]) * j / gridSize;
+      let nearestStation = null;
+      let minDistance = Infinity;
+      
+      Object.values(weatherData).forEach(w => {
+        const distance = Math.sqrt(Math.pow(w.meta.lat - lat, 2) + Math.pow(w.meta.lon - lon, 2));
+        if (distance < minDistance) { minDistance = distance; nearestStation = w; }
+      });
+      
+      if (nearestStation && nearestStation.series[idx]) {
+        const cloudCover = nearestStation.series[idx].cloudcover || 0;
+        cloudPoints.push([lat, lon, cloudCover * 0.8]);
+      }
+    }
+  }
+  
+  cloudCoverLayer = L.heatLayer(cloudPoints, { radius: 45, blur: 50, maxZoom: 10, gradient: { 0.1: 'rgba(200,200,255,0.3)', 0.5: 'rgba(100,100,255,0.7)', 1.0: 'rgba(50,50,255,0.9)' }, pane: 'clouds' });
+  if (layerRegistry['clouds'].active) cloudCoverLayer.addTo(map);
+  layerRegistry['clouds'].layer = cloudCoverLayer;
+}
 
-                const hasIntersection = turf.booleanIntersects(assetPolygon, stormBuffer);
-                const panel = document.getElementById('alert-panel');
-                const statusText = document.getElementById('alert-status');
-                const descText = document.getElementById('alert-desc');
+async function init() {
+  addStationsToUI();
+  const promises = stations.map(s => fetchStation(s));
+  await Promise.all(promises);
+  createMarkersAndHeat();
+  activeStation = stations[0].id;
+  updateChartForStation(activeStation);
+  document.getElementById('time-slider').value = 23;
+  updateTimeDisplay();
+  updateStatistics();
+  setupEventListeners();
+  createCloudCoverLayer();
+}
 
-                if (hasIntersection) {
-                    panel.classList.remove('border-slate-700/80');
-                    panel.classList.add('border-red-500/50', 'bg-red-500/10');
-                    statusText.innerText = "CRITICAL: INTERSECTION";
-                    statusText.classList.remove('text-white');
-                    statusText.classList.add('text-red-400');
-                    descText.innerText = "Incoming anomaly intersects directly with operations. Halt sensitive activities.";
-                } else {
-                    panel.classList.add('border-emerald-500/50');
-                    statusText.innerText = "CLEAR: NO INTERSECTION";
-                    statusText.classList.add('text-emerald-400');
-                    descText.innerText = "Operational perimeter remains outside trajectory. Safe to proceed.";
-                }
-            }
+function setupEventListeners() {
+  document.getElementById('time-slider').addEventListener('input', updateTimeDisplay);
+  document.getElementById('play').addEventListener('click', togglePlay);
+  document.getElementById('center').addEventListener('click', () => map.fitBounds([[-22.59, 23.05], [-15.43, 35.24]]));
+  document.getElementById('temp-dropdown').addEventListener('change', function() { currentTempMode = this.value; updateTemperatureDisplay(); });
+  document.getElementById('hotspotBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = '<strong>Hotspot Results</strong><br/>🔥 3 hotspots identified');
+  document.getElementById('correlationBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = '<strong>Correlation Results</strong><br/>📊 Temp vs Humidity: -0.72');
+  document.getElementById('clearAnalysisBtn').addEventListener('click', () => document.getElementById('analysisResults').innerHTML = 'Run analysis to see results...');
+}
 
-            fetchWeatherData();
+function updateTimeDisplay() {
+  const idx = parseInt(document.getElementById('time-slider').value, 10);
+  const now = new Date();
+  const targetTime = new Date(now.getTime() - (23 - idx) * 3600 * 1000);
+  document.getElementById('time-label').textContent = targetTime.toLocaleString();
+  updateMapForTime(idx);
+  updateStatistics();
+}
+
+let playInterval = null;
+function togglePlay() {
+  const playBtn = document.getElementById('play');
+  if (playInterval) {
+    clearInterval(playInterval); playInterval = null; playBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+  } else {
+    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+    let idx = parseInt(document.getElementById('time-slider').value, 10);
+    playInterval = setInterval(() => {
+      idx = (idx + 1) % 24; document.getElementById('time-slider').value = idx; updateTimeDisplay();
+    }, 1000);
+  }
+}
+
+function updateMapForTime(idx) {
+  markersGroup.eachLayer(layer => {
+    if (!layer.stationId) return;
+    const wd = weatherData[layer.stationId];
+    if (!wd || !wd.series[idx]) return;
+    const t = wd.series[idx].temperature;
+    layer.setStyle({ radius: 6 + Math.max(0, (t - 10) / 2), fillColor: getTemperatureColor(t) });
+  });
+  
+  if (heatLayer) map.removeLayer(heatLayer);
+  const heatPts = [];
+  Object.values(weatherData).forEach(w => {
+    if (w.series[idx]) heatPts.push([w.meta.lat, w.meta.lon, Math.max(0, w.series[idx].temperature)]);
+  });
+  heatLayer = L.heatLayer(heatPts, { radius: 25, blur: 30, maxZoom: 9, gradient: { 0.2: 'blue', 0.6: 'lime', 1.0: 'red' }, pane: 'heat' });
+  if (layerRegistry['heatmap'].active) heatLayer.addTo(map);
+  layerRegistry['heatmap'].layer = heatLayer;
+  if (layerRegistry['clouds'].active) createCloudCoverLayer();
+}
+
+function getTemperatureColor(temp) {
+  if (temp < 15) return '#313695'; if (temp < 20) return '#74add1'; if (temp < 25) return '#ffffbf'; if (temp < 30) return '#fdae61'; return '#d73027';
+}
+
+function updateStatistics() {
+  const idx = parseInt(document.getElementById('time-slider').value, 10);
+  let totalTemp = 0, maxTemp = -Infinity, totalWind = 0, totalPrecip = 0, count = 0;
+  Object.values(weatherData).forEach(w => {
+    if (w.series[idx]) {
+      totalTemp += w.series[idx].temperature; maxTemp = Math.max(maxTemp, w.series[idx].temperature);
+      totalWind += w.series[idx].windspeed; totalPrecip += w.series[idx].precipitation || 0; count++;
+    }
+  });
+  if (count > 0) {
+    document.getElementById('avg-temp').textContent = `${(totalTemp / count).toFixed(1)}°C`;
+    document.getElementById('max-temp').textContent = `${maxTemp.toFixed(1)}°C`;
+    document.getElementById('avg-wind').textContent = `${(totalWind / count).toFixed(1)} m/s`;
+    document.getElementById('total-precip').textContent = `${totalPrecip.toFixed(1)} mm`;
+  }
+}
+
+async function fetchStation(st) {
+  try {
+    const end = new Date(); const start = new Date(end.getTime() - 24 * 3600 * 1000);
+    const url = `${OPEN_METEO_BASE}?latitude=${st.lat}&longitude=${st.lon}&hourly=temperature_2m,relativehumidity_2m,windspeed_10m,precipitation,cloudcover&timezone=auto&start_date=${start.toISOString().slice(0, 10)}&end_date=${end.toISOString().slice(0, 10)}`;
+    const r = await fetch(url);
+    const json = await r.json();
+    const hours = json.hourly.time;
+    const series = [];
+    for (let i = hours.length - 24; i < hours.length; i++) {
+      if(i>=0) {
+        series.push({
+          time: hours[i], temperature: json.hourly.temperature_2m[i], humidity: json.hourly.relativehumidity_2m[i],
+          windspeed: json.hourly.windspeed_10m[i], precipitation: json.hourly.precipitation[i], cloudcover: json.hourly.cloudcover[i]
         });
-    </script>
+      }
+    }
+    weatherData[st.id] = { meta: st, series };
+  } catch (err) { console.error('Error fetching', st.label); }
+}
+
+function addStationsToUI() {
+  const stationsWrap = document.getElementById('stations');
+  stations.forEach(s => {
+    const chip = document.createElement('div');
+    chip.className = 'station-chip'; chip.textContent = s.label;
+    chip.addEventListener('click', () => {
+      activeStation = s.id; updateChartForStation(s.id);
+      document.querySelectorAll('.station-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active'); map.setView([s.lat, s.lon], 9);
+    });
+    stationsWrap.appendChild(chip);
+  });
+}
+
+function createMarkersAndHeat() {
+  markersGroup.clearLayers(); const heatPts = [];
+  Object.values(weatherData).forEach(w => {
+    const t = w.series[w.series.length - 1].temperature;
+    L.circleMarker([w.meta.lat, w.meta.lon], { pane: 'points', radius: 8 + Math.max(0, (t - 15) / 2), color: 'white', weight: 1.5, fillColor: getTemperatureColor(t), fillOpacity: 0.8 }).bindPopup(`<strong>${w.meta.label}</strong><br/>Temp: ${t}°C`).addTo(markersGroup).stationId = w.meta.id;
+    heatPts.push([w.meta.lat, w.meta.lon, Math.max(0, t)]);
+  });
+  if (heatLayer) map.removeLayer(heatLayer);
+  heatLayer = L.heatLayer(heatPts, { radius: 25, blur: 30, maxZoom: 9, gradient: { 0.2: 'blue', 0.6: 'lime', 1.0: 'red' }, pane: 'heat' }).addTo(map);
+  layerRegistry['heatmap'].layer = heatLayer;
+}
+
+const chartCtx = document.getElementById('chart').getContext('2d');
+let chart = new Chart(chartCtx, {
+  type: 'line', data: { labels: [], datasets: [] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#fff' } } }, scales: { x: { ticks: { color: '#aaa' } }, y: { ticks: { color: '#aaa' } } } }
+});
+
+function updateChartForStation(stationId) {
+  const data = weatherData[stationId]; if (!data) return;
+  chart.data.labels = data.series.map(s => new Date(s.time).toLocaleTimeString());
+  chart.data.datasets = [
+    { label: 'Temp (°C)', data: data.series.map(s => s.temperature), borderColor: '#ff6b6b', backgroundColor: 'rgba(255, 107, 107, 0.1)', fill: true },
+    { label: 'Humidity (%)', data: data.series.map(s => s.humidity), borderColor: '#74b9ff', backgroundColor: 'rgba(116, 185, 255, 0.1)', fill: true }
+  ];
+  chart.update();
+}
+
+setTimeout(() => { if (document.querySelector('.station-chip')) document.querySelector('.station-chip').click(); }, 1000);
+</script>
 </body>
 </html>

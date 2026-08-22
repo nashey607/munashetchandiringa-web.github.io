@@ -4,7 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Munashe Chandiringa | GIS &amp; Earth Observation Portfolio</title>
-<meta name="description" content="Portfolio of Munashe T. Chandiringa — GIS, remote sensing and geospatial software projects." />
+<meta name="description" content="Portfolio of Munashe T. Chandiringa — GIS, remote sensing and geospatial software projects. Each project states the problem, the solution and the economic value." />
+<meta property="og:title" content="Munashe Chandiringa | GIS & Earth Observation Portfolio" />
+<meta property="og:description" content="Geospatial projects with clear problem, solution and revenue logic — Nyanga vegetation DSS, weather Web GIS, AppSheet field app, YOLOv8 crop detector." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   :root{
@@ -23,9 +27,9 @@
   /* NAV */
   nav{position:sticky;top:0;z-index:50;background:rgba(15,28,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
-  .brand{font-weight:700;color:var(--secondary);letter-spacing:.4px;cursor:pointer}
+  .brand{font-weight:700;color:var(--secondary);letter-spacing:.4px}
   .navlinks{display:flex;gap:18px;flex-wrap:wrap}
-  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:var(--t)}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
   .navlinks a:hover{color:var(--primary)}
   @media(max-width:760px){.navlinks{display:none}}
 
@@ -53,7 +57,7 @@
   #projectGrid{grid-template-columns:repeat(auto-fit,minmax(460px,1fr));align-items:start}
   .g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 
-  .card{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:var(--t);cursor:pointer}
+  .card{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:var(--t)}
   .card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px);box-shadow:var(--shadow)}
   .card h3{color:var(--primary);font-size:19px;margin-bottom:6px}
   .card .meta{font-size:12.5px;color:var(--muted);margin-bottom:14px}
@@ -90,17 +94,7 @@
         display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--muted);
         font-size:13px;text-align:center;padding:14px;margin-top:14px}
   .shot i{font-size:26px;color:var(--primary)}
-
-  /* MODAL POPUP WINDOW */
-  .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:var(--t);backdrop-filter:blur(5px)}
-  .modal-overlay.show{opacity:1;pointer-events:auto}
-  .modal-content{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);max-width:850px;width:100%;max-height:90vh;overflow-y:auto;padding:35px;position:relative;box-shadow:var(--shadow)}
-  .modal-close{position:absolute;top:20px;right:25px;background:rgba(255,255,255,0.1);border:none;color:var(--light);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--t)}
-  .modal-close:hover{background:var(--primary);color:#04141d}
-  .modal-body h2{color:var(--primary);margin-bottom:10px;font-size:24px}
-  .modal-body .meta{font-size:13px;color:var(--muted);margin-bottom:16px}
-  .modal-map-preview{width:100%;height:280px;background:rgba(0,0,0,0.4);border:1px solid var(--line);border-radius:8px;margin-top:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--muted);gap:10px;text-align:center;padding:20px}
-  .modal-map-preview i{font-size:40px;color:var(--secondary)}
+  .shot img{width:100%;height:100%;object-fit:cover;border-radius:8px}
 
   .timeline{border-left:2px solid var(--line);padding-left:22px}
   .tl-item{position:relative;padding-bottom:22px}
@@ -125,7 +119,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-earth-africa"></i> Munashe Chandiringa</div>
+    <div class="brand"><i class="fa-solid fa-earth-africa"></i> Munashe Chandiringa</div>
     <div class="navlinks">
       <a href="#profile">Profile</a>
       <a href="#skills">Skills</a>
@@ -148,8 +142,8 @@
       <span><i class="fa-solid fa-phone"></i> +263 714 316 225</span>
     </p>
     <div class="cta">
-      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-diagram-project"></i> View Projects</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('cv').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-file-lines"></i> Read CV</button>
+      <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-diagram-project"></i> View Projects</a>
+      <a class="btn btn-ghost" href="#cv"><i class="fa-solid fa-file-lines"></i> Read CV</a>
       <a class="btn btn-ghost" href="https://www.appsheet.com/start/a86a2f46-86f4-408f-b899-518a2fbb1e1a" target="_blank" rel="noopener"><i class="fa-solid fa-mobile-screen"></i> Live Field App</a>
     </div>
   </div>
@@ -161,12 +155,12 @@
     <h2><i class="fa-solid fa-user-tie"></i> Professional Profile</h2>
     <p class="lead">What I do, in one line: I turn satellite imagery and field data into decisions that save organisations money.</p>
     <div class="grid g2">
-      <div class="card" onclick="openInfoModal('Profile Details', 'Highly analytical Geographical Information Science and Earth Observation graduate (BSc Hons, University of Zimbabwe) with hands-on experience in GPS/GNSS surveying, spatial data collection, geospatial database design and multi-temporal remote sensing. I build end-to-end systems: field data capture → cloud processing → machine-learning analysis → dashboard decision tools.')">
+      <div class="card">
         <p style="font-size:15px;color:#d6e3ec">
           Highly analytical Geographical Information Science and Earth Observation graduate (BSc Hons, University of Zimbabwe)
           with hands-on experience in GPS/GNSS surveying, spatial data collection, geospatial database design and
           multi-temporal remote sensing. I build end-to-end systems: field data capture → cloud processing →
-          machine-learning analysis → a dashboard a non-technical manager can actually use. <em>(Click card for summary)</em>
+          machine-learning analysis → a dashboard a non-technical manager can actually use.
         </p>
         <div class="tags">
           <span class="tag">Google Earth Engine</span><span class="tag">Python</span><span class="tag">QGIS / ArcGIS Pro</span>
@@ -174,10 +168,10 @@
         </div>
       </div>
       <div class="grid g3">
-        <div class="card kpi" onclick="openInfoModal('Metric: 21 Years Modelled', 'MODIS, Landsat 5, 7, 8, 9 and Sentinel-2 satellite time-series spanning 2003 to 2023 harmonised and analysed for vegetation and climate trend evaluation.')"><div class="n">21</div><div class="l">Years of satellite time-series modelled (2003–2023)</div></div>
-        <div class="card kpi" onclick="openInfoModal('Metric: 4 Climate Scenarios', 'Shared Socioeconomic Pathways (SSP1-2.6, SSP2-4.5, SSP3-7.0, SSP5-8.5) projected forward to evaluate future environmental stress and carbon dynamics.')"><div class="n">4</div><div class="l">SSP climate scenarios projected to 2063</div></div>
-        <div class="card kpi" onclick="openInfoModal('Metric: 6 Geospatial Systems', 'Production-grade applications built including Nyanga DSS, Weather Risk Web GIS, AppSheet Field Collector, YOLOv8 Crop Detector, Landscape Metrics, and PostGIS Geodatabase.')"><div class="n">6</div><div class="l">Production-grade geospatial systems built</div></div>
-        <div class="card kpi" onclick="openInfoModal('Metric: Tech Stacks', 'Multi-disciplinary programming stack covering Python (Rasterio, GDAL, GeoPandas, YOLOv8), JavaScript (Leaflet, Turf.js), and spatial databases (PostGIS).')"><div class="n">3</div><div class="l">Languages/stacks: Python, JavaScript (GEE + Web), SQL</div></div>
+        <div class="card kpi"><div class="n">21</div><div class="l">Years of satellite time-series modelled (2003–2023)</div></div>
+        <div class="card kpi"><div class="n">4</div><div class="l">SSP climate scenarios projected to 2063</div></div>
+        <div class="card kpi"><div class="n">6</div><div class="l">Production-grade geospatial systems built</div></div>
+        <div class="card kpi"><div class="n">3</div><div class="l">Languages/stacks: Python, JavaScript (GEE + Web), SQL</div></div>
       </div>
     </div>
   </div>
@@ -187,24 +181,24 @@
 <section id="skills">
   <div class="wrap">
     <h2><i class="fa-solid fa-layer-group"></i> Technical Expertise</h2>
-    <p class="lead">Simple front-ends, serious back-ends. Click any card to inspect stack details.</p>
+    <p class="lead">Simple front-ends, serious back-ends.</p>
     <div class="grid g2">
-      <div class="card" onclick="openInfoModal('Remote Sensing & Survey Stack', 'Software: QGIS, ArcGIS Pro, ArcView, Google Earth Engine, ILWIS.\nImagery: Landsat 5/7/8/9, Sentinel-2, MODIS, CHIRPS, ERA5-Land, SRTM.\nMethods: LULC classification, kNDVI / EVI / NDWI, Mann-Kendall & Theil-Sen trends, hotspot analysis.\nSurvey: GPS/GNSS field capture, topology validation, geodatabase design.')">
+      <div class="card">
         <h3>Geospatial &amp; Remote Sensing</h3>
         <ul class="stack-list">
-          <li><b>Software:</b> QGIS, ArcGIS Pro, ArcView, Google Earth Engine, ILWIS[cite: 4]</li>
-          <li><b>Imagery:</b> Landsat 5/7/8/9, Sentinel-2, MODIS, CHIRPS, ERA5-Land, SRTM[cite: 4]</li>
-          <li><b>Methods:</b> LULC classification, kNDVI / EVI / NDWI, Mann-Kendall &amp; Theil-Sen trends[cite: 4]</li>
-          <li><b>Survey:</b> GPS/GNSS field survey, topology validation, geodatabase design[cite: 4]</li>
+          <li><b>Software:</b> QGIS, ArcGIS Pro, ArcView, Google Earth Engine, ILWIS</li>
+          <li><b>Imagery:</b> Landsat 5/7/8/9, Sentinel-2, MODIS, CHIRPS, ERA5-Land, SRTM</li>
+          <li><b>Methods:</b> LULC classification, kNDVI / EVI / NDWI, Mann-Kendall &amp; Theil-Sen trends, phenometrics, hotspot (Getis-Ord Gi*)</li>
+          <li><b>Survey:</b> GPS/GNSS field survey, topology validation, geodatabase design</li>
         </ul>
       </div>
-      <div class="card" onclick="openInfoModal('Programming & Data Engineering Stack', 'Python: Rasterio, GDAL/OGR, GeoPandas, NumPy, Pandas, Matplotlib, Shapely, Ultralytics YOLO, OpenCV.\nWeb: JavaScript, Leaflet, Turf.js, Chart.js, HTML/CSS, REST APIs.\nData: SQL, PostGIS, spatial joins, zonal statistics, COG/GeoTIFF pipelines.\nML: Random Forest regression/classification, train-test validation (R², RMSE, MAE), variable importance.')">
+      <div class="card">
         <h3>Programming &amp; Data Engineering</h3>
         <ul class="stack-list">
-          <li><b>Python:</b> Rasterio, GDAL/OGR, GeoPandas, NumPy, Pandas, Matplotlib, Ultralytics YOLO[cite: 4]</li>
-          <li><b>Web:</b> JavaScript, Leaflet, Turf.js, Chart.js, HTML/CSS, REST APIs[cite: 4]</li>
-          <li><b>Data:</b> SQL, PostGIS, spatial joins, zonal statistics, COG/GeoTIFF pipelines[cite: 4]</li>
-          <li><b>ML:</b> Random Forest regression/classification, R², RMSE, MAE, variable importance[cite: 4]</li>
+          <li><b>Python:</b> Rasterio, GDAL/OGR, GeoPandas, NumPy, Pandas, Matplotlib, Shapely, Ultralytics YOLO, OpenCV</li>
+          <li><b>Web:</b> JavaScript, Leaflet, Turf.js, Chart.js, HTML/CSS, REST APIs</li>
+          <li><b>Data:</b> SQL, PostGIS, spatial joins, zonal statistics, COG/GeoTIFF pipelines</li>
+          <li><b>ML:</b> Random Forest regression/classification, train–test validation (R², RMSE, MAE, bias), variable importance</li>
         </ul>
       </div>
     </div>
@@ -215,7 +209,9 @@
 <section id="projects">
   <div class="wrap">
     <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
-    <p class="lead">Click any project card to open its interactive view, complete with data breakdowns and map visuals[cite: 4].</p>
+    <p class="lead">Every project below is presented the same way: <b style="color:var(--primary)">the Problem</b> ·
+      <b style="color:var(--secondary)">the Solution I built</b> · <b style="color:var(--accent)">the Economic Value / how it makes money</b>.
+      <br>Source-code links are placeholders — replace each <code>href</code> with your real GitHub repository URL once pushed.</p>
 
     <div class="filters" id="filters">
       <span class="chip active" data-f="all">All</span>
@@ -228,91 +224,199 @@
     <div class="grid g2" id="projectGrid">
 
       <!-- 1. DISSERTATION -->
-      <article class="card proj" data-cat="rs ml" onclick="openProjectModal('Nyanga Vegetation Decision Support System', 'Nyanga National Park, Zimbabwe · 2003–2023 · Supervisor: Ms. K. Chirenje', 'Google Earth Engine + Python', 'kNDVI, EVI, NDWI, Random Forest, SSP126-585', 'Park managers in rugged montane terrain have no objective, spatially explicit way to know where vegetation is degrading, why, or what it will look like under future climate. Decisions rely on patrol anecdotes, and standard NDVI saturates and is distorted by topographic shadows on steep slopes.', 'An automated 21-year monitoring and projection engine with an intuitive interface:\n• Harmonised Landsat & Sentinel archive with cloud/shadow masking.\n• Non-linear kNDVI (plus EVI, NDWI) to defeat saturation and terrain-shadow bias.\n• Theil-Sen / Mann-Kendall trend surfaces classified into greening, stable, and browning zones.\n• Random Forest driver model over 20+ topo-climatic predictors with rigorous train/test validation.\n• Forward projections under SSP1-2.6 to SSP5-8.5 to 2063 with CO₂-fertilisation logic.', 'Replaces a recurring, expensive consultancy with a reusable tool, saving field costs and unlocking carbon credit/REDD+ and ESG funding.', 'assets/kndvi-trend.png')">
-        <h3><i class="fa-solid fa-mountain-sun"></i> Nyanga Vegetation Decision Support System <span style="font-size:12px;color:var(--secondary)">· Flagship / BSc Hons</span></h3>
-        <div class="meta">Nyanga National Park, Zimbabwe · 2003–2023 · Supervisor: Ms. K. Chirenje[cite: 4]</div>
-        <div class="tags"><span class="tag">kNDVI</span><span class="tag">EVI</span><span class="tag">Random Forest</span><span class="tag">GEE JavaScript</span></div>
+      <article class="card proj" data-cat="rs ml">
+        <h3><i class="fa-solid fa-mountain-sun"></i> Nyanga Vegetation Decision Support System <span style="font-size:12px;color:var(--secondary)">· Flagship / BSc Hons Dissertation</span></h3>
+        <div class="meta">Nyanga National Park, Zimbabwe · 2003–2023 · Supervisor: Ms. K. Chirenje · Google Earth Engine + Python</div>
+        <div class="tags"><span class="tag">kNDVI</span><span class="tag">EVI</span><span class="tag">NDWI</span><span class="tag">Random Forest</span><span class="tag">SSP126–585</span><span class="tag">GEE JavaScript</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Park managers lack spatially explicit vegetation degradation insights in steep, shadowed montane terrain[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Automated 21-year Google Earth Engine pipeline featuring kNDVI and Random Forest climate forecasting[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Directly reduces field survey costs and unlocks carbon/ESG funding[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Park managers in rugged montane terrain have no objective, spatially explicit way to know <i>where</i> vegetation is degrading, <i>why</i>, or what it will look like under future climate. Decisions are made on patrol anecdote, and standard NDVI saturates and is distorted by topographic shadow on Nyanga's steep slopes.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>An automated 21-year monitoring and projection engine with a click-and-go interface:</p>
+            <ul>
+              <li>Harmonised Landsat 5/7/8/9 + Sentinel-2 archive with cloud/shadow masking and atmospheric correction</li>
+              <li>Non-linear <b>kNDVI</b> (plus EVI, NDWI) to defeat saturation and terrain-shadow bias</li>
+              <li>Theil–Sen / Mann-Kendall trend surfaces classified into greening, stable and browning zones</li>
+              <li><b>Random Forest</b> driver model over 20+ topo-climatic predictors (elevation, slope, aspect, TWI, rainfall, VPD, temperature, fire, night-lights, distance-to-road) with train/test validation (R², RMSE, MAE, bias)</li>
+              <li>Forward projections under <b>SSP1-2.6, 2-4.5, 3-7.0, 5-8.5</b> to 2063, with Monte-Carlo uncertainty and CO₂-fertilisation logic</li>
+              <li>Guided 4-step decision flow: pick a question → pick a year → click a hotspot → get ranked management actions (prescribed burn, restoration, drought mitigation, erosion control), with a baseline-vs-future comparison toggle</li>
+            </ul>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <p>Replaces a recurring, expensive consultancy with a reusable tool.</p>
+            <ul>
+              <li><b>Cost avoidance:</b> a comparable 20-year degradation baseline study is normally outsourced; this runs free on Earth Engine and repeats in minutes.</li>
+              <li><b>Targeted spend:</b> restoration and fire budgets are directed only at the ~14% browning area instead of the whole park — a direct reduction in field cost per hectare of impact.</li>
+              <li><b>Sellable product:</b> the same engine re-points at any protected area, catchment, farm block or mining concession — a licensable SaaS / per-site monitoring subscription.</li>
+              <li><b>Unlocks funding:</b> quantified, verifiable trend and carbon-relevant vegetation evidence is exactly what donors, REDD+/carbon-credit verifiers and ESG auditors require before disbursing.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: per-site monitoring subscription + baseline verification[cite: 4].</div>
-        <div class="shot"><i class="fa-solid fa-map"></i><span>View Project Data &amp; Maps</span></div>
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: per-site monitoring subscription + baseline/verification reporting for carbon &amp; ESG.</div>
+        <div class="shot"><i class="fa-solid fa-image"></i><span>Insert: kNDVI trend map + RF variable-importance chart + SSP delta panel</span></div>
+        <div style="margin-top:6px">
+          <a class="btn btn-ghost" href="./assets/Munashe_Chandiringa_Dissertation.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Read Full Dissertation (PDF)</a>
+          <a class="btn btn-ghost" href="https://github.com/munashechandiringa/nyanga-vegetation-dss" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
+        </div>
       </article>
 
       <!-- 2. WEATHER DASHBOARD -->
-      <article class="card proj" data-cat="web" onclick="openProjectModal('Zimbabwe Real-Time Weather & Asset Risk Dashboard', 'Web GIS · Leaflet + Turf.js + Chart.js', 'Leaflet, Turf.js, Chart.js', 'Heatmaps, Shapefile upload, Spatial Intersection', 'Weather data arrives as raw numbers on separate sites. Operators cannot see on one screen which assets or crews are currently exposed to heat, wind, or storm hazards.', 'An asset-centric environmental risk engine in the browser:\n• Live station network with clustering and meteorological heat layers.\n• 24-hour time slider with play animation.\n• Turf.js spatial intersection: drag-and-drop shapefiles to instantly check asset vulnerability.\n• Integrated charts, KPI cards, and user guides.', 'Prevents asset losses through early alerts, powers index-based insurance underwriting, and operates with zero infrastructure cost.', 'assets/arcgis-layout.png')">
+      <article class="card proj" data-cat="web">
         <h3><i class="fa-solid fa-cloud-bolt"></i> Zimbabwe Real-Time Weather &amp; Asset Risk Dashboard</h3>
-        <div class="meta">Web GIS · Leaflet + Turf.js + Chart.js · 24-hour rolling analysis[cite: 4]</div>
-        <div class="tags"><span class="tag">Leaflet</span><span class="tag">Turf.js</span><span class="tag">Heatmaps</span><span class="tag">Shapefile upload</span></div>
+        <div class="meta">Web GIS · Leaflet + Turf.js + Chart.js · 24-hour rolling meteorological analysis</div>
+        <div class="tags"><span class="tag">Leaflet</span><span class="tag">Turf.js</span><span class="tag">Heatmaps</span><span class="tag">Shapefile upload</span><span class="tag">Chart.js</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Operators cannot visualize real-time asset exposure against rolling meteorological hazards[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Interactive browser Web GIS with client-side shapefile parsing and Turf.js spatial overlays[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Prevents weather-related operational losses and licenses risk data to insurers[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Weather data reaches operators as raw numbers on separate websites. Nobody can see, on one screen, <i>which of my assets, fields or crews is currently exposed</i> to heat, wind, cloud or rainfall — so response is reactive and losses are absorbed after the fact.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>An asset-centric environmental risk engine in the browser — no install, no GIS licence:</p>
+            <ul>
+              <li>Live station network with clustering, wind barbs, temperature/cloud/precipitation heat layers</li>
+              <li>24-hour time slider with play animation for temperature (current / min / max / mean)</li>
+              <li><b>Turf.js spatial intersection</b>: drag in your own shapefile ZIP (read client-side with shpjs) and the dashboard reports which of your polygons fall inside a hazard zone</li>
+              <li>Hotspot and correlation analysis tools + station time-series charts and summary KPI cards</li>
+              <li>Built-in legend and user manual so a non-GIS operator can run it unaided</li>
+            </ul>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <ul>
+              <li><b>Loss prevention:</b> early frost/heat/storm warnings let farms and mines protect crops, livestock and outdoor crews — every avoided incident is direct saved cost.</li>
+              <li><b>Insurance &amp; agri-finance:</b> station-verified weather histories underpin index-based insurance pricing and claims validation — a paid data service.</li>
+              <li><b>Subscription SaaS:</b> tiered per-asset monthly pricing for farms, logistics, mining and event operators; enterprise tier adds custom shapefile asset registers and alerting.</li>
+              <li><b>Zero infrastructure cost:</b> fully client-side, hosts free on GitHub Pages — margin is almost entirely retained.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: SaaS per-asset subscription + risk data licensing[cite: 4].</div>
-        <div style="margin-top:10px" onclick="event.stopPropagation()">
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: SaaS per-asset subscription + weather-risk data licensing to insurers.</div>
+        <div style="margin-top:6px">
           <a class="btn btn-primary" href="./weather-dashboard/index.html"><i class="fa-solid fa-up-right-from-square"></i> Open Dashboard</a>
+          <a class="btn btn-ghost" href="https://github.com/munashechandiringa/zw-weather-dashboard" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
         </div>
       </article>
 
       <!-- 3. APPSHEET -->
-      <article class="card proj" data-cat="field" onclick="openProjectModal('Meteorological Field Data Collection Application', 'AppSheet + Google Sheets Backend', 'AppSheet, Cloud DB', 'Offline Capture, GPS Stamping, Validated Forms', 'Daily meteorological readings captured on paper arrived late with transcription errors, missing GPS coordinates, and zero audit trails.', 'A configured digital mobile and browser capture app:\n• Validated forms blocking bad data at the source.\n• Automatic GPS coordinates, timestamps, and observer stamps.\n• Offline capture with automatic sync upon reconnection.\n• Live cloud database feeding downstream dashboards instantly.', 'Eliminates data-entry labour, secures audit-ready datasets, and deploys rapidly as a high-margin consulting deliverable.', 'assets/python-layout.png')">
+      <article class="card proj" data-cat="field">
         <h3><i class="fa-solid fa-mobile-screen-button"></i> Meteorological Field Data Collection Application</h3>
-        <div class="meta">AppSheet + Google Sheets backend · Mobile &amp; browser app[cite: 4]</div>
+        <div class="meta">AppSheet + Google Sheets backend · Operational mobile &amp; browser app · 2025</div>
         <div class="tags"><span class="tag">AppSheet</span><span class="tag">Cloud DB</span><span class="tag">Offline capture</span><span class="tag">GPS stamping</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Paper-based meteorological logging caused transcription delays, errors, and missing location metadata[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Low-code mobile capture app with automated GPS stamping, offline sync, and cloud DB[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Eliminates data entry clerks and creates clean, sellable foundational spatial assets[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Daily meteorological readings were captured on paper, re-typed later, and arrived days late with transcription errors, missing GPS positions and no audit trail — making the record useless for near-real-time decisions or for research-grade analysis.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>A configured, structured digital capture app that works on any phone or browser:</p>
+            <ul>
+              <li>Validated forms (ranges, required fields, controlled vocabularies) that block bad data at source</li>
+              <li>Automatic GPS coordinates, timestamp and observer ID on every record</li>
+              <li>Offline capture with sync-on-connection for remote stations</li>
+              <li>Live cloud database that feeds dashboards and the analysis pipelines directly — no re-typing</li>
+              <li>Browser access with zero install, plus one-tap mobile installation</li>
+            </ul>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <ul>
+              <li><b>Labour saved:</b> eliminates the data-entry clerk step and the error-correction loop — recurring salary and time savings.</li>
+              <li><b>Data becomes an asset:</b> clean, geo-tagged, timestamped records can be sold, published or used to satisfy regulatory reporting; paper cannot.</li>
+              <li><b>Fast to deploy, easy to bill:</b> low-code build means a client app can be delivered in days — a high-margin consulting deliverable with an ongoing support retainer.</li>
+              <li><b>Feeds everything else:</b> supplies the ground-truth that validates the satellite and dashboard products above, raising the value of the whole stack.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: build fee + monthly support retainer[cite: 4].</div>
-        <div style="margin-top:10px" onclick="event.stopPropagation()">
-          <a class="btn btn-primary" href="https://www.appsheet.com/start/a86a2f46-86f4-408f-b899-518a2fbb1e1a" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Open App</a>
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: build fee + monthly support retainer per deployed field team.</div>
+        <div style="margin-top:6px">
+          <a class="btn btn-primary" href="https://www.appsheet.com/start/a86a2f46-86f4-408f-b899-518a2fbb1e1a" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> Open in Browser</a>
+          <a class="btn btn-ghost" href="https://www.appsheet.com/newshortcut/a86a2f46-86f4-408f-b899-518a2fbb1e1a" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> Install Mobile App</a>
         </div>
       </article>
 
       <!-- 4. YOLO -->
-      <article class="card proj" data-cat="ml rs" onclick="openProjectModal('YOLOv8 Cabbage Field Detector (Desktop GIS App)', 'Python · Ultralytics YOLOv8 · Rasterio + GeoPandas', 'Python, YOLOv8, OpenCV, Rasterio', 'Object Detection, Geo-referencing, Shapefile Export', 'Counting crops from satellite or drone imagery is done manually — slow, subjective, and impractical for large agricultural scales.', 'A standalone desktop GIS app:\n• Load any trained YOLOv8 .pt model and GeoTIFF raster.\n• Automated bounding-box detection with confidence filters via OpenCV.\n• Rasterio affine transform converts pixel counts directly into georeferenced shapefiles.\n• Clean graphical interface hiding complex computer vision code behind simple buttons.', 'Accurately forecasts yields to optimize harvest logistics and provides a repeatable per-hectare billable service.', 'assets/yolo-detections.png')">
+      <article class="card proj" data-cat="ml rs">
         <h3><i class="fa-solid fa-seedling"></i> YOLOv8 Cabbage Field Detector (Desktop GIS App)</h3>
-        <div class="meta">Python · Ultralytics YOLOv8 · Rasterio + GeoPandas[cite: 4]</div>
-        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">Rasterio</span><span class="tag">GeoPandas</span></div>
+        <div class="meta">Python · Ultralytics YOLOv8 · Rasterio + GeoPandas · CustomTkinter GUI</div>
+        <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">Rasterio</span><span class="tag">GeoPandas</span><span class="tag">Shapefile export</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Manual plant counting in agricultural fields is extremely slow, tedious, and prone to error[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Desktop Python GUI integrating YOLOv8 computer vision with Rasterio spatial referencing[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Drives precise yield forecasting and enables a high-margin per-hectare drone scouting service[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Counting crops and estimating plant population from drone or satellite imagery is done by hand — slow, subjective and impossible at scale. Agronomists need plant counts to forecast yield, but manual counting of a single field can take hours.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>A one-window desktop application that any agronomist can run:</p>
+            <ul>
+              <li>Load a trained YOLOv8 <code>.pt</code> model and a GeoTIFF — press run</li>
+              <li>Object detection over the raster with OpenCV pre-processing and confidence control</li>
+              <li>Pixel detections converted to <b>real-world geometry</b> via the raster affine transform (Rasterio) and written out as a georeferenced shapefile (GeoPandas + Shapely)</li>
+              <li>Total detection count, annotated preview image and Matplotlib summary rendered inside the GUI</li>
+              <li>Complex CV/geospatial back-end hidden behind four buttons — no Python knowledge needed</li>
+            </ul>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <ul>
+              <li><b>Yield forecasting:</b> accurate plant counts drive harvest, labour and transport planning — directly reducing wastage and overtime.</li>
+              <li><b>Priced per hectare:</b> drone survey + automated count is a repeatable service billed per hectare per season, with near-zero marginal cost per extra field.</li>
+              <li><b>Replaces days of manual scouting</b> with minutes of compute — the labour differential is the margin.</li>
+              <li><b>Retrainable:</b> the same pipeline works for maize, tobacco, orchards, livestock or infrastructure assets — one codebase, many markets.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: per-hectare crop counting service + custom retraining[cite: 4].</div>
-        <div class="shot"><i class="fa-solid fa-map"></i><span>View Project Data &amp; Detections</span></div>
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: per-hectare crop-counting service + model retraining for new crops.</div>
+        <p style="font-size:13px;color:var(--secondary);margin-top:10px"><i class="fa-solid fa-circle-check"></i> Field-tested: 613 cabbages counted from a single drone pass, each with a georeferenced bounding box.</p>
+        <div class="shot"><img src="assets/yolo-detections.jpg" alt="YOLOv8 detection output — 613 cabbages counted with bounding boxes" loading="lazy"></div>
+        <div style="margin-top:6px">
+          <a class="btn btn-ghost" href="https://github.com/munashechandiringa/yolov8-cabbage-detector" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
+        </div>
       </article>
 
       <!-- 5. LANDSCAPE METRICS -->
-      <article class="card proj" data-cat="rs" onclick="openProjectModal('Landscape Pattern & Scale-Effect Analysis', 'Spatial ecology · Grain × extent sensitivity', 'Python, FRAGSTATS metrics', 'Class Area, Patch Density, Edge Density', 'Habitat fragmentation figures vary wildly depending on pixel resolution and study extent, often leading conflicting analysts to opposite conclusions.', 'Systematic grain-and-extent sensitivity analysis:\n• Evaluates class area, patch density, and edge density across 6 grain sizes and multiple extents.\n• Generates 28 analytical charts and comprehensive tabular summaries.\n• Delivers defensible, reproducible ecological findings.', 'Ensures environmental impact assessment (EIA) reports survive regulatory and legal challenges without costly rework.', 'assets/rf-importance.png')">
+      <article class="card proj" data-cat="rs">
         <h3><i class="fa-solid fa-shapes"></i> Landscape Pattern &amp; Scale-Effect Analysis</h3>
-        <div class="meta">Spatial ecology · Grain (4–40 m) × extent sensitivity[cite: 4]</div>
-        <div class="tags"><span class="tag">Patch density</span><span class="tag">Edge density</span><span class="tag">Fragmentation</span></div>
+        <div class="meta">Spatial ecology · Grain (4–40 m) × extent sensitivity · Python + FRAGSTATS-style metrics</div>
+        <div class="tags"><span class="tag">Class Area</span><span class="tag">Patch density</span><span class="tag">Edge density</span><span class="tag">Fragmentation</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Habitat fragmentation statistics change drastically with pixel size, causing conflicting EIA conclusions[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Automated Python scaling script computing FRAGSTATS metrics across multiple resolutions[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Delivers bulletproof, regulator-approved biodiversity and fragmentation metrics for paid EIA contracts[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Habitat-fragmentation numbers quoted in reports change dramatically with the pixel size and study extent used — so two analysts can reach opposite conservation conclusions from the same landscape. Nobody quantifies that uncertainty.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>A systematic grain-and-extent sensitivity study: class area, number of patches, mean patch size and edge density computed across six grain sizes and multiple extents, with 28 charts, data tables and a written interpretation of each scaling response, delivered as a reproducible report.</p>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <ul>
+              <li><b>Defensible EIA reports:</b> fragmentation findings that survive regulator and legal challenge — the core deliverable of paid environmental impact assessment work.</li>
+              <li><b>Avoids costly rework:</b> choosing the correct resolution up front prevents a rejected assessment and a repeat survey.</li>
+              <li><b>Methodology IP:</b> the reusable scaling workflow becomes a standard template billed on every subsequent EIA or biodiversity-offset contract.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: EIA / biodiversity-offset consulting deliverable[cite: 4].</div>
-        <div class="shot"><i class="fa-solid fa-map"></i><span>View Scaling Analysis &amp; Charts</span></div>
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: EIA / biodiversity-offset consulting deliverable.</div>
+        <div style="margin-top:6px">
+          <a class="btn btn-ghost" href="https://github.com/munashechandiringa/landscape-scale-effect-analysis" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
+        </div>
       </article>
 
       <!-- 6. FIELD SURVEY -->
-      <article class="card proj" data-cat="field" onclick="openProjectModal('GNSS Field Survey & Geodatabase Design', 'GPS/GNSS capture · Topology validation', 'PostGIS, File Geodatabase, GNSS', 'Topology Rules, Domain Validation, CRS Alignment', 'Organisations maintain scattered, duplicated, and mis-projected spatial files with overlapping boundaries and no single source of truth.', ' Rigorous geodatabase architecture:\n• Standardised UTM 36S (EPSG:32736) coordinate reference alignment.\n• Enforced domains, relationship classes, and automated topology validation rules.\n• Eliminates slivers, gaps, and overlaps to establish an auditable master dataset.', 'Prevents costly boundary disputes and provides clean geometry as the mandatory foundation for all GIS analytics.', 'assets/ssp585-delta.png')">
+      <article class="card proj" data-cat="field">
         <h3><i class="fa-solid fa-satellite-dish"></i> GNSS Field Survey &amp; Geodatabase Design</h3>
-        <div class="meta">GPS/GNSS capture · Topology validation · PostGIS[cite: 4]</div>
+        <div class="meta">GPS/GNSS capture · Topology validation · PostGIS / File geodatabase</div>
         <div class="tags"><span class="tag">GNSS</span><span class="tag">PostGIS</span><span class="tag">Topology</span><span class="tag">QA/QC</span></div>
         <div class="psv">
-          <div class="blk"><div class="lbl">Problem</div><p>Duplicated and mis-projected spatial datasets cause costly land and asset boundary disputes[cite: 4].</p></div>
-          <div class="blk s"><div class="lbl">Solution</div><p>Field GNSS capture ingested into a fully validated PostGIS geodatabase with strict topology rules[cite: 4].</p></div>
-          <div class="blk v"><div class="lbl">Economic Value</div><p>Prevents legal disputes and ensures high-integrity geometry required for all operational decisions[cite: 4].</p></div>
+          <div class="blk"><div class="lbl">Problem</div>
+            <p>Organisations hold scattered, duplicated and mis-projected spatial files with overlapping boundaries and no single source of truth, which causes disputes over land, assets and infrastructure position.</p>
+          </div>
+          <div class="blk s"><div class="lbl">Solution</div>
+            <p>Field GNSS capture to a designed geodatabase: consistent CRS (UTM 36S / EPSG:32736), enforced domains and relationships, topology rules to remove gaps, slivers and overlaps, and documented metadata so the dataset is auditable.</p>
+          </div>
+          <div class="blk v"><div class="lbl">Economic Value — how it earns</div>
+            <ul>
+              <li><b>Prevents boundary and asset disputes</b> — legal costs avoided far exceed the survey fee.</li>
+              <li><b>Billable per-point / per-day survey work</b> with a geodatabase build-out as an added-value deliverable.</li>
+              <li><b>Enables every downstream product:</b> clean geometry is the precondition for the dashboards, models and detection services above.</li>
+            </ul>
+          </div>
         </div>
-        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: day-rate survey + fixed-fee geodatabase design[cite: 4].</div>
-        <div class="shot"><i class="fa-solid fa-map"></i><span>View Geodatabase Schema &amp; Maps</span></div>
+        <div class="money"><i class="fa-solid fa-sack-dollar"></i> Revenue model: day-rate survey + fixed-fee geodatabase design.</div>
+        <div style="margin-top:6px">
+          <a class="btn btn-ghost" href="https://github.com/munashechandiringa/gnss-geodatabase-design" target="_blank" rel="noopener" data-repo><i class="fa-brands fa-github"></i> Source</a>
+        </div>
       </article>
 
     </div>
@@ -323,32 +427,14 @@
 <section id="gallery">
   <div class="wrap">
     <h2><i class="fa-solid fa-map"></i> Map Gallery &amp; Cartographic Output</h2>
-    <p class="lead">Click any map preview to inspect full-resolution cartography[cite: 4].</p>
+    <p class="lead">Drop your exported PNG/JPG files into <code>/assets</code> and swap the <code>src</code> in each tile.</p>
     <div class="grid g3">
-      <div class="card" onclick="openMapModal('ArcGIS Pro Stability Index Map', 'assets/arcgis-layout.png', 'Advanced cartographic layout generated in ArcGIS Pro displaying terrain stability classifications and multi-sensor overlays for Nyanga National Park.')">
-        <h3>ArcGIS Pro Layout</h3>
-        <div class="shot"><i class="fa-solid fa-image"></i><span>Click to view map asset</span></div>
-      </div>
-      <div class="card" onclick="openMapModal('Python Matplotlib Map Output', 'assets/python-layout.png', 'Automated map layout generated directly via Python matplotlib and cartopy, featuring custom legends, scale bars, and grid graticules.')">
-        <h3>Python / Matplotlib Map</h3>
-        <div class="shot"><i class="fa-solid fa-image"></i><span>Click to view map asset</span></div>
-      </div>
-      <div class="card" onclick="openMapModal('kNDVI Trend Surface Map', 'assets/kndvi-trend.png', 'Kernel Normalized Difference Vegetation Index (kNDVI) 21-year trend surface highlighting statistically significant greening and browning zones.')">
-        <h3>kNDVI Trend Surface</h3>
-        <div class="shot"><i class="fa-solid fa-image"></i><span>Click to view map asset</span></div>
-      </div>
-      <div class="card" onclick="openMapModal('SSP5-8.5 Delta Projection Map', 'assets/ssp585-delta.png', 'Forward climate projection map under Shared Socioeconomic Pathway 5-8.5, modeling vegetation stress and temperature shifts through 2063.')">
-        <h3>SSP5-8.5 Delta Projection</h3>
-        <div class="shot"><i class="fa-solid fa-image"></i><span>Click to view map asset</span></div>
-      </div>
-      <div class="card" onclick="openMapModal('Random Forest Variable Importance Chart', 'assets/rf-importance.png', 'Statistical feature importance chart from the Random Forest model identifying primary climatic and topographic drivers of vegetation change.')">
-        <h3>RF Variable Importance</h3>
-        <div class="shot"><i class="fa-solid fa-chart-column"></i><span>Click to view chart asset</span></div>
-      </div>
-      <div class="card" onclick="openMapModal('YOLOv8 Detection Output Map', 'assets/yolo-detections.png', 'Georeferenced detection output map showing individual bounding-box centroids exported from raster orthomosaics into shapefiles.')">
-        <h3>YOLOv8 Detection Output</h3>
-        <div class="shot"><i class="fa-solid fa-crosshairs"></i><span>Click to view map asset</span></div>
-      </div>
+      <div class="card"><h3>ArcGIS Pro Layout</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/arcgis-layout.png</span></div></div>
+      <div class="card"><h3>Python / Matplotlib Map</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/python-layout.png</span></div></div>
+      <div class="card"><h3>kNDVI Trend Surface</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/kndvi-trend.png</span></div></div>
+      <div class="card"><h3>SSP5-8.5 Delta Projection</h3><div class="shot"><i class="fa-solid fa-image"></i><span>assets/ssp585-delta.png</span></div></div>
+      <div class="card"><h3>RF Variable Importance</h3><div class="shot"><i class="fa-solid fa-chart-column"></i><span>assets/rf-importance.png</span></div></div>
+      <div class="card"><h3>YOLOv8 Detection Output</h3><div class="shot"><img src="assets/yolo-detections.jpg" alt="YOLOv8 cabbage field detection with bounding boxes — 613 cabbages detected" loading="lazy"></div></div>
     </div>
   </div>
 </section>
@@ -358,23 +444,23 @@
   <div class="wrap">
     <h2><i class="fa-solid fa-timeline"></i> Education &amp; Experience</h2>
     <div class="grid g2">
-      <div class="card" onclick="openInfoModal('Education: University of Zimbabwe', 'BSc Honours in Geographical Information Science and Earth Observation.\nDepartment of Geography, Geospatial Science, and Earth Observation.\nDissertation: Multitemporal terrain modelling and climate projection of vegetation dynamics, Nyanga National Park (2003–2023). Supervisor: Ms. K. Chirenje.')">
+      <div class="card">
         <h3>Education</h3>
         <div class="timeline" style="margin-top:14px">
           <div class="tl-item">
             <h4>BSc Honours — Geographical Information Science &amp; Earth Observation</h4>
-            <span>University of Zimbabwe · Dept. of Geography &amp; Geospatial Sciences[cite: 4]</span>
-            <p>Dissertation: multitemporal terrain modelling and climate projection of vegetation dynamics, Nyanga National Park (2003–2023)[cite: 4].</p>
+            <span>University of Zimbabwe · Dept. of Geography &amp; Geospatial Sciences</span>
+            <p>Dissertation: multitemporal terrain modelling and climate projection of vegetation dynamics, Nyanga National Park (2003–2023).</p>
           </div>
         </div>
       </div>
-      <div class="card" onclick="openInfoModal('Applied Professional Experience', 'Geospatial Analyst & Developer:\nDesigned and delivered robust end-to-end spatial pipelines, Python automation scripts, Web GIS dashboards, and machine learning crop detectors.\n\nField Surveyor:\nExperienced in independent GNSS field campaigns, coordinate transformations, and spatial database population in remote environments.')">
+      <div class="card">
         <h3>Applied Experience</h3>
         <div class="timeline" style="margin-top:14px">
-          <div class="tl-item"><h4>Geospatial Analyst (Projects)</h4><span>Earth Engine · Python · Web GIS[cite: 4]</span>
-            <p>Designed and delivered operational spatial systems from field capture to management dashboards[cite: 4].</p></div>
-          <div class="tl-item"><h4>Field Surveyor</h4><span>GPS/GNSS data collection[cite: 4]</span>
-            <p>Independent field work in remote locations; comfortable travelling for exploration and operational support[cite: 4].</p></div>
+          <div class="tl-item"><h4>Geospatial Analyst (Projects)</h4><span>Earth Engine · Python · Web GIS</span>
+            <p>Designed and delivered the six systems listed above, from field capture through to decision dashboards.</p></div>
+          <div class="tl-item"><h4>Field Surveyor</h4><span>GPS/GNSS data collection</span>
+            <p>Independent field work in remote locations; comfortable travelling for exploration and operational support.</p></div>
         </div>
       </div>
     </div>
@@ -385,32 +471,32 @@
 <section id="cv">
   <div class="wrap">
     <h2><i class="fa-solid fa-file-lines"></i> Curriculum Vitae</h2>
-    <p class="lead">Full CV summary — printable or downloadable straight from this page[cite: 4].</p>
-    <div class="card" style="cursor:default">
+    <p class="lead">Full CV summary — printable straight from this page.</p>
+    <div class="card">
       <div class="grid g2">
         <div>
           <h3>Core Competencies</h3>
           <ul class="stack-list">
-            <li><b>Geospatial software:</b> QGIS, ArcGIS Pro, ArcView, Google Earth Engine, ILWIS[cite: 4]</li>
-            <li><b>Programming:</b> Python (Rasterio, NumPy, Matplotlib, Pandas, GDAL/OGR, GeoPandas), JavaScript, SQL[cite: 4]</li>
-            <li><b>Databases:</b> PostGIS, geodatabase design, topology validation, raster calculus[cite: 4]</li>
-            <li><b>Remote sensing:</b> LULC classification, multi-temporal trend analysis, NDWI, EVI, kNDVI[cite: 4]</li>
-            <li><b>Field:</b> GPS/GNSS surveying, spatial data collection, mobile app configuration[cite: 4]</li>
+            <li><b>Geospatial software:</b> QGIS, ArcGIS Pro, ArcView, Google Earth Engine, ILWIS</li>
+            <li><b>Programming:</b> Python (Rasterio, NumPy, Matplotlib, Pandas, GDAL/OGR, GeoPandas), JavaScript, SQL</li>
+            <li><b>Databases:</b> PostGIS, geodatabase design, topology validation, raster calculus</li>
+            <li><b>Remote sensing:</b> LULC classification, multi-temporal trend analysis, NDWI, EVI, kNDVI</li>
+            <li><b>Field:</b> GPS/GNSS surveying, spatial data collection, mobile data-capture app configuration</li>
           </ul>
         </div>
         <div>
           <h3>Strengths</h3>
           <ul class="stack-list">
-            <li><b>End-to-end delivery</b> — field capture → cloud processing → ML → dashboard[cite: 4]</li>
-            <li><b>Communication</b> — every technical output translated into actionable management decisions[cite: 4]</li>
-            <li><b>Independence</b> — works unsupervised in remote field locations; willing to travel[cite: 4]</li>
-            <li><b>Reproducibility</b> — scripted, documented, re-runnable workflows[cite: 4]</li>
+            <li><b>End-to-end delivery</b> — field capture → cloud processing → ML → dashboard</li>
+            <li><b>Communication</b> — every technical output is translated into a management action</li>
+            <li><b>Independence</b> — works unsupervised in remote field locations; willing to travel</li>
+            <li><b>Reproducibility</b> — scripted, documented, re-runnable workflows rather than one-off manual GIS</li>
           </ul>
           <div class="cta" style="justify-content:flex-start;margin-top:20px">
             <a class="btn btn-primary" href="./assets/Munashe_Chandiringa_CV.pdf" download><i class="fa-solid fa-download"></i> Download CV (PDF)</a>
             <button class="btn btn-ghost" onclick="window.print()"><i class="fa-solid fa-print"></i> Print this page</button>
           </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:8px">Place your PDF at <code>assets/Munashe_Chandiringa_CV.pdf</code>[cite: 4].</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:8px">Place your PDF at <code>assets/Munashe_Chandiringa_CV.pdf</code>.</p>
         </div>
       </div>
     </div>
@@ -426,24 +512,16 @@
         <h3><i class="fa-solid fa-envelope"></i> Email</h3><p style="font-size:14px;color:var(--muted)">munashechandiringa@gmail.com</p></a>
       <a class="card" style="text-decoration:none;color:inherit" href="tel:+263714316225">
         <h3><i class="fa-solid fa-phone"></i> Phone</h3><p style="font-size:14px;color:var(--muted)">+263 714 316 225</p></a>
-      <div class="card" onclick="openInfoModal('Location & Availability', 'Based in 9756 Ultra High, Gwanda, Zimbabwe.\nAvailable for regional and international travel for field surveys, GIS deployment, and geospatial engineering roles.')">
-        <h3><i class="fa-solid fa-location-dot"></i> Based in</h3><p style="font-size:14px;color:var(--muted)">Gwanda, Zimbabwe — available to travel[cite: 4]</p></div>
+      <div class="card">
+        <h3><i class="fa-solid fa-location-dot"></i> Based in</h3><p style="font-size:14px;color:var(--muted)">Gwanda, Zimbabwe — available to travel</p></div>
     </div>
   </div>
 </section>
 
-<!-- UNIVERSAL MODAL POPUP CONTAINER -->
-<div id="modalOverlay" class="modal-overlay">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-</div>
-
 <footer>
   <div class="wrap">
-    <p>© <span id="yr"></span> Munashe T. Chandiringa · GIS &amp; Earth Observation Portfolio[cite: 4]</p>
-    <p style="margin-top:6px">Built as a single static HTML file — deployable free on GitHub Pages[cite: 4].</p>
+    <p>© <span id="yr"></span> Munashe T. Chandiringa · GIS &amp; Earth Observation Portfolio</p>
+    <p style="margin-top:6px">Built as a single static HTML file — deployable free on GitHub Pages.</p>
   </div>
 </footer>
 
@@ -451,62 +529,6 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Modal Functionality
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalBody = document.getElementById('modalBody');
-  const modalClose = document.getElementById('modalClose');
-
-  function closeModal() {
-    modalOverlay.classList.remove('show');
-  }
-
-  modalClose.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  function openInfoModal(title, text) {
-    modalBody.innerHTML = `<h2><i class="fa-solid fa-circle-info"></i> ${title}</h2><p style="margin-top:15px;font-size:15px;color:#d6e3ec;white-space:pre-line">${text}</p>`;
-    modalOverlay.classList.add('show');
-  }
-
-  function openProjectModal(title, meta, tools, tags, problem, solution, value, mapAsset) {
-    modalBody.innerHTML = `
-      <h2>${title}</h2>
-      <div class="meta">${meta}</div>
-      <div class="tags" style="margin-bottom:15px">
-        ${tags.split(', ').map(t => `<span class="tag">${t}</span>`).join('')}
-      </div>
-      <div class="psv">
-        <div class="blk"><div class="lbl">Problem Statement</div><p>${problem}</p></div>
-        <div class="blk s"><div class="lbl">Solution Architecture</div><p style="white-space:pre-line">${solution}</p></div>
-        <div class="blk v"><div class="lbl">Economic &amp; Strategic Value</div><p>${value}</p></div>
-      </div>
-      <div class="modal-map-preview">
-        <i class="fa-solid fa-map-marked-alt"></i>
-        <span><b>Associated Map / Output Asset:</b> <code>${mapAsset}</code></span>
-        <p style="font-size:12px;color:var(--muted)">Place your exported image at <code>${mapAsset}</code> to render live in this container.</p>
-      </div>
-    `;
-    modalOverlay.classList.add('show');
-  }
-
-  function openMapModal(title, assetPath, description) {
-    modalBody.innerHTML = `
-      <h2><i class="fa-solid fa-map"></i> ${title}</h2>
-      <p style="color:var(--muted);margin-bottom:15px;font-size:14px">${description}</p>
-      <div class="modal-map-preview" style="height:34ipx">
-        <i class="fa-solid fa-image" style="font-size:50px"></i>
-        <span><b>File Source:</b> <code>${assetPath}</code></span>
-        <p style="font-size:12px;color:var(--muted)">Drop your high-resolution PNG or JPG into the <code>assets/</code> folder with this exact filename.</p>
-      </div>
-    `;
-    modalOverlay.classList.add('show');
-  }
 
   // Project filtering
   var chips = document.querySelectorAll('#filters .chip');
@@ -522,9 +544,9 @@
   });
 
   // Back to top
-  var topBtn = document.getElementById('topBtn');
-  window.addEventListener('scroll', function(){ topBtn.classList.toggle('show', window.scrollY > 500); });
-  topBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+  var top = document.getElementById('topBtn');
+  window.addEventListener('scroll', function(){ top.classList.toggle('show', window.scrollY > 500); });
+  top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
 </script>
 </body>
 </html>

@@ -3,174 +3,221 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Munashe Chandiringa · GIS &amp; Earth Observation</title>
+<title>Munashe Chandiringa · GIS &amp; Earth Observation Graduate</title>
+<meta name="description" content="GIS and remote sensing graduate from the University of Zimbabwe. 20 years of satellite analysis, a year at the Meteorological Services Department, and maps delivered for real research. Available now.">
+<meta name="author" content="Munashe Thelma Chandiringa">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Munashe Chandiringa · GIS &amp; Earth Observation Graduate">
+<meta property="og:description" content="Satellite and field data, turned into decisions you can act on.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Munashe Thelma Chandiringa","jobTitle":"GIS and Earth Observation Graduate","email":"mailto:munashechandiringa@gmail.com","telephone":"+263714316225","alumniOf":"University of Zimbabwe","knowsLanguage":["English","Shona","Ndebele"],"knowsAbout":["GIS","Remote sensing","Google Earth Engine","Agro-meteorology","Land-cover change"]}</script>
 <style>
 :root{--bg:#f6f8fc;--ink:#0f1b3d;--mute:#4a5878;--acc:#1d4ed8;--acc2:#1e3a8a;--card:#fff;--line:#d9e1f2;--tint:#e8eefc;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1226;--ink:#e6ecfb;--mute:#9fb0d6;--acc:#60a5fa;--acc2:#93c5fd;--card:#111c38;--line:#1f2f57;--tint:#10224a;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#0a1226;--ink:#e6ecfb;--mute:#9fb0d6;--acc:#60a5fa;--acc2:#93c5fd;--card:#111c38;--line:#1f2f57;--tint:#10224a;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--acc);color:var(--bg);padding:8px 14px;border-radius:8px;z-index:9}
+.skip:focus{left:12px}
 .w{max-width:1000px;margin:0 auto;padding:0 20px}
 section{padding:56px 0}
-h1{font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.12;margin:.4em 0;letter-spacing:-.02em}
-h2{font-size:1.6rem;margin:0 0 6px;letter-spacing:-.01em}
-.lead{color:var(--mute);font-size:1.1rem;max-width:640px}
-.eyebrow{color:var(--acc);font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
-.sub{color:var(--mute);margin:0 0 28px;max-width:640px}
-.hero{padding:64px 0 48px;background:linear-gradient(160deg,var(--tint),transparent 60%)}
-.chip{display:inline-block;margin-top:18px;padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:.85rem;color:var(--mute)}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.1;margin:.35em 0;letter-spacing:-.025em;max-width:16em}
+h2{font-size:1.65rem;line-height:1.25;margin:0 0 8px;letter-spacing:-.01em}
+h3{margin:0 0 14px;font-size:1.2rem;line-height:1.35}
+p{margin:0 0 1em}
+.lead{color:var(--mute);font-size:1.15rem;max-width:40em}
+.eyebrow{color:var(--acc);font-weight:700;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase}
+.sub{color:var(--mute);margin:0 0 28px;max-width:40em}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:16px;flex-wrap:wrap}
+nav b{letter-spacing:-.01em}
+nav div{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:var(--mute);text-decoration:none;font-size:.95rem;font-weight:500}
+nav a:hover{color:var(--acc)}
+.hero{padding-bottom:44px;background:linear-gradient(165deg,var(--tint),transparent 62%)}
+.hero .in{padding:40px 0 8px}
+.chip{display:inline-block;margin-top:16px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card);font-size:.88rem;color:var(--mute)}
 .chip i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:8px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid var(--acc);color:var(--acc)}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font:600 1rem/1.4 inherit;text-decoration:none;border:1px solid var(--acc);color:var(--acc);background:transparent;cursor:pointer}
 .btn.p{background:var(--acc);color:var(--bg)}
-.btn:hover{filter:brightness(1.1)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-.stat b{display:block;font-size:2rem;color:var(--acc);line-height:1.1}
-.stat span{color:var(--mute);font-size:.92rem}
-.cases{display:grid;gap:18px}
-.case{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
-.case h3{margin:0 0 12px;font-size:1.2rem}
-.row{display:grid;grid-template-columns:90px 1fr;gap:4px 14px;margin:8px 0}
-.row b{color:var(--acc);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
+.btn:hover{filter:brightness(1.12)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0;padding:0;list-style:none}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.stat b{display:block;font-size:1.9rem;color:var(--acc);line-height:1.1;letter-spacing:-.02em}
+.stat span{color:var(--mute);font-size:.88rem;line-height:1.4;display:block;margin-top:4px}
+.cases{display:grid;gap:20px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.row{display:grid;grid-template-columns:96px 1fr;gap:4px 16px;margin:10px 0}
+.row b{color:var(--acc);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;padding-top:4px}
 .row span{margin:0}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.tags em{font-style:normal;font-size:.78rem;padding:3px 10px;border-radius:99px;background:var(--tint);color:var(--acc2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0;list-style:none}
+.tags li{font-size:.78rem;padding:3px 11px;border-radius:99px;background:var(--tint);color:var(--acc2)}
 .case.idea{border-style:dashed}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .sk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-.sk h3{margin:0 0 8px;font-size:1rem;color:var(--acc)}
-.sk p{margin:0;color:var(--mute);font-size:.95rem}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-.cta{background:var(--acc);color:var(--bg);border-radius:22px;padding:44px 28px;text-align:center}
+.sk h3{margin:0 0 6px;font-size:1rem;color:var(--acc)}
+.sk p{margin:0 0 6px;font-size:.95rem}
+.sk small{color:var(--mute);font-size:.84rem;display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.cta{background:var(--acc);color:var(--bg);border-radius:22px;padding:46px 28px;text-align:center}
 .cta h2{font-size:clamp(1.6rem,4vw,2.3rem)}
-.cta p{max-width:560px;margin:8px auto 0;opacity:.92}
+.cta p{max-width:34em;margin:8px auto 0}
 .cta .btns{justify-content:center}
 .cta .btn{border-color:var(--bg);color:var(--bg)}
 .cta .btn.p{background:var(--bg);color:var(--acc2)}
 footer{padding:28px 0 40px;color:var(--mute);font-size:.88rem;text-align:center}
-@media(max-width:680px){.two{grid-template-columns:1fr}.row{grid-template-columns:1fr}section{padding:40px 0}}
+@media(max-width:680px){.two{grid-template-columns:1fr}.row{grid-template-columns:1fr;gap:0}section{padding:40px 0}body{font-size:16.5px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{:root{--bg:#fff;--ink:#000;--mute:#333;--card:#fff;--line:#bbb;--tint:#fff;--acc:#1e3a8a}.btns,nav,.skip{display:none}.cta{background:none;color:#000;border:1px solid #bbb}section{padding:18px 0}.case,.stat,.sk{break-inside:avoid}}
 </style>
 </head>
 <body>
+<a class="skip" href="#work">Skip to my work</a>
 
 <header class="hero"><div class="w">
-  <div class="eyebrow">GIS &amp; Earth Observation Graduate · University of Zimbabwe</div>
-  <h1>I turn satellite and field data into decisions on land, climate and agriculture.</h1>
-  <p class="lead">A recent GIS graduate with a year inside Zimbabwe’s national weather service and a 20-year satellite study of Nyanga’s mountain ecosystems. I deliver maps and analysis that planners can act on.</p>
-  <div class="chip"><i></i>Open to roles · deployable anywhere in Zimbabwe</div>
-  <div class="btns">
-    <a class="btn p" href="mailto:munashechandiringa@gmail.com?subject=Opportunity%20for%20Munashe">Hire me</a>
-    <a class="btn" href="#work">See problems I’ve solved</a>
+  <nav aria-label="Main">
+    <b>Munashe Chandiringa</b>
+    <div><a href="#work">Work</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  </nav>
+  <div class="in">
+    <div class="eyebrow">GIS &amp; Earth Observation · University of Zimbabwe</div>
+    <h1>Satellite and field data, turned into decisions you can act on.</h1>
+    <p class="lead">I’m a GIS and remote sensing graduate. I’ve analysed 20 years of satellite imagery, spent a full year at Zimbabwe’s national weather service, and delivered maps for real research. I’m ready to do the same for your team.</p>
+    <div class="chip"><i></i>Available now · deployable anywhere in Zimbabwe</div>
+    <div class="btns">
+      <a class="btn p" href="mailto:munashechandiringa@gmail.com?subject=Opportunity%20for%20Munashe">Hire me</a>
+      <a class="btn" href="#work">See my work</a>
+    </div>
   </div>
 </div></header>
 
-<section><div class="w two">
+<main>
+<section aria-labelledby="proof" style="padding-top:36px"><div class="w">
+  <h2 id="proof" style="position:absolute;left:-999px">Results in numbers</h2>
+  <ul class="stats">
+    <li class="stat"><b>20 years</b><span>of Landsat imagery analysed, 2003–2023</span></li>
+    <li class="stat"><b>4 pathways</b><span>of future climate projected, SSP1-2.6 to SSP5-8.5</span></li>
+    <li class="stat"><b>14 drivers</b><span>screened and ranked in a Random Forest model</span></li>
+    <li class="stat"><b>12 months</b><span>at the Meteorological Services Department</span></li>
+    <li class="stat"><b>2 years</b><span>of campus land cover compared (2018 vs 2024)</span></li>
+    <li class="stat"><b>3 communities</b><span>mapped for a PhD study in Mutare District</span></li>
+  </ul>
+</div></section>
+
+<section id="about" aria-labelledby="about-h" style="padding-top:20px"><div class="w two">
   <div>
-    <h2>About me</h2>
-    <p class="sub">Munashe Thelma Chandiringa</p>
+    <h2 id="about-h">About me</h2>
+    <p class="sub" style="margin:0">Munashe Thelma Chandiringa</p>
   </div>
   <div>
-    <p style="margin-top:0">Councils, mines, farms and agencies make better decisions when they can see what is changing on the ground. I close that gap: collecting and cleaning spatial data, analysing it with GIS and remote sensing, and turning it into clear maps and reports.</p>
-    <p>I’m dependable, detail-oriented and equally comfortable in the field and in code, and I work in English, Shona and Ndebele.</p>
+    <p>I work where data meets decisions. Councils, mines, farms and agencies all need to know what is changing on the ground, and few have time to dig through raw imagery and spreadsheets.</p>
+    <p>I do that part. I collect and clean the data, analyse it with GIS and remote sensing, and hand back a map or report that is clear enough to act on. I’ve done it in the field at weather stations, in code with Google Earth Engine and Python, and in plain language for people who just want the answer.</p>
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="w">
-  <div class="stats">
-    <div class="stat"><b>12 months</b><span>GIS internship, Meteorological Services Department</span></div>
-    <div class="stat"><b>20 years</b><span>of Landsat imagery analysed (2003–2023)</span></div>
-    <div class="stat"><b>4 scenarios</b><span>of future climate modelled, SSP1-2.6 to SSP5-8.5</span></div>
-    <div class="stat"><b>3 languages</b><span>English, Shona and Ndebele</span></div>
-  </div>
-</div></section>
-
-<section id="work"><div class="w">
-  <h2>Problems I’ve solved</h2>
-  <p class="sub">Each project starts with a real question and ends with something a decision-maker can use.</p>
+<section id="work" aria-labelledby="work-h" style="padding-top:20px"><div class="w">
+  <h2 id="work-h">Selected work</h2>
+  <p class="sub">Every project starts with a real question and ends with something a decision-maker can use.</p>
   <div class="cases">
 
     <article class="case">
-      <h3>Where is Nyanga’s mountain vegetation changing, and why?</h3>
-      <div class="row"><b>Problem</b><span>Managers lacked a clear picture of where vegetation is shifting, what drives it and what comes next.</span></div>
-      <div class="row"><b>Approach</b><span>Built a Google Earth Engine pipeline on harmonised Landsat imagery (2003–2023). Mapped trends and hotspots, used Random Forest to attribute drivers, and projected vulnerability under four climate pathways.</span></div>
-      <div class="row"><b>Outcome</b><span>Maps and evidence showing where change is happening, what is behind it and which areas are most at risk.</span></div>
-      <div class="tags"><em>Google Earth Engine</em><em>Landsat</em><em>Random Forest</em><em>CMIP6 scenarios</em><em>Honours dissertation</em></div>
+      <h3>Where is Nyanga’s mountain vegetation changing, and what comes next?</h3>
+      <div class="row"><b>Question</b><span>Park managers needed to know where vegetation is shifting, what is driving it, and which areas are most at risk.</span></div>
+      <div class="row"><b>What I did</b><span>Built a Google Earth Engine pipeline on harmonised Landsat 5, 7, 8 and 9 imagery (2003–2023). Measured change with kNDVI, EVI and NDWI, tested trends with Mann-Kendall, found hotspots with Getis-Ord G*, and used Random Forest to rank the drivers.</span></div>
+      <div class="row"><b>Challenge</b><span>Early climate projections came out nearly identical across scenarios. I traced it to collinear predictors and poorly scaled sensitivity settings, re-screened the inputs (Pearson |r| ≥ 0.70) and rebuilt the outputs so each pathway gave its own result.</span></div>
+      <div class="row"><b>Result</b><span>A 20-year view of change, 14 drivers ranked by importance, and vulnerability projections for four climate pathways with Monte Carlo uncertainty. This was my Honours dissertation.</span></div>
+      <ul class="tags"><li>Google Earth Engine</li><li>Landsat</li><li>Random Forest</li><li>Mann-Kendall</li><li>Getis-Ord G*</li><li>CMIP6</li></ul>
     </article>
 
     <article class="case">
-      <h3>Can farmers trust the season’s data?</h3>
-      <div class="row"><b>Problem</b><span>Farmers need timely, reliable weather and crop information to plan.</span></div>
-      <div class="row"><b>Approach</b><span>As GIS intern in Agro-meteorology, took synoptic observations, captured and quality-checked station data, and monitored rainfall onset, dry spells, soil moisture and crop conditions.</span></div>
-      <div class="row"><b>Outcome</b><span>Clean, checked data feeding agro-meteorological bulletins and farmer advisories.</span></div>
-      <div class="tags"><em>Climate data</em><em>Quality control</em><em>Crop monitoring</em><em>Meteorological Services Dept</em></div>
+      <h3>How do you give farmers data they can trust, season after season?</h3>
+      <div class="row"><b>Question</b><span>Agricultural advice is only as good as the weather and crop data behind it.</span></div>
+      <div class="row"><b>What I did</b><span>As GIS Intern in the Agro-meteorology section, I took synoptic observations at weather stations, captured and quality-checked station data, and tracked rainfall onset, dry spells, soil moisture and crop conditions.</span></div>
+      <div class="row"><b>Result</b><span>Twelve months of checked observations and season monitoring feeding agro-meteorological bulletins and farmer advisories.</span></div>
+      <ul class="tags"><li>Climate data</li><li>Quality control</li><li>Crop monitoring</li><li>Meteorological Services Department</li></ul>
     </article>
 
     <article class="case">
-      <h3>Is the University of Zimbabwe campus losing its green space?</h3>
-      <div class="row"><b>Problem</b><span>Campus growth was assumed to be eating into green space, with no measurement of how much or where.</span></div>
-      <div class="row"><b>Approach</b><span>Classified dry-season Sentinel-2 imagery (2018 vs 2024) with k-means on NDVI, NDBI, NDWI and brightness, then ran transition, fragmentation and hotspot analysis.</span></div>
-      <div class="row"><b>Outcome</b><span>A quantified, mapped view of land-cover change that supports campus planning.</span></div>
-      <div class="tags"><em>Sentinel-2</em><em>k-means</em><em>Change detection</em><em>Python</em></div>
+      <h3>How much green space has the University of Zimbabwe campus lost, and where?</h3>
+      <div class="row"><b>Question</b><span>Campus growth was widely felt but never measured.</span></div>
+      <div class="row"><b>What I did</b><span>Built dry-season Sentinel-2 composites for 2018 and 2024 and classified them with k-means on NDVI, NDBI, NDWI and brightness. Then ran transition, fragmentation and loss-hotspot analysis.</span></div>
+      <div class="row"><b>Result</b><span>Four mapped land-cover classes across two years, with loss hotspots and fragmentation statistics that planners can use.</span></div>
+      <ul class="tags"><li>Sentinel-2</li><li>k-means</li><li>Change detection</li><li>Python</li></ul>
     </article>
 
     <article class="case">
-      <h3>A publication-ready map for a PhD in Mutare District</h3>
-      <div class="row"><b>Problem</b><span>A postgraduate researcher needed one clear study-area map covering three communities: Sakubva, Zimunya and Marange.</span></div>
-      <div class="row"><b>Approach</b><span>Prepared the base data in Google Earth Engine and designed a single map with insets, ward boundaries, roads, rivers and settlements.</span></div>
-      <div class="row"><b>Outcome</b><span>Paid freelance cartography for research at Nelson Mandela University.</span></div>
-      <div class="tags"><em>Cartography</em><em>Google Earth Engine</em><em>QGIS / ArcGIS</em><em>Freelance</em></div>
+      <h3>One clear map for a PhD study across three Mutare communities</h3>
+      <div class="row"><b>Question</b><span>A postgraduate researcher at Nelson Mandela University needed a publication-ready study-area map for Sakubva, Zimunya and Marange.</span></div>
+      <div class="row"><b>What I did</b><span>Prepared the base data in Google Earth Engine and designed a single map with insets, ward boundaries, roads, rivers and settlements.</span></div>
+      <div class="row"><b>Result</b><span>Paid freelance work: three sites, one map, delivered to a client’s brief.</span></div>
+      <ul class="tags"><li>Cartography</li><li>Google Earth Engine</li><li>QGIS</li><li>ArcGIS</li><li>Freelance</li></ul>
     </article>
 
     <article class="case idea">
       <h3>Concept: “Eyes on the Ground”</h3>
-      <div class="row"><b>Problem</b><span>Satellites show that land is changing but cannot always confirm the cause.</span></div>
-      <div class="row"><b>Idea</b><span>A paid youth network that verifies satellite signals on the ground, pairing field data with remote sensing. Developed for the Zimbabwe Youth Innovation HackLab 2026.</span></div>
-      <div class="tags"><em>Field verification</em><em>Green jobs</em><em>Climate resilience</em></div>
+      <div class="row"><b>Question</b><span>Satellites show that land is changing but can’t always confirm why.</span></div>
+      <div class="row"><b>The idea</b><span>A paid youth network that verifies satellite signals on the ground, pairing field data with remote sensing. Developed for the Zimbabwe Youth Innovation HackLab 2026.</span></div>
+      <ul class="tags"><li>Field verification</li><li>Green jobs</li><li>Climate resilience</li></ul>
     </article>
 
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="w">
-  <h2>Skills</h2>
-  <p class="sub">The toolkit I use to move from raw data to a finished answer.</p>
+<section id="skills" aria-labelledby="skills-h" style="padding-top:20px"><div class="w">
+  <h2 id="skills-h">Skills</h2>
+  <p class="sub">The tools I use to get from raw data to a finished answer, and where I’ve used them.</p>
   <div class="skills">
-    <div class="sk"><h3>GIS &amp; remote sensing</h3><p>ArcGIS, ArcView, QGIS, ILWIS, Google Earth Engine, PostGIS</p></div>
-    <div class="sk"><h3>Field data collection</h3><p>Survey123, ArcGIS Field Maps, KoBoToolbox</p></div>
-    <div class="sk"><h3>Web mapping</h3><p>ArcGIS StoryMaps, Web GIS dashboards, web map development</p></div>
-    <div class="sk"><h3>Data &amp; code</h3><p>Python for spatial analysis, PostgreSQL, statistics and data analysis</p></div>
-    <div class="sk"><h3>Communication</h3><p>Maps, reports and presentations for decision-makers; Word, Excel, PowerPoint</p></div>
+    <div class="sk"><h3>GIS &amp; remote sensing</h3><p>Google Earth Engine, ArcGIS, ArcView, QGIS, ILWIS, PostGIS</p><small>Used in: dissertation, campus study, Mutare map</small></div>
+    <div class="sk"><h3>Data &amp; code</h3><p>Python, PostgreSQL, statistics and data analysis</p><small>Used in: spatial analysis and modelling</small></div>
+    <div class="sk"><h3>Field data collection</h3><p>Survey123, ArcGIS Field Maps, KoBoToolbox</p><small>Used in: field and station data work</small></div>
+    <div class="sk"><h3>Web mapping</h3><p>ArcGIS StoryMaps, Web GIS dashboards, web map development</p><small>Used in: sharing results with non-specialists</small></div>
+    <div class="sk"><h3>Reporting</h3><p>Maps, reports and presentations in Word, Excel and PowerPoint</p><small>Used in: every project above</small></div>
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="w two">
+<section aria-labelledby="edu-h" style="padding-top:20px"><div class="w two">
   <div>
-    <h2>Education</h2>
+    <h2 id="edu-h">Education</h2>
     <p style="margin-top:8px"><b>BSc Honours, Geographical Information Science and Earth Observation</b><br>University of Zimbabwe, 2022–2026</p>
     <p style="color:var(--mute)">A-Level: Geography, Mathematics, Statistics, Animal Science</p>
   </div>
   <div>
-    <h2>What I bring</h2>
-    <p style="margin-top:8px;color:var(--mute)">Accurate data collection and quality control. Clear maps and reports for non-specialists. Independent work, teamwork and deadlines met. Community and field engagement.</p>
+    <h2>What you can count on</h2>
+    <p style="margin-top:8px;color:var(--mute)">Accurate data and careful quality control. Maps and reports that non-specialists can read. Steady independent work, good teamwork and deadlines met. Comfort in the field and with communities. Fluent in English, Shona and Ndebele.</p>
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="w">
+<section id="contact" aria-labelledby="cta-h" style="padding-top:20px"><div class="w">
   <div class="cta">
-    <h2>Have a mapping, land or climate-data problem?</h2>
-    <p>I’m available now and can be deployed anywhere in Zimbabwe. Tell me the question, and I’ll show you how I’d answer it.</p>
+    <h2 id="cta-h">Have a mapping, land or climate-data problem?</h2>
+    <p>I’m available now and can be deployed anywhere in Zimbabwe. Tell me the question and I’ll show you how I’d answer it.</p>
     <div class="btns">
       <a class="btn p" href="mailto:munashechandiringa@gmail.com?subject=Opportunity%20for%20Munashe">Email me</a>
       <a class="btn" href="https://wa.me/263714316225">WhatsApp</a>
       <a class="btn" href="tel:+263714316225">Call 0714 316 225</a>
+      <button class="btn" id="copy" type="button" hidden>Copy email</button>
     </div>
   </div>
 </div></section>
+</main>
 
 <footer><div class="w">Munashe Thelma Chandiringa · munashechandiringa@gmail.com · References available on request</div></footer>
 
+<script>
+(function(){
+  var b=document.getElementById('copy');
+  if(!b||!navigator.clipboard){return;}
+  b.hidden=false;
+  b.addEventListener('click',function(){
+    navigator.clipboard.writeText('munashechandiringa@gmail.com').then(function(){
+      b.textContent='Copied';setTimeout(function(){b.textContent='Copy email';},2000);
+    }).catch(function(){b.hidden=true;});
+  });
+})();
+</script>
 </body>
 </html>

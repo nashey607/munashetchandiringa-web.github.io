@@ -152,12 +152,11 @@ dialog p{margin:10px 4px 0;font-size:.92rem}
       <ul class="tags"><li>Climate data</li><li>Quality control</li><li>Crop monitoring</li><li>Meteorological Services Department</li></ul>
     </article>
 
-    <article class="case">
-      <h3>Weather dashboard</h3>
-      <div class="row"><b>What it is</b><span>An interactive weather dashboard I built and host as part of this portfolio.</span></div>
-      <div class="row"><b>Try it</b><span><a href="weather.html">Open the weather dashboard →</a></span></div>
-      <ul class="tags"><li>Weather data</li><li>Dashboard</li><li>Web development</li></ul>
-    </article>
+    <article class="case"><h3>How do you make station weather data easy to explore on any device?</h3><div class="row"><b>Question</b><span>Raw station readings are hard to read at a glance, especially on a phone.</span></div><div class="row"><b>What I did</b><span>Prepared four spatial layers in QGIS, exported them with qgis2web, then extended the output by hand: a Leaflet map of 10 stations across all provinces, 168 hours of data across 8 weather parameters, Chart.js trend charts, a station list and a responsive layout.</span></div><div class="row"><b>Result</b><span>A working dashboard you can open and explore. It runs on simulated data to demonstrate the full QGIS-to-web workflow. <a href="weather.html">Open the weather dashboard →</a></span></div><ul class="tags"><li>QGIS</li><li>qgis2web</li><li>Leaflet</li><li>Chart.js</li><li>GeoJSON</li></ul></article>
+
+    <article class="case"><h3>How can an organisation publish spatial data on the web with free software?</h3><div class="row"><b>Question</b><span>Maps are only useful if the people who need them can open them.</span></div><div class="row"><b>What I did</b><span>Built a complete open-source WebGIS stack: PostgreSQL/PostGIS for the database, GeoServer on Apache Tomcat to publish layers as WMS, and MapStore as the web map client. I loaded a secondary-schools layer and published it as a shareable web map.</span></div><div class="row"><b>Result</b><span>A working path from database to web map, documented step by step in a practical write-up.</span></div><ul class="tags"><li>PostGIS</li><li>GeoServer</li><li>MapStore</li><li>Apache Tomcat</li><li>WMS</li></ul></article>
+
+    <article class="case"><h3>How do you count crops in a field without walking every row?</h3><div class="row"><b>Question</b><span>Counting plants by hand across a whole field is slow and inconsistent.</span></div><div class="row"><b>What I did</b><span>Built a desktop tool in Python that loads a field GeoTIFF, runs a trained YOLOv8 model to find individual cabbages, and exports the results.</span></div><div class="row"><b>Result</b><span>Every detection comes out as a georeferenced box with a confidence score, ready for QGIS or ArcGIS, plus an annotated image and a total count.</span></div><ul class="tags"><li>YOLOv8</li><li>Python</li><li>OpenCV</li><li>GeoPandas</li><li>Rasterio</li></ul></article>
 
 
     
@@ -185,10 +184,10 @@ dialog p{margin:10px 4px 0;font-size:.92rem}
   <h2 id="skills-h">Skills</h2>
   <p class="sub">The tools I use to get from raw data to a finished answer, and where I’ve used them.</p>
   <div class="skills">
-    <div class="sk"><h3>GIS &amp; remote sensing</h3><p>Google Earth Engine, ArcGIS, ArcView, QGIS, ILWIS, PostGIS</p><small>Used in: dissertation analysis and maps</small></div>
-    <div class="sk"><h3>Data &amp; code</h3><p>Python, PostgreSQL, statistics and data analysis</p><small>Used in: spatial analysis and modelling</small></div>
+    <div class="sk"><h3>GIS &amp; remote sensing</h3><p>Google Earth Engine, ArcGIS, ArcView, QGIS, ILWIS, PostGIS</p><small>Used in: dissertation analysis, maps and WebGIS</small></div>
+    <div class="sk"><h3>Data &amp; code</h3><p>Python, PostgreSQL, YOLOv8 and OpenCV, GeoPandas, statistics</p><small>Used in: crop detection tool and spatial modelling</small></div>
     <div class="sk"><h3>Field data collection</h3><p>Survey123, ArcGIS Field Maps, KoBoToolbox</p><small>Used in: field and station data work</small></div>
-    <div class="sk"><h3>Web mapping</h3><p>ArcGIS StoryMaps, Web GIS dashboards, web map development</p><small>Used in: sharing results with non-specialists</small></div>
+    <div class="sk"><h3>Web mapping</h3><p>Leaflet, Chart.js, GeoServer, MapStore, ArcGIS StoryMaps, Web GIS dashboards</p><small>Used in: weather dashboard and WebGIS stack</small></div>
     <div class="sk"><h3>Reporting</h3><p>Maps, reports and presentations in Word, Excel and PowerPoint</p><small>Used in: every project above</small></div>
   </div>
 </div></section>
